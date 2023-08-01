@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/en/%5BSmart-Contract%5DHow%20to%20use%20Hardhat%20to%20deploy%20contracts%20to%20zkSync%20L2/</loc>
+    <lastmod>2023-07-31</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/en/build-dapp-with-hardhat/</loc>
     <lastmod>2023-07-28</lastmod>
   </url>

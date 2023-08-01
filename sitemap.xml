@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite-url/en/[Smart-Contract]How%20to%20use%20Hardhat%20to%20deploy%20contracts%20to%20zkSync%20L2/</loc>
+    
+    <lastmod>2023-07-31</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/en/build-dapp-with-hardhat/</loc>
     
     <lastmod>2023-07-28</lastmod>
@@ -67,7 +76,7 @@
 
   <url>
     <loc>http://yoursite-url/</loc>
-    <lastmod>2023-07-29</lastmod>
+    <lastmod>2023-08-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -75,14 +84,14 @@
   
   <url>
     <loc>http://yoursite-url/tags/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2023-07-29</lastmod>
+    <lastmod>2023-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/Web3-Develop/</loc>
-    <lastmod>2023-07-29</lastmod>
+    <lastmod>2023-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -91,14 +100,14 @@
   
   <url>
     <loc>http://yoursite-url/categories/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2023-07-29</lastmod>
+    <lastmod>2023-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/categories/Web3-Develop/</loc>
-    <lastmod>2023-07-29</lastmod>
+    <lastmod>2023-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
