@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/en/%5BSmart%20contract%5DHow%20to%20build%20a%20multi-project%20donation%20platform/</loc>
+    <lastmod>2023-08-03</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/en/%5BSmart-Contract%5DHow%20to%20develop%20a%20simple%20token%20swap%20smart%20contract/</loc>
     <lastmod>2023-08-03</lastmod>
   </url>
@@ -11,6 +15,10 @@
   <url>
     <loc>http://yoursite-url/en/build-dapp-with-hardhat/</loc>
     <lastmod>2023-07-28</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/Hexo-Theme-LiveMyLife/</loc>
+    <lastmod>2020-04-16</lastmod>
   </url>
   <url>
     <loc>http://yoursite-url/en/Hexo-Theme-LiveMyLife/</loc>
