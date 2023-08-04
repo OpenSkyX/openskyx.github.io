@@ -150,7 +150,7 @@
 
 <!-- hack iOS CSS :active style -->
 
-	<body ontouchstart="" class="body--light body--dark">
+	<body ontouchstart="" class="body--light body--light">
 
 
 		<!-- ThemeColor -->
@@ -184,7 +184,7 @@
       ? b.pop()
       : '';
   }
-  let themeMode = 'dark';
+  let themeMode = 'light';
   if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
     let dbody = document.body.classList;
     themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              ARCHIVES
+              CATEGORIES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              CATEGORIES
+              ARCHIVES
               
               
             </a>
@@ -465,7 +465,7 @@
         
         <a href="#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="2">Hexo-Theme-LiveMyLife</a>
         
-        <a href="#Web3-Develop" title="Web3-Develop" rel="4">Web3-Develop</a>
+        <a href="#Web3-Develop" title="Web3-Develop" rel="5">Web3-Develop</a>
         
       </div>
 
@@ -530,6 +530,26 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
+          <a href="/en/[Smart contract]How Hacker steals your assets through Receive reentry attack/">
+            <h2 class="post-title">
+              Smart contract | How Hacker steals your assets through Receive reentry attack
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              智能合约 | Hacker 如何通过Receive重入攻击盗走你的资产
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
           <a href="/en/[Smart contract]How to build a multi-project donation platform/">
             <h2 class="post-title">
               Smart contract | How to build a multi-project donation platform
@@ -570,14 +590,14 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/en/[Smart-Contract]How to use Hardhat to deploy contracts to zkSync L2/">
+          <a href="/en/build-dapp-with-hardhat/">
             <h2 class="post-title">
-              Smart-Contract | How to use Hardhat to deploy contracts to zkSync L2
+              Use hardhat to build dapp and develop smart contracts and deployment
               
             </h2>
             
             <h3 class="post-subtitle">
-              智能合约 | 如何使用Hardhat部署合约到zkSync L2
+              Use hardhat for smart contract development...
             </h3>
             
           </a>
@@ -590,14 +610,14 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/en/build-dapp-with-hardhat/">
+          <a href="/en/[Smart-Contract]How to use Hardhat to deploy contracts to zkSync L2/">
             <h2 class="post-title">
-              Use hardhat to build dapp and develop smart contracts and deployment
+              Smart-Contract | How to use Hardhat to deploy contracts to zkSync L2
               
             </h2>
             
             <h3 class="post-subtitle">
-              Use hardhat for smart contract development...
+              智能合约 | 如何使用Hardhat部署合约到zkSync L2
             </h3>
             
           </a>
@@ -716,10 +736,6 @@
     <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
   
 
-  
-    <!-- Line start -->
-    <script async="text/javascript" src="/js/line.js"></script>
-    <!-- Line end -->
   
 
 

@@ -150,7 +150,7 @@
 
 <!-- hack iOS CSS :active style -->
 
-	<body ontouchstart="" class="body--light body--dark">
+	<body ontouchstart="" class="body--light body--light">
 
 
 		<!-- ThemeColor -->
@@ -184,7 +184,7 @@
       ? b.pop()
       : '';
   }
-  let themeMode = 'dark';
+  let themeMode = 'light';
   if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
     let dbody = document.body.classList;
     themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              ARCHIVES
+              CATEGORIES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              CATEGORIES
+              ARCHIVES
               
               
             </a>
@@ -486,6 +486,17 @@
           <li>
             08-04
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/en/[Smart contract]How Hacker steals your assets through Receive reentry attack/" style="color: #0085a1">
+              <span>
+                Smart contract | How Hacker steals your assets through Receive reentry attack
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-04
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             <a href="/en/[Smart contract]How to build a multi-project donation platform/" style="color: #0085a1">
               <span>
                 Smart contract | How to build a multi-project donation platform
@@ -608,7 +619,7 @@
     
     
     
-    <a href="/tags/#Web3-Develop" title="Web3-Develop" rel="4">Web3-Develop</a>
+    <a href="/tags/#Web3-Develop" title="Web3-Develop" rel="5">Web3-Develop</a>
     
     
   </div>
@@ -680,6 +691,10 @@
 <div class="widget">
   <ul>
     
+    <a href="../en/%5BSmart%20contract%5DHow%20Hacker%20steals%20your%20assets%20through%20Receive%20reentry%20attack/">
+      <li>Smart contract | How Hacker steals your assets through Receive reentry attack</li>
+    </a>
+    
     <a href="../en/%5BSmart%20contract%5DHow%20to%20build%20a%20multi-project%20donation%20platform/">
       <li>Smart contract | How to build a multi-project donation platform</li>
     </a>
@@ -694,10 +709,6 @@
     
     <a href="../en/build-dapp-with-hardhat/">
       <li>Use hardhat to build dapp and develop smart contracts and deployment</li>
-    </a>
-    
-    <a href="../cn/Hexo-Theme-LiveMyLife/">
-      <li>Hexo-Theme-LiveMyLife</li>
     </a>
     
   </ul>
@@ -720,7 +731,7 @@
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="2023/08/">August 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="2023/07/">July 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="2020/04/">April 2020</a><span class="archive-list-count">2</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="2023/07/">July 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="2020/04/">April 2020</a><span class="archive-list-count">2</span></li></ul>
 </div>
 
 
@@ -857,10 +868,6 @@
     <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
   
 
-  
-    <!-- Line start -->
-    <script async="text/javascript" src="/js/line.js"></script>
-    <!-- Line end -->
   
 
 
