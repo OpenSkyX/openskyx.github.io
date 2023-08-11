@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              ABOUT
+              ARCHIVES
               
               
             </a>
@@ -408,7 +408,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">33</span> In Total
+              Words <span class="post-count">303</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -470,10 +470,14 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="Overview">Overview</h2>
-<pre><code>    发的发生大法师发大水范德萨发大水发大水范德萨发大水发大水范德萨
-    FASFDSFASF
+        <h2 id="Overview-业务场景：">Overview | 业务场景：</h2>
+<pre><code>最近遇到一个项目，需要发行一个ERC20 Token ,除去普通钱包转账，和Swap添加流动性和
+删除流动性之外的transfer都需要收取手续费，这个时候我们需要写一个判断是否为添加流动
+性和删除流动性的判断
 </code></pre>
+<h2 id="具体判断的代码如下：">具体判断的代码如下：</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">contract LiquidityActivity &#123;</span><br><span class="line">    </span><br><span class="line">    //check address is a add liquidity address</span><br><span class="line">    function isAddLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `from` is the liquidity pool contract and `to` is a user</span><br><span class="line">        if (from == liquidityPoolAddress &amp;&amp; !isContract(to)) &#123;</span><br><span class="line">            // Check if `to` holds both tokens of the pool (add liquidity)</span><br><span class="line">            return (to == pool.token0() || to == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //check address is remove liquidity address</span><br><span class="line">    function isRemoveLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `to` is the liquidity pool contract and `from` is a user</span><br><span class="line">        if (to == liquidityPoolAddress &amp;&amp; !isContract(from)) &#123;</span><br><span class="line">            // Check if `from` holds both tokens of the pool (remove liquidity)</span><br><span class="line">            return (from == pool.token0() || from == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // check address is a contract address</span><br><span class="line">    function isContract(address addr) internal view returns (bool) &#123;</span><br><span class="line">        uint32 size;</span><br><span class="line">        assembly &#123;</span><br><span class="line">            size := extcodesize(addr)</span><br><span class="line">        &#125;</span><br><span class="line">        return (size &gt; 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费">通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费</h5>
 
 
         <hr>
@@ -619,7 +623,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Overview"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Overview</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Overview-%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Overview | 业务场景：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B7%E4%BD%93%E5%88%A4%E6%96%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">具体判断的代码如下：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87%E4%BB%A5%E4%B8%8A%E5%88%A4%E6%96%AD%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%88%86%E8%BE%A8%E5%87%BA%E6%98%AF%E5%90%A6%E4%B8%BA%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4%E6%B5%81%E5%8A%A8%E6%80%A7%E6%93%8D%E4%BD%9C%EF%BC%8C%E8%BF%9B%E8%80%8C%E4%B8%8D%E5%AF%B9%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4%E6%B5%81%E5%8A%A8%E6%80%A7%E7%9A%84%E6%93%8D%E4%BD%9C%E6%94%B6%E5%8F%96%E6%89%8B%E7%BB%AD%E8%B4%B9"><span class="toc-nav-number">2.0.0.1.</span> <span class="toc-nav-text">通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
