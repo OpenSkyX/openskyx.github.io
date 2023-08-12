@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/en/How%20to%20develop%20ERC20%20token%20faucet/</loc>
+    <lastmod>2023-08-12</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/en/How%20to%20judge%20from%20and%20to%20addresses%20are%20operations%20of%20adding%20and%20removing%20liquidity/</loc>
     <lastmod>2023-08-10</lastmod>
   </url>
