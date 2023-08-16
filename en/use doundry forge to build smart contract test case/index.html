@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              CATEGORIES
+              ABOUT
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              ABOUT
+              CATEGORIES
               
               
             </a>
@@ -493,8 +493,9 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">forge install foundry-rs/forge-std</span></span><br></pre></td></tr></table></figure>
 <p>因为网络问题，可能会出错，多尝试几次！</p>
 <blockquote>
-<p>注意！！！ 请检查 <code>\lib\forge-std\lib\ds-test</code> 是否为空，如果为空删除掉次文件夹。</p>
+<p>注意！！！ 请检查 <code>\lib\forge-std\lib\ds-test</code> 是否为空，如果为空删除掉此文件夹。</p>
 <p>删除掉后在\lib\forge-std\lib 目录执行 git clone <a target="_blank" rel="noopener" href="https://github.com/dapphub/ds-test.git">https://github.com/dapphub/ds-test.git</a></p>
+<p>原因：因为网络问题，ds-test不能随forge-std一起下载下来，那就手动下载下来放在该目录下</p>
 </blockquote>
 <h3 id="安装OpenZeppelin-openzeppelin-contracts-合约库">安装<code>OpenZeppelin/openzeppelin-contracts</code> 合约库</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">forge install OpenZeppelin/openzeppelin-contracts</span></span><br></pre></td></tr></table></figure>
