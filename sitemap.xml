@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite-url/en/How%20to%20gradually%20release%20tokens/</loc>
+    
+    <lastmod>2023-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/en/How%20to%20develop%20ERC20%20token%20faucet/</loc>
     
     <lastmod>2023-08-12</lastmod>
@@ -14,15 +23,6 @@
     <loc>http://yoursite-url/en/How%20to%20judge%20from%20and%20to%20addresses%20are%20operations%20of%20adding%20and%20removing%20liquidity/</loc>
     
     <lastmod>2023-08-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/en/How%20to%20make%20an%20NFT%20website%20,Mint%20contract%20and%20website%20interaction%20open%20source%20code/</loc>
-    
-    <lastmod>2023-08-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -119,15 +119,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/en/Hexo-Theme-LiveMyLife/</loc>
-    
-    <lastmod>2020-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite-url/archive/index.html</loc>
     
     <lastmod>2017-03-20</lastmod>
@@ -148,22 +139,22 @@
 
   <url>
     <loc>http://yoursite-url/</loc>
-    <lastmod>2023-08-12</lastmod>
+    <lastmod>2023-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://yoursite-url/tags/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2023-08-12</lastmod>
+    <loc>http://yoursite-url/tags/Web3-Develop/</loc>
+    <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Web3-Develop/</loc>
-    <lastmod>2023-08-12</lastmod>
+    <loc>http://yoursite-url/tags/Hexo-Theme-LiveMyLife/</loc>
+    <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -171,15 +162,15 @@
 
   
   <url>
-    <loc>http://yoursite-url/categories/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2023-08-12</lastmod>
+    <loc>http://yoursite-url/categories/Web3-Develop/</loc>
+    <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/Web3-Develop/</loc>
-    <lastmod>2023-08-12</lastmod>
+    <loc>http://yoursite-url/categories/Hexo-Theme-LiveMyLife/</loc>
+    <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

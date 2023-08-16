@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              ARCHIVES
+              CATEGORIES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              CATEGORIES
+              ARCHIVES
               
               
             </a>
@@ -470,11 +470,15 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="Overview-业务场景："><a href="#Overview-业务场景：" class="headerlink" title="Overview | 业务场景："></a>Overview | 业务场景：</h2><pre><code>最近遇到一个项目，需要发行一个ERC20 Token ,除去普通钱包转账，和Swap添加流动性和
+        <h2 id="Overview-业务场景：">Overview | 业务场景：</h2>
+<pre><code>最近遇到一个项目，需要发行一个ERC20 Token ,除去普通钱包转账，和Swap添加流动性和
 删除流动性之外的transfer都需要收取手续费，这个时候我们需要写一个判断是否为添加流动
 性和删除流动性的判断
-</code></pre><h2 id="具体判断的代码如下："><a href="#具体判断的代码如下：" class="headerlink" title="具体判断的代码如下："></a>具体判断的代码如下：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">contract LiquidityActivity &#123;</span><br><span class="line">    </span><br><span class="line">    //check address is a add liquidity address</span><br><span class="line">    function isAddLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `from` is the liquidity pool contract and `to` is a user</span><br><span class="line">        if (from == liquidityPoolAddress &amp;&amp; !isContract(to)) &#123;</span><br><span class="line">            // Check if `to` holds both tokens of the pool (add liquidity)</span><br><span class="line">            return (to == pool.token0() || to == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //check address is remove liquidity address</span><br><span class="line">    function isRemoveLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `to` is the liquidity pool contract and `from` is a user</span><br><span class="line">        if (to == liquidityPoolAddress &amp;&amp; !isContract(from)) &#123;</span><br><span class="line">            // Check if `from` holds both tokens of the pool (remove liquidity)</span><br><span class="line">            return (from == pool.token0() || from == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // check address is a contract address</span><br><span class="line">    function isContract(address addr) internal view returns (bool) &#123;</span><br><span class="line">        uint32 size;</span><br><span class="line">        assembly &#123;</span><br><span class="line">            size := extcodesize(addr)</span><br><span class="line">        &#125;</span><br><span class="line">        return (size &gt; 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费"><a href="#通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费" class="headerlink" title="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费"></a>通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费</h5>
+</code></pre>
+<h2 id="具体判断的代码如下：">具体判断的代码如下：</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">contract LiquidityActivity &#123;</span><br><span class="line">    </span><br><span class="line">    //check address is a add liquidity address</span><br><span class="line">    function isAddLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `from` is the liquidity pool contract and `to` is a user</span><br><span class="line">        if (from == liquidityPoolAddress &amp;&amp; !isContract(to)) &#123;</span><br><span class="line">            // Check if `to` holds both tokens of the pool (add liquidity)</span><br><span class="line">            return (to == pool.token0() || to == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //check address is remove liquidity address</span><br><span class="line">    function isRemoveLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `to` is the liquidity pool contract and `from` is a user</span><br><span class="line">        if (to == liquidityPoolAddress &amp;&amp; !isContract(from)) &#123;</span><br><span class="line">            // Check if `from` holds both tokens of the pool (remove liquidity)</span><br><span class="line">            return (from == pool.token0() || from == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // check address is a contract address</span><br><span class="line">    function isContract(address addr) internal view returns (bool) &#123;</span><br><span class="line">        uint32 size;</span><br><span class="line">        assembly &#123;</span><br><span class="line">            size := extcodesize(addr)</span><br><span class="line">        &#125;</span><br><span class="line">        return (size &gt; 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费">通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费</h5>
+
 
         <hr>
         <!-- Pager -->
@@ -486,7 +490,7 @@
           
           
           <li class="next">
-            <a href="/en/How to make an NFT website ,Mint contract and website interaction open source code/" data-toggle="tooltip" data-placement="top" title="如何制作一个NFT网站？mint合约与网站交互开源代码！">Next Post &rarr;</a>
+            <a href="/en/[Smart contract]How to develop an NFT trading platform/" data-toggle="tooltip" data-placement="top" title="Smart contract | How to develop an NFT trading platform">Next Post &rarr;</a>
           </li>
           
         </ul>
