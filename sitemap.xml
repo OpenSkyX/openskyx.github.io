@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite-url/en/use%20doundry%20forge%20to%20build%20smart%20contract%20test%20case/</loc>
+    
+    <lastmod>2023-08-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/en/How%20to%20gradually%20release%20tokens/</loc>
     
     <lastmod>2023-08-16</lastmod>
@@ -146,14 +155,14 @@
 
   
   <url>
-    <loc>http://yoursite-url/tags/Web3-Develop/</loc>
+    <loc>http://yoursite-url/tags/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Hexo-Theme-LiveMyLife/</loc>
+    <loc>http://yoursite-url/tags/Web3-Develop/</loc>
     <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -162,14 +171,14 @@
 
   
   <url>
-    <loc>http://yoursite-url/categories/Web3-Develop/</loc>
+    <loc>http://yoursite-url/categories/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/Hexo-Theme-LiveMyLife/</loc>
+    <loc>http://yoursite-url/categories/Web3-Develop/</loc>
     <lastmod>2023-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
