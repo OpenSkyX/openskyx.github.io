@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              CATEGORIES
+              ABOUT
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              ABOUT
+              CATEGORIES
               
               
             </a>
@@ -473,10 +473,10 @@
         <h2 id="快速开始">快速开始</h2>
 <pre><code> 项目介绍: 本教程介绍Hacker如何通过receive重入攻击盗走你的数字资产
 </code></pre>
-<hr>
+<hr />
 <pre><code>如何创建一个hardhat项目在之前的教程中已经充分演示过，在这里将不再过多赘述，想要了解hardhat请翻阅之前的教程！
 </code></pre>
-<hr>
+<hr />
 <h2 id="创建存款合约-EtherBank-sol：">创建存款合约 EtherBank.sol：</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: UNLICENSED</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">contract EtherBank &#123;</span><br><span class="line">    mapping(address =&gt;uint) public balances;</span><br><span class="line">    </span><br><span class="line">    function deposit() external payable&#123;</span><br><span class="line">        balances[msg.sender] += msg.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw() external &#123;</span><br><span class="line">        require(balances[msg.sender] &gt; 0,&quot;withdraw amount exceeds available balance.&quot;);</span><br><span class="line">        payable(msg.sender).transfer(balances[msg.sender]);</span><br><span class="line">        balances[msg.sender] = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getBalance()public view returns(uint)&#123;</span><br><span class="line">        return address(this).balance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="编译合约">编译合约</h2>
@@ -595,11 +595,11 @@
 
   <script>
     var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
-      repo: '',
-      owner: '',
-      admin: '',
+      clientID: '8d34cec04e51a507b217',
+      clientSecret: 'dbd95dbedb6676efc06c083311491ed110f98fd5',
+      repo: 'git@github.com:OpenSkyX/openskyx.github.io.git',
+      owner: 'OpenSkyX',
+      admin: 'OpenSkyX',
       id: 'Fri Aug 04 2023 17:20:17 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
