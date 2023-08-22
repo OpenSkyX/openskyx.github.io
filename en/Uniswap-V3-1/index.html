@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              CATEGORIES
+              ARCHIVES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              ARCHIVES
+              CATEGORIES
               
               
             </a>
@@ -496,12 +496,12 @@ k=4500×3=13500
 $
 </center>
 <p>假设x 表示DAI，y表示ETH，即初始阶段 $x_1 = 4500  \quad y_1 = 3 $ 当价格下降到 1300 DAI/ETH 时：<br />
-<img src="source/_posts/en/Uniswap-V3-2/img_1.png" alt="img.png" /><br />
+<img src="img_1.png" alt="img.png" /><br />
 得出 $x_2 = 4192.54 ， y_2 = 3.22$$ 资金利用率为：$$\frac {\Delta_x}{x_1} = 6.84  $ %,同样的方式，当价格变为2200 <code>DAI/ETH</code>时，资金利用率为21,45%</p>
 <p>也就是说，在大部分时间内池子中的资金利用率低于25%，这个问题对于稳定币的流动性池更加严重。</p>
 <h3 id="解决方案">解决方案</h3>
 <p>V3版本的解决方案是允许用户只在一段价格区间内提供流动性。如下图：<br />
-<img src="source/_posts/en/Uniswap-V3-2/img_2.png" alt="img.png" /></p>
+<img src="img_2.png" alt="img.png" /></p>
 <p>上图展示了用户选择在价格[a,b]之间提供流动性时，通过虚拟token的参与，将曲线 <em>f(real)</em> (橘色)向右上方移动至  <em>f(virtual)</em>（绿色），实现了价格计算的一致性（既满足 <em>x · y = k</em>）</p>
 <h3 id="流动性聚合">流动性聚合</h3>
 <p>上面我们说了，通过引入虚拟token的概念，让用户可以在某个价格区间内提供流动性，而每个用户提供的流动性都可能设置不同的价格，这样一来一个交易对的池子中就包含了多个不同的流动性<br />
@@ -511,7 +511,7 @@ $
 <h3 id="交易过程">交易过程</h3>
 <h4 id="V2版本">V2版本</h4>
 <p>在V2版本中，用户与一个交易对发生交易时，假设用户提供x token，资金量为 <em>Δx</em> ，AMM 需要计算出用户可以得到的y token,即）<em>Δy</em> ，如下图所示，池中资金从a点随着曲线移动到b点：</p>
-<p><img src="source/_posts/en/Uniswap-V3-2/img_3.png" alt="img.png" /></p>
+<p><img src="img_3.png" alt="img.png" /></p>
 <p>可以通过下面步骤计算 <em>Δy:</em></p>
 <center>
 x⋅y=(x+Δx)(y−Δy)=k
@@ -519,7 +519,7 @@ x⋅y=(x+Δx)(y−Δy)=k
 <p>具体的实现，参考 <a target="_blank" rel="noopener" href="https://github.com/Uniswap/uniswap-v2-periphery/blob/dda62473e2da448bc9cb8f4514dadda4aeede5f4/contracts/libraries/UniswapV2Library.sol#L42-L50">V2代码实现</a></p>
 <h4 id="V3版本">V3版本</h4>
 <p>在V3版本中，因为一个交易池中会有多个不同深度的流动池（每一个可以单独设置交易价格区间），因此一次交易的过程可能跨越多个不同的深度：</p>
-<p><img src="source/_posts/en/Uniswap-V3-2/img_4.png" alt="img.png" /></p>
+<p><img src="Uniswap-V3-2/img_4.png" alt="img.png" /></p>
 <p>如上图最右边所示，当价格发生变化时，流动池中的总流动性也会随之变化，因此V3版本流动池中资金的关系不能像V2版本一样用一个平滑的bonding curve曲线来表示。那么该如何计算呢？</p>
 <p>前面我们说过，V3的行为类似一个交易聚合器，他需要保证池中所有的流动性的价格再交易前后一致，因此V3会围绕池中的代币价格来进行。</p>
 <p>对于一个流动性来说，流动性大小可以用k表示，即 <em>k = x · y</em> 用P表示x的价格，即 <em>P = y / x</em> ,当使用x token兑换y token时，我们需要进行如下计算：</p>
@@ -549,7 +549,7 @@ x⋅y=(x+Δx)(y−Δy)=k
 <p>Uniswap v3 解决这个问题的方式是，将 $[P_min,P_max]$ 这一段连续的价格范围为，分割成有限个离散的价格点。每一个价格对应一个 tick，用户在设置流动性的价格区间时，只能选择这些离散的价格点中的某一个作为流动性的边界价格。</p>
 <p>Uniswap v3 采用了等比数列的形式确定价格数列，公比为 1.0001。即下一个价格点为当前价格点的 100.01%，前面我们说过 Uniswap v3 实际存储的是 P−−√<br />
 ，那么下一个价格与当前价格的关系为</p>
-<p><img src="source/_posts/en/Uniswap-V3-2/img_5.png" alt="img.png" /></p>
+<p><img src="img_5.png" alt="img.png" /></p>
 <p>如此一来 Uniswap v3 可以提供比较细粒度的价格选择范围（每个可选价格之间的差值为 0.01%），同时又可以将计算的复杂度控制在一定范围内。</p>
 <h2 id="代码架构">代码架构</h2>
 <p>Uniswap V3在代码层面的架构和V2基本保持一致，将合约分成了两个仓库：</p>
@@ -568,7 +568,7 @@ x⋅y=(x+Δx)(y−Δy)=k
 <li>NonfungiblePositionManager ： 用来增加/移出/修改pool的流动性，并且通过NFT token将流动性代币化，使用ERC721 token的原因是同一个池的多个流动性并不能等价值替换（V3的集中流动性功能）。</li>
 </ul>
 <p>这些合约间的关系大致如下图：</p>
-<p><img src="source/_posts/en/Uniswap-V3-2/img_6.png" alt="img.png" /></p>
+<p><img src="img_6.png" alt="img.png" /></p>
 <p>本系列后续会从常用的 Uniswap V3操作入手，讲解代码调用流程，一般来说，用户的操作都是于uniswap-v3-periphery 开始。</p>
 
 
