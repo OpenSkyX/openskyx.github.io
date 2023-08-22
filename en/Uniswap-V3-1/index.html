@@ -247,17 +247,6 @@
           
           
           <li>
-            <a href="/about/">
-              
-              ABOUT
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/archive/">
               
               ARCHIVES
@@ -272,6 +261,17 @@
             <a href="/categories/">
               
               CATEGORIES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              ABOUT
               
               
             </a>
@@ -519,7 +519,7 @@ x⋅y=(x+Δx)(y−Δy)=k
 <p>具体的实现，参考 <a target="_blank" rel="noopener" href="https://github.com/Uniswap/uniswap-v2-periphery/blob/dda62473e2da448bc9cb8f4514dadda4aeede5f4/contracts/libraries/UniswapV2Library.sol#L42-L50">V2代码实现</a></p>
 <h4 id="V3版本">V3版本</h4>
 <p>在V3版本中，因为一个交易池中会有多个不同深度的流动池（每一个可以单独设置交易价格区间），因此一次交易的过程可能跨越多个不同的深度：</p>
-<p><img src="Uniswap-V3-2/img_4.png" alt="img.png" /></p>
+<p><img src="img_4.png" alt="img.png" /></p>
 <p>如上图最右边所示，当价格发生变化时，流动池中的总流动性也会随之变化，因此V3版本流动池中资金的关系不能像V2版本一样用一个平滑的bonding curve曲线来表示。那么该如何计算呢？</p>
 <p>前面我们说过，V3的行为类似一个交易聚合器，他需要保证池中所有的流动性的价格再交易前后一致，因此V3会围绕池中的代币价格来进行。</p>
 <p>对于一个流动性来说，流动性大小可以用k表示，即 <em>k = x · y</em> 用P表示x的价格，即 <em>P = y / x</em> ,当使用x token兑换y token时，我们需要进行如下计算：</p>
