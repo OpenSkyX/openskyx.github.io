@@ -299,10 +299,6 @@
 
           <!-- LangSelect -->
           
-          
-          
-          
-          
         </ul>
       </div>
     </div>
@@ -471,12 +467,10 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
         <blockquote>
-<p>前文已经说过<a target="_blank" rel="noopener" href="https://openskyx.github.io/en/Uniswap-V3-1/">Uniswap V3代码结构</a>，一般来说，用户的操作都是从 <a target="_blank" rel="noopener" href="https://github.com/Uniswap/v3-periphery">uniswap-v3-periphery</a><br />
-中的合约开始</p>
+<p>前文已经说过<a target="_blank" rel="noopener" href="https://openskyx.github.io/en/Uniswap-V3-1/">Uniswap V3代码结构</a>，一般来说，用户的操作都是从 <a target="_blank" rel="noopener" href="https://github.com/Uniswap/v3-periphery">uniswap-v3-periphery</a><br>中的合约开始</p>
 </blockquote>
-<h2 id="创建交易对">创建交易对</h2>
-<p>创建交易对的调佣流程如下：</p>
-<p><img src="img_1.png" alt="img.png" /></p>
+<h2 id="创建交易对"><a href="#创建交易对" class="headerlink" title="创建交易对"></a>创建交易对</h2><p>创建交易对的调佣流程如下：</p>
+<p><img src="img_1.png" alt="img.png"></p>
 <p>用户首先调用<code>NonfungoblePositionManager</code> 合约的<code>createAndInitializePoolIfNecessary</code> 方法创建交易对，传入的参数为交易对的<code>token0 token1 fee</code> 和初始价格。</p>
 <p><code>NonfungoblePositionManager</code> 合约内部通过调用 <code>UniswapFactory</code>的<code>createPool</code> 方法完成交易对的创建，然后对交易对进行初始化，初始化的作用就是给交易对设置一个初始的价格。</p>
 <p><code>createAndInitializePoolNecessary</code>方法如下：</p>
@@ -505,8 +499,7 @@
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">contract</span> <span class="token class-name">UniswapV3Factory</span> <span class="token keyword">is</span> IUniswapV3Factory<span class="token punctuation">,</span> UniswapV3PoolDeployer<span class="token punctuation">,</span> NoDelegateCall <span class="token punctuation">&#123;</span>
     <span class="token keyword">mapping</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token operator">=></span> <span class="token keyword">mapping</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token operator">=></span> <span class="token keyword">mapping</span><span class="token punctuation">(</span><span class="token builtin">uint24</span> <span class="token operator">=></span> <span class="token builtin">address</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">public</span> override getPool<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>使用了3个map说明了V3版本使用<code>(tokenA,tokenB,fee)</code> 来作为一个交易对的键，即相同代币，不同费率之间的流动性池不一样，另外对于给定的 <code>tokenA</code> 和 <code>tokenB</code><br />
-,会先将其地址排序，将地址值更小的放在前面，这样方便后续交易池的查询和计算。</p>
+<p>使用了3个map说明了V3版本使用<code>(tokenA,tokenB,fee)</code> 来作为一个交易对的键，即相同代币，不同费率之间的流动性池不一样，另外对于给定的 <code>tokenA</code> 和 <code>tokenB</code><br>,会先将其地址排序，将地址值更小的放在前面，这样方便后续交易池的查询和计算。</p>
 <p>再来看看 <code>UniswapV3Factory</code> 创建交易对的过程，实际上它是调用 <code>deploy</code> 函数完成交易对的创建：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">deploy</span><span class="token punctuation">(</span>
     <span class="token builtin">address</span> factory<span class="token punctuation">,</span>
@@ -520,11 +513,9 @@
     <span class="token keyword">delete</span> parameters<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里的<code>fee</code>和<code>tickSpacing</code>是和费率即价格最小间隔相关的设置，这里只关注创建过程，费率和tick的实现后面再来做介绍。</p>
-<h3 id="CREATE2">CREATE2</h3>
-<p>创建交易对，就是创建一个新的合约，作为流动性池来提供交易功能。创建合约的步骤是：</p>
+<h3 id="CREATE2"><a href="#CREATE2" class="headerlink" title="CREATE2"></a>CREATE2</h3><p>创建交易对，就是创建一个新的合约，作为流动性池来提供交易功能。创建合约的步骤是：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">pool <span class="token operator">=</span> <span class="token builtin">address</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">UniswapV3Pool</span><span class="token punctuation">&#123;</span>salt<span class="token punctuation">:</span> <span class="token function">keccak256</span><span class="token punctuation">(</span>abi<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>token0<span class="token punctuation">,</span> token1<span class="token punctuation">,</span> fee<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>这里先通过<code>keccak256(abi.encode(token0, token1, fee)</code>将<code>token0, token1, fee</code>作为输入，得到一个哈希值，并将其作为 <code>salt</code> 来创建合约，因为指定了<br />
-<code>salt</code>，Solidity会使用EVM的<code>CREATE2</code>指令来创建合约，使用<code>CREATE2</code>指令的好处是，只要合约的<code>bytecode</code>及<code>salt</code>不变，那么创建出来的地址也将不变。</p>
+<p>这里先通过<code>keccak256(abi.encode(token0, token1, fee)</code>将<code>token0, token1, fee</code>作为输入，得到一个哈希值，并将其作为 <code>salt</code> 来创建合约，因为指定了<br><code>salt</code>，Solidity会使用EVM的<code>CREATE2</code>指令来创建合约，使用<code>CREATE2</code>指令的好处是，只要合约的<code>bytecode</code>及<code>salt</code>不变，那么创建出来的地址也将不变。</p>
 <p>关于使用<code>salt</code>创建合约的解释：<a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/latest/control-structures.html#salted-contract-creations-create2">Salted contract creations / create2</a></p>
 <p>使用CREATE2的好处是：</p>
 <ul>
@@ -541,9 +532,7 @@
 
     maxLiquidityPerTick <span class="token operator">=</span> Tick<span class="token punctuation">.</span><span class="token function">tickSpacingToMaxLiquidityPerTick</span><span class="token punctuation">(</span>_tickSpacing<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>为什么不直接使用参数传递来对新合约的状态变量赋值呢，这是因为<code>CRAETE2</code>会将合约<code>initcode</code>和<code>salt</code>一起用来计算创建出的合约地址，而<code>initcode</code>是包含<code>constructor</code> code<br />
-和其参数的，如果合约的<code>constructor</code> 函数包含的参数，那么其<code>initcode</code> 将因为其传入参数不同而不同，在off-chain计算合约地址时，也需要通过这些参数来查询对应的<code>initcode</code><br />
-。为了让合约地址的计算更简单，这里的<code>constructor</code>不包含参数（这样合约的<code>initcode</code>将是唯一的），而使用动态call的方式来获取其创建参数。</p>
+<p>为什么不直接使用参数传递来对新合约的状态变量赋值呢，这是因为<code>CRAETE2</code>会将合约<code>initcode</code>和<code>salt</code>一起用来计算创建出的合约地址，而<code>initcode</code>是包含<code>constructor</code> code<br>和其参数的，如果合约的<code>constructor</code> 函数包含的参数，那么其<code>initcode</code> 将因为其传入参数不同而不同，在off-chain计算合约地址时，也需要通过这些参数来查询对应的<code>initcode</code><br>。为了让合约地址的计算更简单，这里的<code>constructor</code>不包含参数（这样合约的<code>initcode</code>将是唯一的），而使用动态call的方式来获取其创建参数。</p>
 <p>最后，对创建的交易对合约进行初始化：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">initialize</span><span class="token punctuation">(</span><span class="token builtin">uint160</span> sqrtPriceX96<span class="token punctuation">)</span> <span class="token keyword">external</span> override <span class="token punctuation">&#123;</span>
     <span class="token keyword">require</span><span class="token punctuation">(</span>slot0<span class="token punctuation">.</span>sqrtPriceX96 <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'AI'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -565,11 +554,9 @@
     <span class="token keyword">emit</span> <span class="token function">Initialize</span><span class="token punctuation">(</span>sqrtPriceX96<span class="token punctuation">,</span> tick<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>初始化主要是设置了交易池的初始价格（注意，此时池子中还没有流动性），以及费率，tick等相关变量的初始化。完成之后一个交易池就创建好了。</p>
-<h2 id="提供流动性">提供流动性</h2>
-<p>在合约内，V3会保存所有用户的流动性，代码内称作<code>Position</code> ，提供流动性的调用流程如下：</p>
-<p><img src="img_2.png" alt="img.png" /></p>
-<p>用户还是首先和<code>NonfungiblePositionManager</code> 合约交互。V3这次将LP token改成了ERC721 token，并且将token功能放在<code>NonfungiblePositionManager</code>合约中<br />
-。这个合约替用户完成提供流动性的操作，然后根据流动性的数据元记录下来，并给合约铸造一个NFT token。</p>
+<h2 id="提供流动性"><a href="#提供流动性" class="headerlink" title="提供流动性"></a>提供流动性</h2><p>在合约内，V3会保存所有用户的流动性，代码内称作<code>Position</code> ，提供流动性的调用流程如下：</p>
+<p><img src="img_2.png" alt="img.png"></p>
+<p>用户还是首先和<code>NonfungiblePositionManager</code> 合约交互。V3这次将LP token改成了ERC721 token，并且将token功能放在<code>NonfungiblePositionManager</code>合约中<br>。这个合约替用户完成提供流动性的操作，然后根据流动性的数据元记录下来，并给合约铸造一个NFT token。</p>
 <p>省略部分非相关步骤，我们先来看看添加流动性的函数：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">struct</span> <span class="token class-name">AddLiquidityParams</span> <span class="token punctuation">&#123;</span>
     <span class="token builtin">address</span> token0<span class="token punctuation">;</span>     <span class="token comment">// token0 的地址</span>
@@ -616,29 +603,25 @@
 <li>我们不需要访问<code>factory</code>就可以计算出pool的地址，实现原理见<a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/latest/control-structures.html#salted-contract-creations-create2">CREATE2</a></li>
 <li>这里有个回调函数的参数，V3使用回调函数来完成进行流动性token的支付操作，原因见下面</li>
 </ul>
-<h3 id="从token数计算流动性-L">从token数计算流动性 <strong><em>L</em></strong></h3>
-<p>假设用户提供流动性的价格范围是： <em>[$ P_a,P_b $] ($ P_a&lt;P_b $)</em> 代币池中的当前价格为  <em>$ P_c $</em> ,可以分成三种情况来计算流动性 <strong><em>L</em></strong> 的值：</p>
+<h3 id="从token数计算流动性-L"><a href="#从token数计算流动性-L" class="headerlink" title="从token数计算流动性 L"></a>从token数计算流动性 <strong><em>L</em></strong></h3><p>假设用户提供流动性的价格范围是： <em>[$ P_a,P_b $] ($ P_a&lt;P_b $)</em> 代币池中的当前价格为  <em>$ P_c $</em> ,可以分成三种情况来计算流动性 <strong><em>L</em></strong> 的值：</p>
 <ul>
 <li>当前池中的价格 $P_c &lt; P_a$,如下图：</li>
 </ul>
-<p><img src="img_3.png" alt="img.png" /></p>
+<p><img src="img_3.png" alt="img.png"></p>
 <p>此时添加的流动性全部为 <em>x</em> token，计算 <strong><em>L</em></strong> ：</p>
-<p><img src="img_4.png" alt="img.png" /></p>
+<p><img src="img_4.png" alt="img.png"></p>
 <ul>
 <li>当前流动池中的价格 <strong><em>$ P_c &gt; P_b $</em></strong></li>
 </ul>
-<p><img src="img_5.png" alt="img.png" /></p>
-<p>此时添加的流动性全部为 <em>y</em> token ，计算**<em>L</em>** ：</p>
-<p><img src="img_6.png" alt="img.png" /></p>
+<p><img src="img_5.png" alt="img.png"></p>
+<p>此时添加的流动性全部为 <em>y</em> token ，计算<strong><em>L</em></strong> ：</p>
+<p><img src="img_6.png" alt="img.png"></p>
 <p>当前池子中的价格 <strong><em>$ Pc∈[Pa,Pb] $</em></strong> ，如下图</p>
-<p><img src="img_7.png" alt="img.png" /></p>
+<p><img src="img_7.png" alt="img.png"></p>
 <p>此时添加的流动性包含两个币种，可以通过任意一个 token 数量计算出 <em><strong>L</strong></em> :</p>
-<p><img src="img_8.png" alt="img.png" /></p>
-<h3 id="回调函数">回调函数</h3>
-<p>使用回调函数原因是，将<code>Position</code>的流动性的owner和实际流动性token支付者解耦。这样可以让中间合约来管理用户的流动性，并将流动性token化。关于token化，Uniswap V3默认实现了ERC721 token<br />
-(因为即使是同一个池子，流动性之间的差异也会很大)。</p>
-<p>例如，当用户通过 <code>NonfungiblePositionManager</code> 来提供流动性时，对于 <code>UniswapPool</code> 合约来说，这个<code>Position</code> 的owner是 <code>NonfungiblePositionManager</code> ,而<code>NonfungiblePositionManager</code><br />
-再通过NFT token将<code>Position</code> 与用户关联起来，这样用户就可以将LP token进行转账或者抵押类操作。</p>
+<p><img src="img_8.png" alt="img.png"></p>
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>使用回调函数原因是，将<code>Position</code>的流动性的owner和实际流动性token支付者解耦。这样可以让中间合约来管理用户的流动性，并将流动性token化。关于token化，Uniswap V3默认实现了ERC721 token<br>(因为即使是同一个池子，流动性之间的差异也会很大)。</p>
+<p>例如，当用户通过 <code>NonfungiblePositionManager</code> 来提供流动性时，对于 <code>UniswapPool</code> 合约来说，这个<code>Position</code> 的owner是 <code>NonfungiblePositionManager</code> ,而<code>NonfungiblePositionManager</code><br>再通过NFT token将<code>Position</code> 与用户关联起来，这样用户就可以将LP token进行转账或者抵押类操作。</p>
 <p>在 <code>NonfungiblePositionManager</code> 中回调函数的实现如下：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">struct</span> <span class="token class-name">MintCallbackData</span> <span class="token punctuation">&#123;</span>
     PoolAddress<span class="token punctuation">.</span>PoolKey poolKey<span class="token punctuation">;</span>
@@ -658,9 +641,7 @@
     <span class="token keyword">if</span> <span class="token punctuation">(</span>amount0Owed <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">pay</span><span class="token punctuation">(</span>decoded<span class="token punctuation">.</span>poolKey<span class="token punctuation">.</span>token0<span class="token punctuation">,</span> decoded<span class="token punctuation">.</span>payer<span class="token punctuation">,</span> msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> amount0Owed<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>amount1Owed <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">pay</span><span class="token punctuation">(</span>decoded<span class="token punctuation">.</span>poolKey<span class="token punctuation">.</span>token1<span class="token punctuation">,</span> decoded<span class="token punctuation">.</span>payer<span class="token punctuation">,</span> msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> amount1Owed<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="position-更新">position 更新</h3>
-<p>接着我们看 <code>UniswapV3Pool</code> 是如何添加流动性的，流动性添加主要在 <code>UniswapV3Pool._modifyPosition</code>中，这个函数会先调用 <code>_updatePosition</code>来创建或者修改一个用户的<code>Position</code><br />
-,省略其中的非关键步骤：</p>
+<h3 id="position-更新"><a href="#position-更新" class="headerlink" title="position 更新"></a>position 更新</h3><p>接着我们看 <code>UniswapV3Pool</code> 是如何添加流动性的，流动性添加主要在 <code>UniswapV3Pool._modifyPosition</code>中，这个函数会先调用 <code>_updatePosition</code>来创建或者修改一个用户的<code>Position</code><br>,省略其中的非关键步骤：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">_updatePosition</span><span class="token punctuation">(</span>
     <span class="token builtin">address</span> owner<span class="token punctuation">,</span>
     <span class="token builtin">int24</span> tickLower<span class="token punctuation">,</span>
@@ -737,8 +718,7 @@
 <li>更新Position</li>
 <li>根据需要更新tick位图</li>
 </ul>
-<p>Position是以 <code>owner,lower tick,upper tick</code>作为键来存储的，注意这里的owner实际上是<code>NonfungiblePositionManager</code>合约的地址，这样多个用户在同一个区间提供流动性时<br />
-，在底层的<code>UniswapPool</code> 合约中会将他们合并存储，而在<code>NonfungiblePositionManager</code>合约中会按用户来区别每个用户拥有的<code>Position</code></p>
+<p>Position是以 <code>owner,lower tick,upper tick</code>作为键来存储的，注意这里的owner实际上是<code>NonfungiblePositionManager</code>合约的地址，这样多个用户在同一个区间提供流动性时<br>，在底层的<code>UniswapPool</code> 合约中会将他们合并存储，而在<code>NonfungiblePositionManager</code>合约中会按用户来区别每个用户拥有的<code>Position</code></p>
 <p>Position 中包含的字段中，除去费率相关的字段，只有一个，即流动性 <em><strong>L</strong></em> ：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">library</span> <span class="token class-name">Position</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">// info stored for each user's position</span>
@@ -749,8 +729,7 @@
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>更新Position只需要一行调用：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">position<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>liquidityDelta<span class="token punctuation">,</span> feeGrowthInside0X128<span class="token punctuation">,</span> feeGrowthInside1X128<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="tick-管理">tick 管理</h3>
-<p>我们再来看tick相关的管理，在<code>UniswapV3Pool</code>合约中有两个状态变量记录了tick相关信息：</p>
+<h3 id="tick-管理"><a href="#tick-管理" class="headerlink" title="tick 管理"></a>tick 管理</h3><p>我们再来看tick相关的管理，在<code>UniswapV3Pool</code>合约中有两个状态变量记录了tick相关信息：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">    <span class="token comment">// tick 元数据管理的库</span>
     <span class="token keyword">using</span> <span class="token class-name">Tick</span> <span class="token keyword">for</span> <span class="token keyword">mapping</span><span class="token punctuation">(</span><span class="token builtin">int24</span> <span class="token operator">=></span> Tick<span class="token punctuation">.</span>Info<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment">// tick 位图槽位的库</span>
@@ -807,8 +786,7 @@
         <span class="token punctuation">:</span> <span class="token builtin">int256</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>liquidityNet<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>liquidityDelta<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toInt128</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此函数返回的flipped表示此tick的引用状态是否发生变化，之前的<code>_updatePosition</code>中的代码会根据这个返回值去更新tick位图。</p>
-<h3 id="tick-位图">tick 位图</h3>
-<p>tick位图用于记录所有被引用的 lower/upper tick index，我们可以用tick 位图，从当前价格找到下一个，被引用的tick index，关于tick位图的管理，在<code>_updatePositon</code>中：</p>
+<h3 id="tick-位图"><a href="#tick-位图" class="headerlink" title="tick 位图"></a>tick 位图</h3><p>tick位图用于记录所有被引用的 lower/upper tick index，我们可以用tick 位图，从当前价格找到下一个，被引用的tick index，关于tick位图的管理，在<code>_updatePositon</code>中：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">if</span> <span class="token punctuation">(</span>flippedLower<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     tickBitmap<span class="token punctuation">.</span><span class="token function">flipTick</span><span class="token punctuation">(</span>tickLower<span class="token punctuation">,</span> tickSpacing<span class="token punctuation">)</span><span class="token punctuation">;</span>
     secondsOutside<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span>tickLower<span class="token punctuation">,</span> tick<span class="token punctuation">,</span> tickSpacing<span class="token punctuation">,</span> blockTimestamp<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -817,14 +795,12 @@
     tickBitmap<span class="token punctuation">.</span><span class="token function">flipTick</span><span class="token punctuation">(</span>tickUpper<span class="token punctuation">,</span> tickSpacing<span class="token punctuation">)</span><span class="token punctuation">;</span>
     secondsOutside<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span>tickUpper<span class="token punctuation">,</span> tick<span class="token punctuation">,</span> tickSpacing<span class="token punctuation">,</span> blockTimestamp<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这里先不做进一步的说明，具体代码实现在<a target="_blank" rel="noopener" href="https://github.com/Uniswap/uniswap-v3-core/blob/2dc1eb9f251bad1c260d22dd392d8cedb2c6a4b5/contracts/libraries/TickBitmap.sol">TickBitmap 库</a> 。<br />
-tick位图有以下几个特性：</p>
+<p>这里先不做进一步的说明，具体代码实现在<a target="_blank" rel="noopener" href="https://github.com/Uniswap/uniswap-v3-core/blob/2dc1eb9f251bad1c260d22dd392d8cedb2c6a4b5/contracts/libraries/TickBitmap.sol">TickBitmap 库</a> 。<br>tick位图有以下几个特性：</p>
 <ul>
 <li>对于不存在的tick，不需要初始值，因为访问map中 不存在的key默认值就是0</li>
 <li>通过对位图的每个word（unit256）建立索引来管理位图，即访问路径为 word index -&gt; word -&gt; tick bit</li>
 </ul>
-<h3 id="token-确认数">token 确认数</h3>
-<p><code>_modifyPostion</code> 函数在调用 <code>_updatePostion</code> 更新完Position后，会根据此次提供的流动性具体所需的 x token 和y token数量</p>
+<h3 id="token-确认数"><a href="#token-确认数" class="headerlink" title="token 确认数"></a>token 确认数</h3><p><code>_modifyPostion</code> 函数在调用 <code>_updatePostion</code> 更新完Position后，会根据此次提供的流动性具体所需的 x token 和y token数量</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">_modifyPosition</span><span class="token punctuation">(</span>ModifyPositionParams <span class="token keyword">memory</span> params<span class="token punctuation">)</span>
     <span class="token keyword">private</span>
     noDelegateCall
@@ -843,11 +819,9 @@ tick位图有以下几个特性：</p>
 
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这里插入一个题外话，这一行代码：</p>
-<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">Slot0 <span class="token keyword">memory</span> _slot0 <span class="token operator">=</span> slot0<span class="token punctuation">;</span> <span class="token comment">// SLOAD for gas optimization</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里插入一个题外话，这一行代码：<br><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity">Slot0 <span class="token keyword">memory</span> _slot0 <span class="token operator">=</span> slot0<span class="token punctuation">;</span> <span class="token comment">// SLOAD for gas optimization</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
 <p>因为后续需要多次访问 slot0，这里将其读入内存中，后续的访问就可以使用 MLOAD 而不用使用 SLOAD，可以节省 gas（SLOAD 的成本比 MLOAD 高很多）。Uniswap v2 和 v3 大量使用了这个技巧。</p>
-<p>这个函数更新完Position之后，主要做的就是通过 <em><strong>L</strong></em> 和 <em><strong>$ \Delta\sqrt P$</strong></em> 计算出用户需要支付的token数量， 我们之前已经讲过 <a target="_blank" rel="noopener" href="https://openskyx.github.io/en/Uniswap-V3-1/">从token数计算流动性L</a> 的三种情况，这里其实就是之前计算的逆运算，<br />
-即通过 <em><strong>L</strong></em>  计算x token和 y token的数量，这里不再重复赘述其公式，具体代码如下：</p>
+<p>这个函数更新完Position之后，主要做的就是通过 <em><strong>L</strong></em> 和 <em><strong>$ \Delta\sqrt P$</strong></em> 计算出用户需要支付的token数量， 我们之前已经讲过 <a target="_blank" rel="noopener" href="https://openskyx.github.io/en/Uniswap-V3-1/">从token数计算流动性L</a> 的三种情况，这里其实就是之前计算的逆运算，<br>即通过 <em><strong>L</strong></em>  计算x token和 y token的数量，这里不再重复赘述其公式，具体代码如下：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">_modifyPosition</span><span class="token punctuation">(</span>ModifyPositionParams <span class="token keyword">memory</span> params<span class="token punctuation">)</span>
     <span class="token keyword">private</span>
     noDelegateCall
@@ -895,7 +869,7 @@ tick位图有以下几个特性：</p>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>代码将计算的过程封装在了 <code>SqrtPriceMath</code> 库中 ，<code>getAmount0Delta</code> 和 <code>getAmount1Delta </code>分别对应公式 <strong><em>$ \Delta x = \Delta \frac {1}{\sqrt P} $</em></strong> 。</p>
+<p>代码将计算的过程封装在了 <code>SqrtPriceMath</code> 库中 ，<code>getAmount0Delta</code> 和 <code>getAmount1Delta</code>分别对应公式 <strong><em>$ \Delta x = \Delta \frac {1}{\sqrt P} $</em></strong> 。</p>
 <p>在具体的计算过程中，又分成了RoundUp和RoundDown 两种情况，简单来说：</p>
 <ul>
 <li>当提供/增加流动性时，会使用RoundUp，这样可以保证增加数量为L的流动性时，用户提供足够的token到pool中</li>
@@ -903,8 +877,7 @@ tick位图有以下几个特性：</p>
 </ul>
 <p>通过上述的两个条件可以保证pool在流动性增加/移出的操作中，不会出现坏账的情况，除了流动性操作之外，Swap操作也会使用类似机制，保证pool不会出现坏账。</p>
 <p>同时，Uniswap V3参考<a target="_blank" rel="noopener" href="https://xn--2-umb.com/21/muldiv/index.html">这里</a> 实现了一个精度较高的 <em><strong>$\frac {a·b}{c}$</strong></em> 的算法，封装在<code>FullMath</code>库中。</p>
-<h3 id="tick-index-sqrt-P">tick index -&gt; <strong><em>$\sqrt P$</em></strong></h3>
-<p>上面的代码还使用了<code>TickMath</code> 库中的<code>getSqrtRatioAtTick </code> 来通过tick index计算其所对应的价格，实现为：</p>
+<h3 id="tick-index-gt-sqrt-P"><a href="#tick-index-gt-sqrt-P" class="headerlink" title="tick index -&gt; $\sqrt P$"></a>tick index -&gt; <strong><em>$\sqrt P$</em></strong></h3><p>上面的代码还使用了<code>TickMath</code> 库中的<code>getSqrtRatioAtTick</code> 来通过tick index计算其所对应的价格，实现为：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">getSqrtRatioAtTick</span><span class="token punctuation">(</span><span class="token builtin">int24</span> tick<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">pure</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">uint160</span> sqrtPriceX96<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token builtin">uint256</span> absTick <span class="token operator">=</span> tick <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token builtin">uint256</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token builtin">int256</span><span class="token punctuation">(</span>tick<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token builtin">uint256</span><span class="token punctuation">(</span><span class="token builtin">int256</span><span class="token punctuation">(</span>tick<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">require</span><span class="token punctuation">(</span>absTick <span class="token operator">&lt;=</span> <span class="token builtin">uint256</span><span class="token punctuation">(</span>MAX_TICK<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'T'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -939,14 +912,9 @@ tick位图有以下几个特性：</p>
     sqrtPriceX96 <span class="token operator">=</span> <span class="token builtin">uint160</span><span class="token punctuation">(</span><span class="token punctuation">(</span>ratio <span class="token operator">>></span> <span class="token number">32</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>ratio <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">32</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这段代码的实现通过很多的 magic number，优化了计算过程，其实现思路如下：</p>
-<p>$$<br />
-\sqrt P_i = \sqrt {1.0001^i}<br />
-$$</p>
-<h3 id="sqrt-P-tick-index">$\sqrt P $ -&gt; tick index</h3>
-<p>这里顺带提一下，在交易计算中会需要进行上述计算的逆计算，给定 <strong><em>$\sqrt P $</em></strong>,需要计算出对应的tick index，即 <strong><em>$\log \sqrt {1.0001} ^ \sqrt P$</em></strong> 的计算，在代码中<br />
-为： <code>TickMath.getTickAtSqrtRatio</code>,关于这个函数的实现，可以参考这篇文章：<a href="">Solidity 中的对数计算</a>。</p>
-<h3 id="完成流动性添加">完成流动性添加</h3>
-<p><code>_modifyPosition</code> 调用完成后，会返回 x token，和y token，的数量。再来看看 <code>UniswapV3Pool.mint</code> 的代码：</p>
+<script type="math/tex; mode=display">
+\sqrt P_i = \sqrt {1.0001^i}</script><h3 id="sqrt-P-gt-tick-index"><a href="#sqrt-P-gt-tick-index" class="headerlink" title="$\sqrt P $ -&gt; tick index"></a>$\sqrt P $ -&gt; tick index</h3><p>这里顺带提一下，在交易计算中会需要进行上述计算的逆计算，给定 <strong><em>$\sqrt P $</em></strong>,需要计算出对应的tick index，即 <strong><em>$\log \sqrt {1.0001} ^ \sqrt P$</em></strong> 的计算，在代码中<br>为： <code>TickMath.getTickAtSqrtRatio</code>,关于这个函数的实现，可以参考这篇文章：<a href="">Solidity 中的对数计算</a>。</p>
+<h3 id="完成流动性添加"><a href="#完成流动性添加" class="headerlink" title="完成流动性添加"></a>完成流动性添加</h3><p><code>_modifyPosition</code> 调用完成后，会返回 x token，和y token，的数量。再来看看 <code>UniswapV3Pool.mint</code> 的代码：</p>
 <pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">mint</span><span class="token punctuation">(</span>
     <span class="token builtin">address</span> recipient<span class="token punctuation">,</span>
     <span class="token builtin">int24</span> tickLower<span class="token punctuation">,</span>
@@ -1038,9 +1006,7 @@ $$</p>
     <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到这个函数主要是将用户的Position保存起来，并给用户铸造MFT token，代表其所持有的流动性。至此，提供流动性的步骤就完成了。</p>
-<h3 id="移出流动性">移出流动性</h3>
-<p>移出流动性就是上述操作的逆操作，在core合约中：</p>
-<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">burn</span><span class="token punctuation">(</span>
+<h3 id="移出流动性"><a href="#移出流动性" class="headerlink" title="移出流动性"></a>移出流动性</h3><p>移出流动性就是上述操作的逆操作，在core合约中：<br><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">function</span> <span class="token function">burn</span><span class="token punctuation">(</span>
     <span class="token builtin">int24</span> tickLower<span class="token punctuation">,</span>
     <span class="token builtin">int24</span> tickUpper<span class="token punctuation">,</span>
     <span class="token builtin">uint128</span> amount
@@ -1068,11 +1034,8 @@ $$</p>
     <span class="token punctuation">&#125;</span>
 
     <span class="token keyword">emit</span> <span class="token function">Burn</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> tickLower<span class="token punctuation">,</span> tickUpper<span class="token punctuation">,</span> amount<span class="token punctuation">,</span> amount0<span class="token punctuation">,</span> amount1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>移出流动性时，还是会使用之前的公式计算出移出的token数，但是并不会直接将移除的token数发送给用户，而是记录再来Position的 <code>tokensOwed0</code>和 <code>tokensOwed1</code>上<br />
-这样做应该是为了遵循实践：<a href="">Favor pull over push for external calls</a>.</p>
-<h3 id="最后">最后</h3>
-<p>关于如何使用ERC721 token 来进行挖矿，可以参考这篇文章：<a target="_blank" rel="noopener" href="https://www.paradigm.xyz/2021/05/liquidity-mining-on-uniswap-v3">liquidity Mining on Uniswap v3</a></p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>移出流动性时，还是会使用之前的公式计算出移出的token数，但是并不会直接将移除的token数发送给用户，而是记录再来Position的 <code>tokensOwed0</code>和 <code>tokensOwed1</code>上<br>这样做应该是为了遵循实践：<a href="">Favor pull over push for external calls</a>.</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>关于如何使用ERC721 token 来进行挖矿，可以参考这篇文章：<a target="_blank" rel="noopener" href="https://www.paradigm.xyz/2021/05/liquidity-mining-on-uniswap-v3">liquidity Mining on Uniswap v3</a></p>
 
 
         <hr>
@@ -1218,7 +1181,7 @@ $$</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%A4%E6%98%93%E5%AF%B9"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">创建交易对</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CREATE2"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">CREATE2</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8F%90%E4%BE%9B%E6%B5%81%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">提供流动性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%8Etoken%E6%95%B0%E8%AE%A1%E7%AE%97%E6%B5%81%E5%8A%A8%E6%80%A7-L"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">从token数计算流动性 L</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">回调函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#position-%E6%9B%B4%E6%96%B0"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">position 更新</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-%E7%AE%A1%E7%90%86"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">tick 管理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-%E4%BD%8D%E5%9B%BE"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">tick 位图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#token-%E7%A1%AE%E8%AE%A4%E6%95%B0"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">token 确认数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-index-sqrt-P"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">tick index -&gt; $\sqrt P$</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sqrt-P-tick-index"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">$\sqrt P $ -&gt; tick index</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%8C%E6%88%90%E6%B5%81%E5%8A%A8%E6%80%A7%E6%B7%BB%E5%8A%A0"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">完成流动性添加</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A7%BB%E5%87%BA%E6%B5%81%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">移出流动性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-nav-number">2.11.</span> <span class="toc-nav-text">最后</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%A4%E6%98%93%E5%AF%B9"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">创建交易对</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CREATE2"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">CREATE2</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8F%90%E4%BE%9B%E6%B5%81%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">提供流动性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%8Etoken%E6%95%B0%E8%AE%A1%E7%AE%97%E6%B5%81%E5%8A%A8%E6%80%A7-L"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">从token数计算流动性 L</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">回调函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#position-%E6%9B%B4%E6%96%B0"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">position 更新</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-%E7%AE%A1%E7%90%86"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">tick 管理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-%E4%BD%8D%E5%9B%BE"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">tick 位图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#token-%E7%A1%AE%E8%AE%A4%E6%95%B0"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">token 确认数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-index-gt-sqrt-P"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">tick index -&gt; $\sqrt P$</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sqrt-P-gt-tick-index"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">$\sqrt P $ -&gt; tick index</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%8C%E6%88%90%E6%B5%81%E5%8A%A8%E6%80%A7%E6%B7%BB%E5%8A%A0"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">完成流动性添加</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A7%BB%E5%87%BA%E6%B5%81%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">移出流动性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-nav-number">2.11.</span> <span class="toc-nav-text">最后</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1397,10 +1360,6 @@ $$</p>
     <!-- Scroll end -->
   
 
-  
-    <!-- LangSelect start -->
-    <script type="text/javascript" src="/js/langselect.js"></script>
-    <!-- LangSelect end -->
   
 
   

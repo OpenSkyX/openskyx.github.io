@@ -299,10 +299,6 @@
 
           <!-- LangSelect -->
           
-          
-          
-          
-          
         </ul>
       </div>
     </div>
@@ -470,17 +466,13 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="Quick-Start">Quick Start</h2>
-<h2 id="Installation">Installation</h2>
-<blockquote>
+        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><blockquote>
 <p>预先安装:  <a target="_blank" rel="noopener" href="https://www.rust-lang.org/tools/install">rust</a> 、git</p>
 </blockquote>
-<h3 id="安装foundry">安装foundry</h3>
-<blockquote>
+<h3 id="安装foundry"><a href="#安装foundry" class="headerlink" title="安装foundry"></a>安装foundry</h3><blockquote>
 <p>安装foundry：<a target="_blank" rel="noopener" href="https://book.getfoundry.sh/getting-started/installation#installation">官方文档</a></p>
 </blockquote>
-<h3 id="Windows-安装foundry">Windows 安装foundry</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/foundry-rs/foundry.git
+<h3 id="Windows-安装foundry"><a href="#Windows-安装foundry" class="headerlink" title="Windows 安装foundry"></a>Windows 安装foundry</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/foundry-rs/foundry.git
 <span class="token builtin class-name">cd</span> foundry
 <span class="token comment"># install Forge + Cast</span>
 <span class="token function">cargo</span> <span class="token function">install</span> <span class="token parameter variable">--path</span> ./crates/cli <span class="token parameter variable">--profile</span> <span class="token builtin class-name">local</span> <span class="token parameter variable">--bins</span> <span class="token parameter variable">--force</span>
@@ -488,16 +480,12 @@
 <span class="token function">cargo</span> <span class="token function">install</span> <span class="token parameter variable">--path</span> ./crates/anvil <span class="token parameter variable">--profile</span> <span class="token builtin class-name">local</span> <span class="token parameter variable">--force</span>
 <span class="token comment"># install Chisel</span>
 <span class="token function">cargo</span> <span class="token function">install</span> <span class="token parameter variable">--path</span> ./crates/chisel <span class="token parameter variable">--profile</span> <span class="token builtin class-name">local</span> <span class="token parameter variable">--force</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="检查安装是否成功">检查安装是否成功</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token parameter variable">--version</span>
+<h3 id="检查安装是否成功"><a href="#检查安装是否成功" class="headerlink" title="检查安装是否成功"></a>检查安装是否成功</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token parameter variable">--version</span>
 
 forge <span class="token number">0.2</span>.0 <span class="token punctuation">(</span>d154507 <span class="token number">2023</span>-08-16T03:30:27.548281700Z<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>返回版本号，说明已经安装完成</p>
-<h2 id="创建一个新项目">创建一个新项目</h2>
-<h3 id="初始化一个新项目">初始化一个新项目</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">forge init Test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>初始化成功后的目录：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Mode                 LastWriteTime         Length Name
+<h2 id="创建一个新项目"><a href="#创建一个新项目" class="headerlink" title="创建一个新项目"></a>创建一个新项目</h2><h3 id="初始化一个新项目"><a href="#初始化一个新项目" class="headerlink" title="初始化一个新项目"></a>初始化一个新项目</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">forge init Test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>初始化成功后的目录：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 d-----         <span class="token number">2023</span>/8/16     <span class="token number">21</span>:26                .github
 d-----         <span class="token number">2023</span>/8/16     <span class="token number">21</span>:26                lib      
@@ -506,17 +494,15 @@ d-----         <span class="token number">2023</span>/8/16     <span class="toke
 d-----         <span class="token number">2023</span>/8/16     <span class="token number">21</span>:26                <span class="token builtin class-name">test</span>
 -a----         <span class="token number">2023</span>/8/16     <span class="token number">21</span>:26            <span class="token number">170</span> .gitignore
 -a----         <span class="token number">2023</span>/8/16     <span class="token number">21</span>:26            <span class="token number">148</span> foundry.toml
--a----         <span class="token number">2023</span>/8/16     <span class="token number">21</span>:26           <span class="token number">1046</span> README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="安装-forge-std">安装  forge-std</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token function">install</span> foundry-rs/forge-std<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+-a----         <span class="token number">2023</span>/8/16     <span class="token number">21</span>:26           <span class="token number">1046</span> README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<h3 id="安装-forge-std"><a href="#安装-forge-std" class="headerlink" title="安装  forge-std"></a>安装  forge-std</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token function">install</span> foundry-rs/forge-std<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>因为网络问题，可能会出错，多尝试几次！</p>
 <blockquote>
 <p>注意！！！ 请检查 <code>\lib\forge-std\lib\ds-test</code> 是否为空，如果为空删除掉此文件夹。</p>
 <p>删除掉后在\lib\forge-std\lib 目录执行 git clone <a target="_blank" rel="noopener" href="https://github.com/dapphub/ds-test.git">https://github.com/dapphub/ds-test.git</a></p>
 <p>原因：因为网络问题，ds-test不能随forge-std一起下载下来，那就手动下载下来放在该目录下</p>
 </blockquote>
-<h3 id="安装OpenZeppelin-openzeppelin-contracts-合约库">安装<code>OpenZeppelin/openzeppelin-contracts</code> 合约库</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token function">install</span> OpenZeppelin/openzeppelin-contracts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="安装OpenZeppelin-openzeppelin-contracts-合约库"><a href="#安装OpenZeppelin-openzeppelin-contracts-合约库" class="headerlink" title="安装OpenZeppelin/openzeppelin-contracts 合约库"></a>安装<code>OpenZeppelin/openzeppelin-contracts</code> 合约库</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token function">install</span> OpenZeppelin/openzeppelin-contracts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>因为网络问题，可能会出错，多尝试几次！</p>
 <blockquote>
 <p>注意！！！  此时如果出现此错误</p>
@@ -531,23 +517,19 @@ ignore them in the `.gitignore` file, or run this command again with the `--no-c
 
 If none of the previous steps worked, please open an issue at:
 https://github.com/foundry-rs/foundry/issues/new/choose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>请运行此命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token function">install</span> OpenZeppelin/openzeppelin-contracts  --no-commit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="编译项目">编译项目</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge build<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>请运行此命令：<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token function">install</span> OpenZeppelin/openzeppelin-contracts  --no-commit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<h3 id="编译项目"><a href="#编译项目" class="headerlink" title="编译项目"></a>编译项目</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge build<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">[⠒] Compiling...
 [⠰] Compiling 22 files with 0.8.21
 [⠒] Solc 0.8.21 finished in 6.85s
 Compiler run successful!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="执行测试">执行测试</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge  <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge  <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">[PASS] testFuzz_SetNumber(uint256) (runs: 256, μ: 26987, ~: 28387)
 [PASS] test_Increment() (gas: 28357)
 Test result: ok. 2 passed; 0 failed; 0 skipped; finished in 22.52ms
 Ran 1 test suites: 2 tests passed, 0 failed, 0 skipped (2 total tests)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="执行测试并打印出log执行详细日志">执行测试并打印出log执行详细日志</h3>
-<blockquote>
-<p>-v :默认不打印  -vv : 一般    -vvv: 日志级别打印   -vvvv:详细打印  -vvvvv :运行详情traces 打印</p>
+<h3 id="执行测试并打印出log执行详细日志"><a href="#执行测试并打印出log执行详细日志" class="headerlink" title="执行测试并打印出log执行详细日志"></a>执行测试并打印出log执行详细日志</h3><blockquote>
+<p>-v :默认不打印  -vv : 一般    -vvv: 日志级别打印   -vvvv:详细打印  -vvvvv :运行详情traces 打印    </p>
 </blockquote>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge  <span class="token builtin class-name">test</span> <span class="token parameter variable">-vvvvv</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">[⠰] Compiling...
@@ -588,9 +570,7 @@ Traces:
 
 Test result: ok. 2 passed; 0 failed; 0 skipped; finished in 26.24ms
 Ran 1 test suites: 2 tests passed, 0 failed, 0 skipped (2 total tests)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="新建一个ERC20代币的项目，并写transfer-Test-case">新建一个ERC20代币的项目，并写<code>transfer</code> Test case</h2>
-<h3 id="在src目录新建XToken-sol">在<code>src</code>目录新建<code>XToken.sol</code></h3>
-<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">// SPDX-License-Identifier: MIT</span>
+<h2 id="新建一个ERC20代币的项目，并写transfer-Test-case"><a href="#新建一个ERC20代币的项目，并写transfer-Test-case" class="headerlink" title="新建一个ERC20代币的项目，并写transfer Test case"></a>新建一个ERC20代币的项目，并写<code>transfer</code> Test case</h2><h3 id="在src目录新建XToken-sol"><a href="#在src目录新建XToken-sol" class="headerlink" title="在src目录新建XToken.sol"></a>在<code>src</code>目录新建<code>XToken.sol</code></h3><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">// SPDX-License-Identifier: MIT</span>
 <span class="token keyword">pragma</span> <span class="token keyword">solidity</span> <span class="token operator">^</span><span class="token version number">0.8.4</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span>  <span class="token string">"@openzeppelin/contracts/token/ERC20/ERC20.sol"</span><span class="token punctuation">;</span>
@@ -626,10 +606,8 @@ Ran 1 test suites: 2 tests passed, 0 failed, 0 skipped (2 total tests)<span aria
         <span class="token keyword">emit</span> <span class="token function">MintFaucetToken</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> amountAllowed <span class="token operator">*</span> <span class="token number">10</span><span class="token operator">**</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="编译">编译</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">forge build<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="在test目录新建XToken-t-sol">在<code>test</code>目录新建<code>XToken.t.sol</code></h3>
-<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">// SPDX-License-Identifier: UNLICENSED</span>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">forge build<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="在test目录新建XToken-t-sol"><a href="#在test目录新建XToken-t-sol" class="headerlink" title="在test目录新建XToken.t.sol"></a>在<code>test</code>目录新建<code>XToken.t.sol</code></h3><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">// SPDX-License-Identifier: UNLICENSED</span>
 <span class="token keyword">pragma</span> <span class="token keyword">solidity</span> <span class="token operator">^</span><span class="token version number">0.8.13</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span>Test<span class="token punctuation">,</span> console<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"forge-std/Test.sol"</span><span class="token punctuation">;</span>
@@ -658,8 +636,7 @@ Ran 1 test suites: 2 tests passed, 0 failed, 0 skipped (2 total tests)<span aria
         token<span class="token punctuation">.</span><span class="token function">requestTokens</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="测试">测试</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token builtin class-name">test</span> --match-contract XTokenTest <span class="token parameter variable">-vvvvv</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token builtin class-name">test</span> --match-contract XTokenTest <span class="token parameter variable">-vvvvv</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">[⠆] Compiling...
 [⠊] Compiling 1 files with 0.8.21
 [⠒] Solc 0.8.21 finished in 1.76s
@@ -722,9 +699,7 @@ Traces:
 
 Test result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.06ms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>至此一个简单的forge  smart contract Test case 项目开发完毕！！！</p>
-<p>最后看看<code>forge</code>命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token parameter variable">-h</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">bind               Generate Rust bindings for smart contracts
+<p>最后看看<code>forge</code>命令<br><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token parameter variable">-h</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br><pre class="line-numbers language-text" data-language="text"><code class="language-text">bind               Generate Rust bindings for smart contracts
 build              Build the project's smart contracts [aliases: b, compile]
 cache              Manage the Foundry cache
 clean              Remove the build artifacts and cache directories [aliases: cl]
@@ -754,7 +729,7 @@ update             Update one or multiple dependencies [aliases: u]
 upload-selectors   Uploads abi of given contract to the https://api.openchain.xyz function selector database
                        [aliases: up]
 verify-check       Check verification status on Etherscan [aliases: vc]
-verify-contract    Verify smart contracts on Etherscan [aliases: v]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+verify-contract    Verify smart contracts on Etherscan [aliases: v]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ forge <span class="token builtin class-name">test</span> <span class="token parameter variable">-h</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">Test options:
       --debug &lt;TEST_FUNCTION>    Run a test in the debugger
@@ -1176,10 +1151,6 @@ Watch options:
     <!-- Scroll end -->
   
 
-  
-    <!-- LangSelect start -->
-    <script type="text/javascript" src="/js/langselect.js"></script>
-    <!-- LangSelect end -->
   
 
   

@@ -299,10 +299,6 @@
 
           <!-- LangSelect -->
           
-          
-          
-          
-          
         </ul>
       </div>
     </div>
@@ -470,13 +466,10 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="Overview-业务场景：">Overview | 业务场景：</h2>
-<pre><code>最近遇到一个项目，需要发行一个ERC20 Token ,除去普通钱包转账，和Swap添加流动性和
+        <h2 id="Overview-业务场景："><a href="#Overview-业务场景：" class="headerlink" title="Overview | 业务场景："></a>Overview | 业务场景：</h2><pre><code>最近遇到一个项目，需要发行一个ERC20 Token ,除去普通钱包转账，和Swap添加流动性和
 删除流动性之外的transfer都需要收取手续费，这个时候我们需要写一个判断是否为添加流动
 性和删除流动性的判断
-</code></pre>
-<h2 id="具体判断的代码如下：">具体判断的代码如下：</h2>
-<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">contract</span> <span class="token class-name">LiquidityActivity</span> <span class="token punctuation">&#123;</span>
+</code></pre><h2 id="具体判断的代码如下："><a href="#具体判断的代码如下：" class="headerlink" title="具体判断的代码如下："></a>具体判断的代码如下：</h2><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">contract</span> <span class="token class-name">LiquidityActivity</span> <span class="token punctuation">&#123;</span>
     
     <span class="token comment">//check address is a add liquidity address</span>
     <span class="token keyword">function</span> <span class="token function">isAddLiquidity</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token keyword">from</span><span class="token punctuation">,</span> <span class="token builtin">address</span> to<span class="token punctuation">,</span> <span class="token builtin">address</span> liquidityPoolAddress<span class="token punctuation">)</span> <span class="token keyword">external</span> <span class="token keyword">view</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -513,8 +506,7 @@
         <span class="token keyword">return</span> <span class="token punctuation">(</span>size <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费">通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费</h5>
-
+<h5 id="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费"><a href="#通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费" class="headerlink" title="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费"></a>通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费</h5>
 
         <hr>
         <!-- Pager -->
@@ -842,10 +834,6 @@
     <!-- Scroll end -->
   
 
-  
-    <!-- LangSelect start -->
-    <script type="text/javascript" src="/js/langselect.js"></script>
-    <!-- LangSelect end -->
   
 
   
