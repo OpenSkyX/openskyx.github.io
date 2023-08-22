@@ -142,7 +142,7 @@
   <link rel="canonical" href="http://yoursite-url/en/How to gradually release tokens/">
   <title>
     
-      How to gradually release tokens - Live My Life
+      How to Gradually Release Tokens - Live My Life
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              ABOUT
+              ARCHIVES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
@@ -392,7 +392,7 @@
               <a class="tag" href="/tags/#Web3-Develop" title="Web3-Develop">Web3-Develop</a>
               
             </div>
-            <h1>How to gradually release tokens</h1>
+            <h1>How to Gradually Release Tokens</h1>
             <h2 class="subheading">如何逐步释放token</h2>
             <span class="meta">
               Posted by Mr. Alex on
@@ -488,19 +488,137 @@
 <p>remix</p>
 </blockquote>
 <h3 id="直接上代码">直接上代码</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.4;</span><br><span class="line"></span><br><span class="line">import &quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/security/Pausable.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/access/Ownable.sol&quot;;</span><br><span class="line">import &quot;hardhat/console.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract XERC20 is ERC20, ERC20Burnable, Pausable, Ownable &#123;</span><br><span class="line">    uint256 public amountAllowed = 100; // Number of claims per time</span><br><span class="line">    mapping(address =&gt; bool) requestAddress; // received</span><br><span class="line"></span><br><span class="line">    address public pairAddress = address(0); //Test</span><br><span class="line"></span><br><span class="line">    struct DataRelease &#123;</span><br><span class="line">        uint256 lastUpdateTime; //最后释放时间</span><br><span class="line">        uint256 releaseAmount; //已释放余额</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mapping(address =&gt; DataRelease) public datas;</span><br><span class="line">    uint256 public releaseInterval = 60 ;  //1分钟</span><br><span class="line"></span><br><span class="line">    event MintFaucetToken(address _receive, uint256 _amount);</span><br><span class="line"></span><br><span class="line">    constructor() ERC20(&quot;XMax&quot;, &quot;XMX&quot;) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    function pause() public onlyOwner &#123;</span><br><span class="line">        _pause();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function unpause() public onlyOwner &#123;</span><br><span class="line">        _unpause();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //用来测试空投领取，故没有添加权限，</span><br><span class="line">    function mint(address to, uint256 amount) public &#123;</span><br><span class="line">        calculateRelease(to);</span><br><span class="line">        _mint(to, amount);</span><br><span class="line">        datas[msg.sender].lastUpdateTime = block.timestamp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _transfer(</span><br><span class="line">        address from,</span><br><span class="line">        address to,</span><br><span class="line">        uint256 amount</span><br><span class="line">    ) internal override &#123;</span><br><span class="line">        console.log(&quot;override _transfer&quot;);</span><br><span class="line">        // 计算已释放余额</span><br><span class="line">        calculateRelease(from);</span><br><span class="line">        //判断转账余额是否大于已释放余额</span><br><span class="line">        require(</span><br><span class="line">            datas[from].releaseAmount &gt;= amount,</span><br><span class="line">            &quot;Insufficient balance to release&quot;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        //TODO 手续费、白名单  </span><br><span class="line"></span><br><span class="line">        releaseFrom(from, amount);</span><br><span class="line">        releaseTo(to);</span><br><span class="line">        super._transfer(from, to, amount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //from -- </span><br><span class="line">    function releaseFrom(address _from, uint256 _amount) internal &#123;</span><br><span class="line">        datas[_from].releaseAmount  -= _amount;          // 从已释放余额中减去转账除去的数量</span><br><span class="line">    &#125;</span><br><span class="line">    // to ++  </span><br><span class="line">    function releaseTo(address _to) internal &#123;</span><br><span class="line">        calculateRelease(_to); //先计算到当前时间TO地址需要释放两</span><br><span class="line">        datas[_to].lastUpdateTime = block.timestamp;  // 更新时间</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function calculateRelease(address _address)</span><br><span class="line">        internal</span><br><span class="line">    &#123;</span><br><span class="line">        uint256 elapsedTime = block.timestamp - datas[_address].lastUpdateTime;</span><br><span class="line">        console.log(&quot;elapsedTime:&quot;,elapsedTime);</span><br><span class="line">        uint256 elapsedHours = elapsedTime / releaseInterval;</span><br><span class="line">        console.log(&quot;elapsedHours:&quot;,elapsedHours);</span><br><span class="line">        if(elapsedHours == 0 || balanceOf(_address) == 0 )  return;  //释放时间为0或者余额为0 ，退出计算</span><br><span class="line">        </span><br><span class="line">        //计算每小时释放多少币   待解锁数量 = balance（实际数量）- releaseAmount （已释放数量）</span><br><span class="line">        uint256 waitRelease = balanceOf(_address) - datas[_address].releaseAmount;</span><br><span class="line">        // 待释放数量为0退出</span><br><span class="line">        if(waitRelease == 0) return;  </span><br><span class="line">        uint256 releasePerInterval = (waitRelease * 6) / 10000 / 24;</span><br><span class="line">        //计算当前时间释放总量</span><br><span class="line">        </span><br><span class="line">        //TODO 此时会产生一定的时间差，在1小时内，若需要，需要在当前时间减去相差的时间差。 比如：此时过了1:50分，但是计算的只有1小时，那50分钟是丢失的，此时将时间更新为当前时间，是不合理的。</span><br><span class="line">        uint256 releaseAmount = releasePerInterval * elapsedHours;</span><br><span class="line">        datas[_address].releaseAmount += releaseAmount;</span><br><span class="line">        datas[_address].lastUpdateTime = block.timestamp;</span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //查询当前总共释放金额，但会刷新时间，如果不需刷新时间，去掉计算代码</span><br><span class="line">    function getReleaseAmount(address _address) external  returns(uint256)&#123;</span><br><span class="line">        calculateRelease(_address);</span><br><span class="line">        return datas[_address].releaseAmount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _beforeTokenTransfer(</span><br><span class="line">        address from,</span><br><span class="line">        address to,</span><br><span class="line">        uint256 amount</span><br><span class="line">    ) internal override whenNotPaused &#123;</span><br><span class="line">        super._beforeTokenTransfer(from, to, amount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //领取测试币</span><br><span class="line">    function requestTokens() external &#123;</span><br><span class="line">        mint(msg.sender, amountAllowed * 10**18);</span><br><span class="line">        emit MintFaucetToken(msg.sender, amountAllowed * 10**18);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">// SPDX-License-Identifier: MIT</span>
+<span class="token keyword">pragma</span> <span class="token keyword">solidity</span> <span class="token operator">^</span><span class="token version number">0.8.4</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/token/ERC20/ERC20.sol"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/security/Pausable.sol"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/access/Ownable.sol"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"hardhat/console.sol"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">contract</span> <span class="token class-name">XERC20</span> <span class="token keyword">is</span> ERC20<span class="token punctuation">,</span> ERC20Burnable<span class="token punctuation">,</span> Pausable<span class="token punctuation">,</span> Ownable <span class="token punctuation">&#123;</span>
+    <span class="token builtin">uint256</span> <span class="token keyword">public</span> amountAllowed <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token comment">// Number of claims per time</span>
+    <span class="token keyword">mapping</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token operator">=></span> <span class="token builtin">bool</span><span class="token punctuation">)</span> requestAddress<span class="token punctuation">;</span> <span class="token comment">// received</span>
+
+    <span class="token builtin">address</span> <span class="token keyword">public</span> pairAddress <span class="token operator">=</span> <span class="token builtin">address</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Test</span>
+
+    <span class="token keyword">struct</span> <span class="token class-name">DataRelease</span> <span class="token punctuation">&#123;</span>
+        <span class="token builtin">uint256</span> lastUpdateTime<span class="token punctuation">;</span> <span class="token comment">//最后释放时间</span>
+        <span class="token builtin">uint256</span> releaseAmount<span class="token punctuation">;</span> <span class="token comment">//已释放余额</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">mapping</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token operator">=></span> DataRelease<span class="token punctuation">)</span> <span class="token keyword">public</span> datas<span class="token punctuation">;</span>
+    <span class="token builtin">uint256</span> <span class="token keyword">public</span> releaseInterval <span class="token operator">=</span> <span class="token number">60</span> <span class="token punctuation">;</span>  <span class="token comment">//1分钟</span>
+
+    <span class="token keyword">event</span> <span class="token function">MintFaucetToken</span><span class="token punctuation">(</span><span class="token builtin">address</span> _receive<span class="token punctuation">,</span> <span class="token builtin">uint256</span> _amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">ERC20</span><span class="token punctuation">(</span><span class="token string">"XMax"</span><span class="token punctuation">,</span> <span class="token string">"XMX"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">public</span> onlyOwner <span class="token punctuation">&#123;</span>
+        <span class="token function">_pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">unpause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">public</span> onlyOwner <span class="token punctuation">&#123;</span>
+        <span class="token function">_unpause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">//用来测试空投领取，故没有添加权限，</span>
+    <span class="token keyword">function</span> <span class="token function">mint</span><span class="token punctuation">(</span><span class="token builtin">address</span> to<span class="token punctuation">,</span> <span class="token builtin">uint256</span> amount<span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">calculateRelease</span><span class="token punctuation">(</span>to<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">_mint</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        datas<span class="token punctuation">[</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">]</span><span class="token punctuation">.</span>lastUpdateTime <span class="token operator">=</span> block<span class="token punctuation">.</span>timestamp<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">_transfer</span><span class="token punctuation">(</span>
+        <span class="token builtin">address</span> <span class="token keyword">from</span><span class="token punctuation">,</span>
+        <span class="token builtin">address</span> to<span class="token punctuation">,</span>
+        <span class="token builtin">uint256</span> amount
+    <span class="token punctuation">)</span> <span class="token keyword">internal</span> override <span class="token punctuation">&#123;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"override _transfer"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 计算已释放余额</span>
+        <span class="token function">calculateRelease</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//判断转账余额是否大于已释放余额</span>
+        <span class="token keyword">require</span><span class="token punctuation">(</span>
+            datas<span class="token punctuation">[</span><span class="token keyword">from</span><span class="token punctuation">]</span><span class="token punctuation">.</span>releaseAmount <span class="token operator">>=</span> amount<span class="token punctuation">,</span>
+            <span class="token string">"Insufficient balance to release"</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//TODO 手续费、白名单  </span>
+
+        <span class="token function">releaseFrom</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">releaseTo</span><span class="token punctuation">(</span>to<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        super<span class="token punctuation">.</span><span class="token function">_transfer</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">,</span> to<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">//from -- </span>
+    <span class="token keyword">function</span> <span class="token function">releaseFrom</span><span class="token punctuation">(</span><span class="token builtin">address</span> _from<span class="token punctuation">,</span> <span class="token builtin">uint256</span> _amount<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token punctuation">&#123;</span>
+        datas<span class="token punctuation">[</span>_from<span class="token punctuation">]</span><span class="token punctuation">.</span>releaseAmount  <span class="token operator">-=</span> _amount<span class="token punctuation">;</span>          <span class="token comment">// 从已释放余额中减去转账除去的数量</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// to ++  </span>
+    <span class="token keyword">function</span> <span class="token function">releaseTo</span><span class="token punctuation">(</span><span class="token builtin">address</span> _to<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">calculateRelease</span><span class="token punctuation">(</span>_to<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//先计算到当前时间TO地址需要释放两</span>
+        datas<span class="token punctuation">[</span>_to<span class="token punctuation">]</span><span class="token punctuation">.</span>lastUpdateTime <span class="token operator">=</span> block<span class="token punctuation">.</span>timestamp<span class="token punctuation">;</span>  <span class="token comment">// 更新时间</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">calculateRelease</span><span class="token punctuation">(</span><span class="token builtin">address</span> _address<span class="token punctuation">)</span>
+        <span class="token keyword">internal</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token builtin">uint256</span> elapsedTime <span class="token operator">=</span> block<span class="token punctuation">.</span>timestamp <span class="token operator">-</span> datas<span class="token punctuation">[</span>_address<span class="token punctuation">]</span><span class="token punctuation">.</span>lastUpdateTime<span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"elapsedTime:"</span><span class="token punctuation">,</span>elapsedTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token builtin">uint256</span> elapsedHours <span class="token operator">=</span> elapsedTime <span class="token operator">/</span> releaseInterval<span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"elapsedHours:"</span><span class="token punctuation">,</span>elapsedHours<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>elapsedHours <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token function">balanceOf</span><span class="token punctuation">(</span>_address<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">)</span>  <span class="token keyword">return</span><span class="token punctuation">;</span>  <span class="token comment">//释放时间为0或者余额为0 ，退出计算</span>
+        
+        <span class="token comment">//计算每小时释放多少币   待解锁数量 = balance（实际数量）- releaseAmount （已释放数量）</span>
+        <span class="token builtin">uint256</span> waitRelease <span class="token operator">=</span> <span class="token function">balanceOf</span><span class="token punctuation">(</span>_address<span class="token punctuation">)</span> <span class="token operator">-</span> datas<span class="token punctuation">[</span>_address<span class="token punctuation">]</span><span class="token punctuation">.</span>releaseAmount<span class="token punctuation">;</span>
+        <span class="token comment">// 待释放数量为0退出</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>waitRelease <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>  
+        <span class="token builtin">uint256</span> releasePerInterval <span class="token operator">=</span> <span class="token punctuation">(</span>waitRelease <span class="token operator">*</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">10000</span> <span class="token operator">/</span> <span class="token number">24</span><span class="token punctuation">;</span>
+        <span class="token comment">//计算当前时间释放总量</span>
+        
+        <span class="token comment">//TODO 此时会产生一定的时间差，在1小时内，若需要，需要在当前时间减去相差的时间差。 比如：此时过了1:50分，但是计算的只有1小时，那50分钟是丢失的，此时将时间更新为当前时间，是不合理的。</span>
+        <span class="token builtin">uint256</span> releaseAmount <span class="token operator">=</span> releasePerInterval <span class="token operator">*</span> elapsedHours<span class="token punctuation">;</span>
+        datas<span class="token punctuation">[</span>_address<span class="token punctuation">]</span><span class="token punctuation">.</span>releaseAmount <span class="token operator">+=</span> releaseAmount<span class="token punctuation">;</span>
+        datas<span class="token punctuation">[</span>_address<span class="token punctuation">]</span><span class="token punctuation">.</span>lastUpdateTime <span class="token operator">=</span> block<span class="token punctuation">.</span>timestamp<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>   
+
+
+    <span class="token comment">//查询当前总共释放金额，但会刷新时间，如果不需刷新时间，去掉计算代码</span>
+    <span class="token keyword">function</span> <span class="token function">getReleaseAmount</span><span class="token punctuation">(</span><span class="token builtin">address</span> _address<span class="token punctuation">)</span> <span class="token keyword">external</span>  <span class="token keyword">returns</span><span class="token punctuation">(</span><span class="token builtin">uint256</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">calculateRelease</span><span class="token punctuation">(</span>_address<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> datas<span class="token punctuation">[</span>_address<span class="token punctuation">]</span><span class="token punctuation">.</span>releaseAmount<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">_beforeTokenTransfer</span><span class="token punctuation">(</span>
+        <span class="token builtin">address</span> <span class="token keyword">from</span><span class="token punctuation">,</span>
+        <span class="token builtin">address</span> to<span class="token punctuation">,</span>
+        <span class="token builtin">uint256</span> amount
+    <span class="token punctuation">)</span> <span class="token keyword">internal</span> override whenNotPaused <span class="token punctuation">&#123;</span>
+        super<span class="token punctuation">.</span><span class="token function">_beforeTokenTransfer</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">,</span> to<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">//领取测试币</span>
+    <span class="token keyword">function</span> <span class="token function">requestTokens</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">external</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">mint</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> amountAllowed <span class="token operator">*</span> <span class="token number">10</span><span class="token operator">**</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">emit</span> <span class="token function">MintFaucetToken</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span> amountAllowed <span class="token operator">*</span> <span class="token number">10</span><span class="token operator">**</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>手续费跟白名单未实现，具体根据实际情况添加就好，具体释放思路已在代码注释中！</p>
 </blockquote>
 <h3 id="重点讲讲-calculateRelease-计算方法">重点讲讲 calculateRelease 计算方法</h3>
 <p>先计算出有多少个释放时间单位</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uint256 elapsedTime = block.timestamp - datas[_address].lastUpdateTime;</span><br><span class="line">uint256 elapsedHours = elapsedTime / releaseInterval;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token builtin">uint256</span> elapsedTime <span class="token operator">=</span> block<span class="token punctuation">.</span>timestamp <span class="token operator">-</span> datas<span class="token punctuation">[</span>_address<span class="token punctuation">]</span><span class="token punctuation">.</span>lastUpdateTime<span class="token punctuation">;</span>
+<span class="token builtin">uint256</span> elapsedHours <span class="token operator">=</span> elapsedTime <span class="token operator">/</span> releaseInterval<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>计算当前地址待释放还有多少币</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//锁定量 = balance（实际数量）- releaseAmount （已释放数量）</span><br><span class="line">uint256 waitRelease = balanceOf(_address) - datas[_address].releaseAmount;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">//锁定量 = balance（实际数量）- releaseAmount （已释放数量）</span>
+<span class="token builtin">uint256</span> waitRelease <span class="token operator">=</span> <span class="token function">balanceOf</span><span class="token punctuation">(</span>_address<span class="token punctuation">)</span> <span class="token operator">-</span> datas<span class="token punctuation">[</span>_address<span class="token punctuation">]</span><span class="token punctuation">.</span>releaseAmount<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>计算每小时应该释放多少币</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 每小时应释放多少 = 锁定量 * 0.006 / 24</span><br><span class="line">uint256 releasePerInterval = (waitRelease * 6) / 10000 / 24;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">// 每小时应释放多少 = 锁定量 * 0.006 / 24</span>
+<span class="token builtin">uint256</span> releasePerInterval <span class="token operator">=</span> <span class="token punctuation">(</span>waitRelease <span class="token operator">*</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">10000</span> <span class="token operator">/</span> <span class="token number">24</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>根据当前地址释放的时间单位和每小时释放多少币计算出当前时间应该总共释放多少币</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uint256 releaseAmount = releasePerInterval * elapsedHours;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token builtin">uint256</span> releaseAmount <span class="token operator">=</span> releasePerInterval <span class="token operator">*</span> elapsedHours<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>问题：此时会产生一定的时间差，在1小时内，若需要，需要在当前时间减去相差的时间差。 比如：此时过了1:50分，但是计算的只有1小时，那50分钟是丢失的，此时将时间更新为当前时间，是不合理的。在实际项目中一定要解决此问题！</p>
 
 
@@ -509,12 +627,12 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/en/use doundry forge to build smart contract test case/" data-toggle="tooltip" data-placement="top" title="Use foundry forge to build smart contract test case">&larr; Previous Post</a>
+            <a href="/en/use doundry forge to build smart contract test case/" data-toggle="tooltip" data-placement="top" title="Use Foundry Forge to Build Smart Contract Test Case">&larr; Previous Post</a>
           </li>
           
           
           <li class="next">
-            <a href="/en/How to develop ERC20 token faucet/" data-toggle="tooltip" data-placement="top" title="How to develop ERC20 token faucet">Next Post &rarr;</a>
+            <a href="/en/How to develop ERC20 token faucet/" data-toggle="tooltip" data-placement="top" title="How to Develop ERC20 Token Faucet">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -563,7 +681,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=How to gradually release tokens&body=Hi,I found this website and thought you might like it http://yoursite-url/en/How to gradually release tokens/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=How to Gradually Release Tokens&body=Hi,I found this website and thought you might like it http://yoursite-url/en/How to gradually release tokens/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>

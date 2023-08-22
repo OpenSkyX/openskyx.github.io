@@ -142,7 +142,7 @@
   <link rel="canonical" href="http://yoursite-url/en/How to develop ERC20 token faucet/">
   <title>
     
-      How to develop ERC20 token faucet - Live My Life
+      How to Develop ERC20 Token Faucet - Live My Life
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              ABOUT
+              ARCHIVES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
@@ -392,7 +392,7 @@
               <a class="tag" href="/tags/#Web3-Develop" title="Web3-Develop">Web3-Develop</a>
               
             </div>
-            <h1>How to develop ERC20 token faucet</h1>
+            <h1>How to Develop ERC20 Token Faucet</h1>
             <h2 class="subheading">如何开发一个ERC20代币水龙头</h2>
             <span class="meta">
               Posted by Mr. Alex on
@@ -408,7 +408,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">294</span> In Total
+              Words <span class="post-count">281</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -475,7 +475,50 @@
 通过实现代币水龙头的功能来快捷的实现领取测试token。
 </code></pre>
 <h2 id="具体判断的代码如下：">具体判断的代码如下：</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.4;</span><br><span class="line"></span><br><span class="line">import &quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/security/Pausable.sol&quot;;</span><br><span class="line">import &quot;@openzeppelin/contracts/access/Ownable.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract XERC20 is ERC20, ERC20Burnable, Pausable, Ownable &#123;</span><br><span class="line"></span><br><span class="line">    uint256 public amountAllowed = 100;   // Number of claims per time</span><br><span class="line">    mapping(address =&gt; bool) requestAddress;  // received</span><br><span class="line"></span><br><span class="line">    event MintFaucetToken(address _receive,uint256 _amount);</span><br><span class="line"></span><br><span class="line">    constructor() ERC20(&quot;XMax&quot;, &quot;XMX&quot;) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    function pause() public onlyOwner &#123;</span><br><span class="line">        _pause();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function unpause() public onlyOwner &#123;</span><br><span class="line">        _unpause();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function mint(address to, uint256 amount) public  &#123;</span><br><span class="line">        _mint(to, amount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function _beforeTokenTransfer(address from, address to, uint256 amount)</span><br><span class="line">    internal</span><br><span class="line">    whenNotPaused</span><br><span class="line">    override</span><br><span class="line">    &#123;</span><br><span class="line">        super._beforeTokenTransfer(from, to, amount);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //水龙头功能  ，每次请求直接去Mint就好，如果需要添加世间和地址限制，根据需求在此处添加就好</span><br><span class="line">    function requestTokens() external  &#123;</span><br><span class="line">        mint(msg.sender,amountAllowed * 10**18);</span><br><span class="line">        emit MintFaucetToken(msg.sender,amountAllowed * 10**18);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">// SPDX-License-Identifier: MIT</span>
+<span class="token keyword">pragma</span> <span class="token keyword">solidity</span> <span class="token operator">^</span><span class="token version number">0.8.4</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/token/ERC20/ERC20.sol"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/security/Pausable.sol"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"@openzeppelin/contracts/access/Ownable.sol"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">contract</span> <span class="token class-name">XERC20</span> <span class="token keyword">is</span> ERC20<span class="token punctuation">,</span> ERC20Burnable<span class="token punctuation">,</span> Pausable<span class="token punctuation">,</span> Ownable <span class="token punctuation">&#123;</span>
+
+    <span class="token builtin">uint256</span> <span class="token keyword">public</span> amountAllowed <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>   <span class="token comment">// Number of claims per time</span>
+    <span class="token keyword">mapping</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token operator">=></span> <span class="token builtin">bool</span><span class="token punctuation">)</span> requestAddress<span class="token punctuation">;</span>  <span class="token comment">// received</span>
+
+    <span class="token keyword">event</span> <span class="token function">MintFaucetToken</span><span class="token punctuation">(</span><span class="token builtin">address</span> _receive<span class="token punctuation">,</span><span class="token builtin">uint256</span> _amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">ERC20</span><span class="token punctuation">(</span><span class="token string">"XMax"</span><span class="token punctuation">,</span> <span class="token string">"XMX"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">public</span> onlyOwner <span class="token punctuation">&#123;</span>
+        <span class="token function">_pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">unpause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">public</span> onlyOwner <span class="token punctuation">&#123;</span>
+        <span class="token function">_unpause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">mint</span><span class="token punctuation">(</span><span class="token builtin">address</span> to<span class="token punctuation">,</span> <span class="token builtin">uint256</span> amount<span class="token punctuation">)</span> <span class="token keyword">public</span>  <span class="token punctuation">&#123;</span>
+        <span class="token function">_mint</span><span class="token punctuation">(</span>to<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">_beforeTokenTransfer</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token keyword">from</span><span class="token punctuation">,</span> <span class="token builtin">address</span> to<span class="token punctuation">,</span> <span class="token builtin">uint256</span> amount<span class="token punctuation">)</span>
+    <span class="token keyword">internal</span>
+    whenNotPaused
+    override
+    <span class="token punctuation">&#123;</span>
+        super<span class="token punctuation">.</span><span class="token function">_beforeTokenTransfer</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">,</span> to<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">//水龙头功能  ，每次请求直接去Mint就好，如果需要添加世间和地址限制，根据需求在此处添加就好</span>
+    <span class="token keyword">function</span> <span class="token function">requestTokens</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">external</span>  <span class="token punctuation">&#123;</span>
+        <span class="token function">mint</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span>amountAllowed <span class="token operator">*</span> <span class="token number">10</span><span class="token operator">**</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">emit</span> <span class="token function">MintFaucetToken</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>sender<span class="token punctuation">,</span>amountAllowed <span class="token operator">*</span> <span class="token number">10</span><span class="token operator">**</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="通过以上，就可以简单实现ERC20代币水龙头功能，仅在测试网用！！！">通过以上，就可以简单实现ERC20代币水龙头功能，仅在测试网用！！！</h5>
 
 
@@ -484,12 +527,12 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/en/How to gradually release tokens/" data-toggle="tooltip" data-placement="top" title="How to gradually release tokens">&larr; Previous Post</a>
+            <a href="/en/How to gradually release tokens/" data-toggle="tooltip" data-placement="top" title="How to Gradually Release Tokens">&larr; Previous Post</a>
           </li>
           
           
           <li class="next">
-            <a href="/en/How to judge from and to addresses are operations of adding and removing liquidity/" data-toggle="tooltip" data-placement="top" title="Smart contract | How to judge from and to addresses are operations of adding and removing liquidity">Next Post &rarr;</a>
+            <a href="/en/How to judge from and to addresses are operations of adding and removing liquidity/" data-toggle="tooltip" data-placement="top" title="Smart Contract | How to Judge From and to Addresses Are Operations of Adding and Removing Liquidity">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -538,7 +581,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=How to develop ERC20 token faucet&body=Hi,I found this website and thought you might like it http://yoursite-url/en/How to develop ERC20 token faucet/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=How to Develop ERC20 Token Faucet&body=Hi,I found this website and thought you might like it http://yoursite-url/en/How to develop ERC20 token faucet/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>

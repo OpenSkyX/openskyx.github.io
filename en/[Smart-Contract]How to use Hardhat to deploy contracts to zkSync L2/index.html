@@ -142,7 +142,7 @@
   <link rel="canonical" href="http://yoursite-url/en/[Smart-Contract]How to use Hardhat to deploy contracts to zkSync L2/">
   <title>
     
-      Smart-Contract | How to use Hardhat to deploy contracts to zkSync L2 - Live My Life
+      Smart-Contract | How to Use Hardhat to Deploy Contracts to zkSync L2 - Live My Life
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              ABOUT
+              ARCHIVES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
@@ -392,7 +392,7 @@
               <a class="tag" href="/tags/#Web3-Develop" title="Web3-Develop">Web3-Develop</a>
               
             </div>
-            <h1>Smart-Contract | How to use Hardhat to deploy contracts to zkSync L2</h1>
+            <h1>Smart-Contract | How to Use Hardhat to Deploy Contracts to zkSync L2</h1>
             <h2 class="subheading">智能合约 | 如何使用Hardhat部署合约到zkSync L2</h2>
             <span class="meta">
               Posted by Mr. Alex on
@@ -408,7 +408,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">841</span> In Total
+              Words <span class="post-count">817</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -499,24 +499,110 @@
 <h2 id="构建并部署Greeter合约">构建并部署Greeter合约</h2>
 <h3 id="初始化项目">初始化项目</h3>
 <h4 id="1：安装zkSync-CLI：">1：安装zkSync CLI：</h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g zksync-cli@latest</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> zksync-cli@latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="2-通过运行以下命令搭建一个新项目：">2: 通过运行以下命令搭建一个新项目：</h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zksync-cli create greeter-example</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zksync-cli create greeter-example<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h6 id="这将创建一个新的-zkSync-Era-项目，该项目greeter-example包含基本Greeter合约以及所有-zkSync-插件和配置。">这将创建一个新的 zkSync Era 项目，该项目greeter-example包含基本Greeter合约以及所有 zkSync 插件和配置。</h6>
 <h4 id="3-导航到项目目录：">3: 导航到项目目录：</h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd greeter-example</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> greeter-example<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="4-要配置您的私钥，请复制-env-example文件，将副本重命名为-env，然后添加您的钱包私钥。">4:要配置您的私钥，请复制.env.example文件，将副本重命名为.env，然后添加您的钱包私钥。</h4>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WALLET_PRIVATE_KEY=0xabcdef12345....</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">WALLET_PRIVATE_KEY=0xabcdef12345....<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="编译并部署-Greeter-合约">编译并部署 Greeter 合约</h3>
 <h4 id="我们将所有智能合约的-sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。">我们将所有智能合约的*.sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。</h4>
 <h4 id="1-包含的contracts-Greeter-sol合同有以下代码：">1:包含的contracts/Greeter.sol合同有以下代码：</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//SPDX-License-Identifier: Unlicense</span><br><span class="line">pragma solidity ^0.8.8;</span><br><span class="line"></span><br><span class="line">contract Greeter &#123;</span><br><span class="line">    string private greeting;</span><br><span class="line"></span><br><span class="line">    constructor(string memory _greeting) &#123;</span><br><span class="line">        greeting = _greeting;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function greet() public view returns (string memory) &#123;</span><br><span class="line">        return greeting;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function setGreeting(string memory _greeting) public &#123;</span><br><span class="line">        greeting = _greeting;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">//SPDX-License-Identifier: Unlicense</span>
+<span class="token keyword">pragma</span> <span class="token keyword">solidity</span> <span class="token operator">^</span><span class="token version number">0.8.8</span><span class="token punctuation">;</span>
+
+<span class="token keyword">contract</span> <span class="token class-name">Greeter</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">string</span> <span class="token keyword">private</span> greeting<span class="token punctuation">;</span>
+
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token builtin">string</span> <span class="token keyword">memory</span> _greeting<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        greeting <span class="token operator">=</span> _greeting<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">view</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">string</span> <span class="token keyword">memory</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> greeting<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">setGreeting</span><span class="token punctuation">(</span><span class="token builtin">string</span> <span class="token keyword">memory</span> _greeting<span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token punctuation">&#123;</span>
+        greeting <span class="token operator">=</span> _greeting<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-使用以下命令编译合约：">2:使用以下命令编译合约：</h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn hardhat compile</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> hardhat compile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="3：zkSync-CLI还提供了一个部署脚本-deploy-deploy-greeter-ts">3：zkSync -CLI还提供了一个部署脚本/deploy/deploy-greeter.ts</h4>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Wallet</span>, utils &#125; <span class="keyword">from</span> <span class="string">&quot;zksync-web3&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> ethers <span class="keyword">from</span> <span class="string">&quot;ethers&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">HardhatRuntimeEnvironment</span> &#125; <span class="keyword">from</span> <span class="string">&quot;hardhat/types&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Deployer</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@matterlabs/hardhat-zksync-deploy&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// load env file</span></span><br><span class="line"><span class="keyword">import</span> dotenv <span class="keyword">from</span> <span class="string">&quot;dotenv&quot;</span>;</span><br><span class="line">dotenv.<span class="title function_">config</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// load wallet private key from env file</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PRIVATE_KEY</span> = process.<span class="property">env</span>.<span class="property">WALLET_PRIVATE_KEY</span> || <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="variable constant_">PRIVATE_KEY</span>) <span class="keyword">throw</span> <span class="string">&quot;⛔️ Private key not detected! Add it to the .env file!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// An example of a deploy script that will deploy and call a simple contract.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">hre: HardhatRuntimeEnvironment</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Running deploy script for the Greeter contract`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Initialize the wallet.</span></span><br><span class="line">  <span class="keyword">const</span> wallet = <span class="keyword">new</span> <span class="title class_">Wallet</span>(<span class="variable constant_">PRIVATE_KEY</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Create deployer object and load the artifact of the contract you want to deploy.</span></span><br><span class="line">  <span class="keyword">const</span> deployer = <span class="keyword">new</span> <span class="title class_">Deployer</span>(hre, wallet);</span><br><span class="line">  <span class="keyword">const</span> artifact = <span class="keyword">await</span> deployer.<span class="title function_">loadArtifact</span>(<span class="string">&quot;Greeter&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Estimate contract deployment fee</span></span><br><span class="line">  <span class="keyword">const</span> greeting = <span class="string">&quot;Hi there!&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> deploymentFee = <span class="keyword">await</span> deployer.<span class="title function_">estimateDeployFee</span>(artifact, [greeting]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ⚠️ OPTIONAL: You can skip this block if your account already has funds in L2</span></span><br><span class="line">  <span class="comment">// Deposit funds to L2</span></span><br><span class="line">  <span class="comment">// const depositHandle = await deployer.zkWallet.deposit(&#123;</span></span><br><span class="line">  <span class="comment">//   to: deployer.zkWallet.address,</span></span><br><span class="line">  <span class="comment">//   token: utils.ETH_ADDRESS,</span></span><br><span class="line">  <span class="comment">//   amount: deploymentFee.mul(2),</span></span><br><span class="line">  <span class="comment">// &#125;);</span></span><br><span class="line">  <span class="comment">// // Wait until the deposit is processed on zkSync</span></span><br><span class="line">  <span class="comment">// await depositHandle.wait();</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Deploy this contract. The returned object will be of a `Contract` type, similarly to ones in `ethers`.</span></span><br><span class="line">  <span class="comment">// `greeting` is an argument for contract constructor.</span></span><br><span class="line">  <span class="keyword">const</span> parsedFee = ethers.<span class="property">utils</span>.<span class="title function_">formatEther</span>(deploymentFee.<span class="title function_">toString</span>());</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`The deployment is estimated to cost <span class="subst">$&#123;parsedFee&#125;</span> ETH`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> greeterContract = <span class="keyword">await</span> deployer.<span class="title function_">deploy</span>(artifact, [greeting]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//obtain the Constructor Arguments</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Constructor args:&quot;</span> + greeterContract.<span class="property">interface</span>.<span class="title function_">encodeDeploy</span>([greeting]));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Show the contract info.</span></span><br><span class="line">  <span class="keyword">const</span> contractAddress = greeterContract.<span class="property">address</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;artifact.contractName&#125;</span> was deployed to <span class="subst">$&#123;contractAddress&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// verify contract for testnet &amp; mainnet</span></span><br><span class="line">  <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> != <span class="string">&quot;test&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// Contract MUST be fully qualified name (e.g. path/sourceName:contractName)</span></span><br><span class="line">    <span class="keyword">const</span> contractFullyQualifedName = <span class="string">&quot;contracts/Greeter.sol:Greeter&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Verify contract programmatically</span></span><br><span class="line">    <span class="keyword">const</span> verificationId = <span class="keyword">await</span> hre.<span class="title function_">run</span>(<span class="string">&quot;verify:verify&quot;</span>, &#123;</span><br><span class="line">      <span class="attr">address</span>: contractAddress,</span><br><span class="line">      <span class="attr">contract</span>: contractFullyQualifedName,</span><br><span class="line">      <span class="attr">constructorArguments</span>: [greeting],</span><br><span class="line">      <span class="attr">bytecode</span>: artifact.<span class="property">bytecode</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Contract not verified, deployed locally.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Wallet<span class="token punctuation">,</span> utils <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"zksync-web3"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> ethers <span class="token keyword">from</span> <span class="token string">"ethers"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> HardhatRuntimeEnvironment <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"hardhat/types"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Deployer <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"@matterlabs/hardhat-zksync-deploy"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// load env file</span>
+<span class="token keyword">import</span> dotenv <span class="token keyword">from</span> <span class="token string">"dotenv"</span><span class="token punctuation">;</span>
+dotenv<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// load wallet private key from env file</span>
+<span class="token keyword">const</span> <span class="token constant">PRIVATE_KEY</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">WALLET_PRIVATE_KEY</span> <span class="token operator">||</span> <span class="token string">""</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token constant">PRIVATE_KEY</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token string">"⛔️ Private key not detected! Add it to the .env file!"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// An example of a deploy script that will deploy and call a simple contract.</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>hre<span class="token operator">:</span> HardhatRuntimeEnvironment<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Running deploy script for the Greeter contract</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Initialize the wallet.</span>
+  <span class="token keyword">const</span> wallet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Wallet</span><span class="token punctuation">(</span><span class="token constant">PRIVATE_KEY</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Create deployer object and load the artifact of the contract you want to deploy.</span>
+  <span class="token keyword">const</span> deployer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Deployer</span><span class="token punctuation">(</span>hre<span class="token punctuation">,</span> wallet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> artifact <span class="token operator">=</span> <span class="token keyword">await</span> deployer<span class="token punctuation">.</span><span class="token function">loadArtifact</span><span class="token punctuation">(</span><span class="token string">"Greeter"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Estimate contract deployment fee</span>
+  <span class="token keyword">const</span> greeting <span class="token operator">=</span> <span class="token string">"Hi there!"</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> deploymentFee <span class="token operator">=</span> <span class="token keyword">await</span> deployer<span class="token punctuation">.</span><span class="token function">estimateDeployFee</span><span class="token punctuation">(</span>artifact<span class="token punctuation">,</span> <span class="token punctuation">[</span>greeting<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// ⚠️ OPTIONAL: You can skip this block if your account already has funds in L2</span>
+  <span class="token comment">// Deposit funds to L2</span>
+  <span class="token comment">// const depositHandle = await deployer.zkWallet.deposit(&#123;</span>
+  <span class="token comment">//   to: deployer.zkWallet.address,</span>
+  <span class="token comment">//   token: utils.ETH_ADDRESS,</span>
+  <span class="token comment">//   amount: deploymentFee.mul(2),</span>
+  <span class="token comment">// &#125;);</span>
+  <span class="token comment">// // Wait until the deposit is processed on zkSync</span>
+  <span class="token comment">// await depositHandle.wait();</span>
+
+  <span class="token comment">// Deploy this contract. The returned object will be of a `Contract` type, similarly to ones in `ethers`.</span>
+  <span class="token comment">// `greeting` is an argument for contract constructor.</span>
+  <span class="token keyword">const</span> parsedFee <span class="token operator">=</span> ethers<span class="token punctuation">.</span>utils<span class="token punctuation">.</span><span class="token function">formatEther</span><span class="token punctuation">(</span>deploymentFee<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">The deployment is estimated to cost </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>parsedFee<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> ETH</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> greeterContract <span class="token operator">=</span> <span class="token keyword">await</span> deployer<span class="token punctuation">.</span><span class="token function">deploy</span><span class="token punctuation">(</span>artifact<span class="token punctuation">,</span> <span class="token punctuation">[</span>greeting<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">//obtain the Constructor Arguments</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Constructor args:"</span> <span class="token operator">+</span> greeterContract<span class="token punctuation">.</span>interface<span class="token punctuation">.</span><span class="token function">encodeDeploy</span><span class="token punctuation">(</span><span class="token punctuation">[</span>greeting<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Show the contract info.</span>
+  <span class="token keyword">const</span> contractAddress <span class="token operator">=</span> greeterContract<span class="token punctuation">.</span>address<span class="token punctuation">;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>artifact<span class="token punctuation">.</span>contractName<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> was deployed to </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>contractAddress<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// verify contract for testnet &amp; mainnet</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!=</span> <span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Contract MUST be fully qualified name (e.g. path/sourceName:contractName)</span>
+    <span class="token keyword">const</span> contractFullyQualifedName <span class="token operator">=</span> <span class="token string">"contracts/Greeter.sol:Greeter"</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Verify contract programmatically</span>
+    <span class="token keyword">const</span> verificationId <span class="token operator">=</span> <span class="token keyword">await</span> hre<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token string">"verify:verify"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+      address<span class="token operator">:</span> contractAddress<span class="token punctuation">,</span>
+      contract<span class="token operator">:</span> contractFullyQualifedName<span class="token punctuation">,</span>
+      constructorArguments<span class="token operator">:</span> <span class="token punctuation">[</span>greeting<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      bytecode<span class="token operator">:</span> artifact<span class="token punctuation">.</span>bytecode<span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Contract not verified, deployed locally.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="4：使用以下命令运行部署脚本：">4：使用以下命令运行部署脚本：</h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn hardhat deploy-zksync --script deploy-greeter.ts --network zkSyncTestnet</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> hardhat deploy-zksync <span class="token parameter variable">--script</span> deploy-greeter.ts <span class="token parameter variable">--network</span> zkSyncTestnet<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
         <hr>
@@ -524,12 +610,12 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/en/[Smart-Contract]How to develop a simple token swap smart contract/" data-toggle="tooltip" data-placement="top" title="Smart-Contract | How to develop a simple token swap smart contract">&larr; Previous Post</a>
+            <a href="/en/[Smart-Contract]How to develop a simple token swap smart contract/" data-toggle="tooltip" data-placement="top" title="Smart-Contract | How to Develop a Simple Token Swap Smart Contract">&larr; Previous Post</a>
           </li>
           
           
           <li class="next">
-            <a href="/en/build-dapp-with-hardhat/" data-toggle="tooltip" data-placement="top" title="Use hardhat to build dapp and develop smart contracts and deployment">Next Post &rarr;</a>
+            <a href="/en/build-dapp-with-hardhat/" data-toggle="tooltip" data-placement="top" title="Use Hardhat to Build Dapp and Develop Smart Contracts and Deployment">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -578,7 +664,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=Smart-Contract | How to use Hardhat to deploy contracts to zkSync L2&body=Hi,I found this website and thought you might like it http://yoursite-url/en/[Smart-Contract]How to use Hardhat to deploy contracts to zkSync L2/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Smart-Contract | How to Use Hardhat to Deploy Contracts to zkSync L2&body=Hi,I found this website and thought you might like it http://yoursite-url/en/[Smart-Contract]How to use Hardhat to deploy contracts to zkSync L2/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>

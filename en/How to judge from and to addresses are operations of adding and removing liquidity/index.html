@@ -142,7 +142,7 @@
   <link rel="canonical" href="http://yoursite-url/en/How to judge from and to addresses are operations of adding and removing liquidity/">
   <title>
     
-      Smart contract | How to judge from and to addresses are operations of adding and removing liquidity - Live My Life
+      Smart Contract | How to Judge From and to Addresses Are Operations of Adding and Removing Liquidity - Live My Life
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              ABOUT
+              ARCHIVES
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              ARCHIVES
+              ABOUT
               
               
             </a>
@@ -392,7 +392,7 @@
               <a class="tag" href="/tags/#Web3-Develop" title="Web3-Develop">Web3-Develop</a>
               
             </div>
-            <h1>Smart contract | How to judge from and to addresses are operations of adding and removing liquidity</h1>
+            <h1>Smart Contract | How to Judge From and to Addresses Are Operations of Adding and Removing Liquidity</h1>
             <h2 class="subheading">智能合约 | 如何判断from和to地址是添加和删除流动性的操作</h2>
             <span class="meta">
               Posted by Mr. Alex on
@@ -408,7 +408,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">303</span> In Total
+              Words <span class="post-count">302</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -476,7 +476,43 @@
 性和删除流动性的判断
 </code></pre>
 <h2 id="具体判断的代码如下：">具体判断的代码如下：</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">contract LiquidityActivity &#123;</span><br><span class="line">    </span><br><span class="line">    //check address is a add liquidity address</span><br><span class="line">    function isAddLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `from` is the liquidity pool contract and `to` is a user</span><br><span class="line">        if (from == liquidityPoolAddress &amp;&amp; !isContract(to)) &#123;</span><br><span class="line">            // Check if `to` holds both tokens of the pool (add liquidity)</span><br><span class="line">            return (to == pool.token0() || to == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //check address is remove liquidity address</span><br><span class="line">    function isRemoveLiquidity(address from, address to, address liquidityPoolAddress) external view returns (bool) &#123;</span><br><span class="line">        IUniswapV2Pair pool = IUniswapV2Pair(liquidityPoolAddress);</span><br><span class="line"></span><br><span class="line">        // Check if `to` is the liquidity pool contract and `from` is a user</span><br><span class="line">        if (to == liquidityPoolAddress &amp;&amp; !isContract(from)) &#123;</span><br><span class="line">            // Check if `from` holds both tokens of the pool (remove liquidity)</span><br><span class="line">            return (from == pool.token0() || from == pool.token1());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // check address is a contract address</span><br><span class="line">    function isContract(address addr) internal view returns (bool) &#123;</span><br><span class="line">        uint32 size;</span><br><span class="line">        assembly &#123;</span><br><span class="line">            size := extcodesize(addr)</span><br><span class="line">        &#125;</span><br><span class="line">        return (size &gt; 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token keyword">contract</span> <span class="token class-name">LiquidityActivity</span> <span class="token punctuation">&#123;</span>
+    
+    <span class="token comment">//check address is a add liquidity address</span>
+    <span class="token keyword">function</span> <span class="token function">isAddLiquidity</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token keyword">from</span><span class="token punctuation">,</span> <span class="token builtin">address</span> to<span class="token punctuation">,</span> <span class="token builtin">address</span> liquidityPoolAddress<span class="token punctuation">)</span> <span class="token keyword">external</span> <span class="token keyword">view</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        IUniswapV2Pair pool <span class="token operator">=</span> <span class="token function">IUniswapV2Pair</span><span class="token punctuation">(</span>liquidityPoolAddress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Check if `from` is the liquidity pool contract and `to` is a user</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">from</span> <span class="token operator">==</span> liquidityPoolAddress <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">isContract</span><span class="token punctuation">(</span>to<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Check if `to` holds both tokens of the pool (add liquidity)</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span>to <span class="token operator">==</span> pool<span class="token punctuation">.</span><span class="token function">token0</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> to <span class="token operator">==</span> pool<span class="token punctuation">.</span><span class="token function">token1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">//check address is remove liquidity address</span>
+    <span class="token keyword">function</span> <span class="token function">isRemoveLiquidity</span><span class="token punctuation">(</span><span class="token builtin">address</span> <span class="token keyword">from</span><span class="token punctuation">,</span> <span class="token builtin">address</span> to<span class="token punctuation">,</span> <span class="token builtin">address</span> liquidityPoolAddress<span class="token punctuation">)</span> <span class="token keyword">external</span> <span class="token keyword">view</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        IUniswapV2Pair pool <span class="token operator">=</span> <span class="token function">IUniswapV2Pair</span><span class="token punctuation">(</span>liquidityPoolAddress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Check if `to` is the liquidity pool contract and `from` is a user</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>to <span class="token operator">==</span> liquidityPoolAddress <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">isContract</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Check if `from` holds both tokens of the pool (remove liquidity)</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">from</span> <span class="token operator">==</span> pool<span class="token punctuation">.</span><span class="token function">token0</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">from</span> <span class="token operator">==</span> pool<span class="token punctuation">.</span><span class="token function">token1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// check address is a contract address</span>
+    <span class="token keyword">function</span> <span class="token function">isContract</span><span class="token punctuation">(</span><span class="token builtin">address</span> addr<span class="token punctuation">)</span> <span class="token keyword">internal</span> <span class="token keyword">view</span> <span class="token keyword">returns</span> <span class="token punctuation">(</span><span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token builtin">uint32</span> size<span class="token punctuation">;</span>
+        <span class="token keyword">assembly</span> <span class="token punctuation">&#123;</span>
+            size <span class="token operator">:=</span> <span class="token function">extcodesize</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>size <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费">通过以上判断，就可以分辨出是否为添加和删除流动性操作，进而不对添加和删除流动性的操作收取手续费</h5>
 
 
@@ -485,12 +521,12 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/en/How to develop ERC20 token faucet/" data-toggle="tooltip" data-placement="top" title="How to develop ERC20 token faucet">&larr; Previous Post</a>
+            <a href="/en/How to develop ERC20 token faucet/" data-toggle="tooltip" data-placement="top" title="How to Develop ERC20 Token Faucet">&larr; Previous Post</a>
           </li>
           
           
           <li class="next">
-            <a href="/en/[Smart contract]How to develop an NFT trading platform/" data-toggle="tooltip" data-placement="top" title="Smart contract | How to develop an NFT trading platform">Next Post &rarr;</a>
+            <a href="/en/[Smart contract]How to develop an NFT trading platform/" data-toggle="tooltip" data-placement="top" title="Smart Contract | How to Develop an NFT Trading Platform">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -539,7 +575,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=Smart contract | How to judge from and to addresses are operations of adding and removing liquidity&body=Hi,I found this website and thought you might like it http://yoursite-url/en/How to judge from and to addresses are operations of adding and removing liquidity/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Smart Contract | How to Judge From and to Addresses Are Operations of Adding and Removing Liquidity&body=Hi,I found this website and thought you might like it http://yoursite-url/en/How to judge from and to addresses are operations of adding and removing liquidity/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
