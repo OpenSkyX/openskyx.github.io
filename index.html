@@ -452,6 +452,47 @@
   <!-- top end -->
   
 
+  <a href="/en/Uniswap-V3-4/">
+    <h2 class="post-title">
+      Uniswap V3 详解（四）：Oracle 预言机
+    </h2>
+    <h3 class="post-subtitle">
+      ...
+    </h3>
+    <div class="post-content-preview">
+      Uniswap v3 的预言机
+Uniswap v3版本针对v2版本Oracle的痛点，进行了改进：
+
+
+合约中默认还是存储一个最近价格的时间积累，但是可以根据需要，扩展最近N个历史价格的时间积累值，最多支持65535个最近历史价格信息，这样第三方开发者不在需要自己实现合约
+存储历史信息
+
+
+Oracle中不光记录了价格信息，还记录了对应流动性的时间积累值，因为V3中相同交易对在不同费率时不......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Mr. Alex on
+    2023-08-23
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#Uniswap V3" title="Uniswap V3">Uniswap V3</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/en/Uniswap-V3-3/">
     <h2 class="post-title">
       Uniswap V3 详解（三）：交易过程
@@ -587,13 +628,14 @@ Installation
 
 安装foundry
 
-安装foundry：官方文档
+官方文档
+中文文档
 
 Windows 安装foundry
 git clone https://github.com/foundry-rs/foundry.git
 cd foundry
 # install Forge + Cast
-cargo install --path .......
+cargo install --path ./crat......
     </div>
   </a>
   
@@ -808,49 +850,6 @@ pragma solidity ^0.8.0;......
 </div>
 <hr>
 
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/en/[Smart contract]How to build a multi-project donation platform/">
-    <h2 class="post-title">
-      Smart Contract | How to Build a Multi-Project Donation Platform
-    </h2>
-    <h3 class="post-subtitle">
-      智能合约 | 如何做一个多项目捐款平台
-    </h3>
-    <div class="post-content-preview">
-      快速开始
- 项目介绍，管理员创建项目，由捐款人进行捐款ETH，捐款后自动获得捐款证明的NFT凭证，用于接收后期的项目分红。
-
-创建 WaterDrop Demo
-mkdir WaterDrop 
-cd WaterDrop
-npm init  #默认生成 package.json
-使用yarn命令安装hardhat项目包
-yarn add hardhat
-安装openzeppelin依赖
-ya......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Mr. Alex on
-    2023-08-04
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#Web3-Develop" title="Web3-Develop">Web3-Develop</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
 
   <!-- Pager -->
   <ul class="pager">
@@ -971,6 +970,10 @@ ya......
 <div class="widget">
   <ul>
     
+    <a href="en/Uniswap-V3-4/">
+      <li>Uniswap V3 详解（四）：Oracle 预言机</li>
+    </a>
+    
     <a href="en/Uniswap-V3-3/">
       <li>Uniswap V3 详解（三）：交易过程</li>
     </a>
@@ -985,10 +988,6 @@ ya......
     
     <a href="en/use%20doundry%20forge%20to%20build%20smart%20contract%20test%20case/">
       <li>Use Foundry Forge to Build Smart Contract Test Case</li>
-    </a>
-    
-    <a href="en/How%20to%20gradually%20release%20tokens/">
-      <li>How to Gradually Release Tokens</li>
     </a>
     
   </ul>
@@ -1011,7 +1010,7 @@ ya......
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/08/">August 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/07/">July 2023</a><span class="archive-list-count">2</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/08/">August 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/07/">July 2023</a><span class="archive-list-count">2</span></li></ul>
 </div>
 
 
