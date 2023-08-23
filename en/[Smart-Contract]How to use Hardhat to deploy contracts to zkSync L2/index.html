@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              CATEGORIES
+              TAGS
               
               
             </a>
@@ -280,9 +280,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              TAGS
+              CATEGORIES
               
               
             </a>
@@ -404,7 +404,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">815</span> In Total
+              Words <span class="post-count">817</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -466,27 +466,47 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h4 id="本次教程将向你展示如何将智能合约部署到zkSync，并使用ZkSync开发工具构建与其交互的dApp"><a href="#本次教程将向你展示如何将智能合约部署到zkSync，并使用ZkSync开发工具构建与其交互的dApp" class="headerlink" title="本次教程将向你展示如何将智能合约部署到zkSync，并使用ZkSync开发工具构建与其交互的dApp."></a>本次教程将向你展示如何将智能合约部署到zkSync，并使用ZkSync开发工具构建与其交互的dApp.</h4><h4 id="这就是我们要做的："><a href="#这就是我们要做的：" class="headerlink" title="这就是我们要做的："></a>这就是我们要做的：</h4><ul>
-<li><p>在ZkSync Era测试网上构建、部署和验证存储问候消息的智能合约。</p>
+        <h2 id="快速开始">快速开始</h2>
+<h4 id="本次教程将向你展示如何将智能合约部署到zkSync，并使用ZkSync开发工具构建与其交互的dApp">本次教程将向你展示如何将智能合约部署到zkSync，并使用ZkSync开发工具构建与其交互的dApp.</h4>
+<h4 id="这就是我们要做的：">这就是我们要做的：</h4>
+<ul>
+<li>
+<p>在ZkSync Era测试网上构建、部署和验证存储问候消息的智能合约。</p>
 </li>
-<li><p>构建一个检索和更新问候消息的 dApp。</p>
+<li>
+<p>构建一个检索和更新问候消息的 dApp。</p>
 </li>
-<li><p>允许用户通过应用程序更改智能合约上的问候语。</p>
+<li>
+<p>允许用户通过应用程序更改智能合约上的问候语。</p>
 </li>
-<li><p>向您展示如何实现测试网 Paymaster，允许用户使用 ERC20 代币而不是 ETH 支付交易费用。</p>
+<li>
+<p>向您展示如何实现测试网 Paymaster，允许用户使用 ERC20 代币而不是 ETH 支付交易费用。</p>
 </li>
 </ul>
-<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul>
-<li><p>L1 上有足够 Göerli 的钱包，ETH用于支付 zkSync 的过渡资金和部署智能合约。</p>
+<h2 id="先决条件">先决条件</h2>
+<ul>
+<li>
+<p>L1 上有足够 Göerli 的钱包，ETH用于支付 zkSync 的过渡资金和部署智能合约。</p>
 </li>
-<li><p>测试网付款人需要 zkSync 上的 ERC20 代币。我们建议使用zkSync 门户中的水龙头。</p>
+<li>
+<p>测试网付款人需要 zkSync 上的 ERC20 代币。我们建议使用zkSync 门户中的水龙头。</p>
 </li>
 </ul>
-<h2 id="构建并部署Greeter合约"><a href="#构建并部署Greeter合约" class="headerlink" title="构建并部署Greeter合约"></a>构建并部署Greeter合约</h2><h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><h4 id="1：安装zkSync-CLI："><a href="#1：安装zkSync-CLI：" class="headerlink" title="1：安装zkSync CLI："></a>1：安装zkSync CLI：</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> zksync-cli@latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="2-通过运行以下命令搭建一个新项目："><a href="#2-通过运行以下命令搭建一个新项目：" class="headerlink" title="2: 通过运行以下命令搭建一个新项目："></a>2: 通过运行以下命令搭建一个新项目：</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zksync-cli create greeter-example<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h6 id="这将创建一个新的-zkSync-Era-项目，该项目greeter-example包含基本Greeter合约以及所有-zkSync-插件和配置。"><a href="#这将创建一个新的-zkSync-Era-项目，该项目greeter-example包含基本Greeter合约以及所有-zkSync-插件和配置。" class="headerlink" title="这将创建一个新的 zkSync Era 项目，该项目greeter-example包含基本Greeter合约以及所有 zkSync 插件和配置。"></a>这将创建一个新的 zkSync Era 项目，该项目greeter-example包含基本Greeter合约以及所有 zkSync 插件和配置。</h6><h4 id="3-导航到项目目录："><a href="#3-导航到项目目录：" class="headerlink" title="3: 导航到项目目录："></a>3: 导航到项目目录：</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> greeter-example<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="4-要配置您的私钥，请复制-env-example文件，将副本重命名为-env，然后添加您的钱包私钥。"><a href="#4-要配置您的私钥，请复制-env-example文件，将副本重命名为-env，然后添加您的钱包私钥。" class="headerlink" title="4:要配置您的私钥，请复制.env.example文件，将副本重命名为.env，然后添加您的钱包私钥。"></a>4:要配置您的私钥，请复制.env.example文件，将副本重命名为.env，然后添加您的钱包私钥。</h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">WALLET_PRIVATE_KEY=0xabcdef12345....<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="编译并部署-Greeter-合约"><a href="#编译并部署-Greeter-合约" class="headerlink" title="编译并部署 Greeter 合约"></a>编译并部署 Greeter 合约</h3><h4 id="我们将所有智能合约的-sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。"><a href="#我们将所有智能合约的-sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。" class="headerlink" title="我们将所有智能合约的*.sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。"></a>我们将所有智能合约的*.sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。</h4><h4 id="1-包含的contracts-Greeter-sol合同有以下代码："><a href="#1-包含的contracts-Greeter-sol合同有以下代码：" class="headerlink" title="1:包含的contracts/Greeter.sol合同有以下代码："></a>1:包含的contracts/Greeter.sol合同有以下代码：</h4><pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">//SPDX-License-Identifier: Unlicense</span>
+<h2 id="构建并部署Greeter合约">构建并部署Greeter合约</h2>
+<h3 id="初始化项目">初始化项目</h3>
+<h4 id="1：安装zkSync-CLI：">1：安装zkSync CLI：</h4>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> zksync-cli@latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="2-通过运行以下命令搭建一个新项目：">2: 通过运行以下命令搭建一个新项目：</h4>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zksync-cli create greeter-example<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h6 id="这将创建一个新的-zkSync-Era-项目，该项目greeter-example包含基本Greeter合约以及所有-zkSync-插件和配置。">这将创建一个新的 zkSync Era 项目，该项目greeter-example包含基本Greeter合约以及所有 zkSync 插件和配置。</h6>
+<h4 id="3-导航到项目目录：">3: 导航到项目目录：</h4>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> greeter-example<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="4-要配置您的私钥，请复制-env-example文件，将副本重命名为-env，然后添加您的钱包私钥。">4:要配置您的私钥，请复制.env.example文件，将副本重命名为.env，然后添加您的钱包私钥。</h4>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">WALLET_PRIVATE_KEY=0xabcdef12345....<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="编译并部署-Greeter-合约">编译并部署 Greeter 合约</h3>
+<h4 id="我们将所有智能合约的-sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。">我们将所有智能合约的*.sol文件存储在该contracts文件夹中。该deploy文件夹包含与部署相关的所有脚本。</h4>
+<h4 id="1-包含的contracts-Greeter-sol合同有以下代码：">1:包含的contracts/Greeter.sol合同有以下代码：</h4>
+<pre class="line-numbers language-solidity" data-language="solidity"><code class="language-solidity"><span class="token comment">//SPDX-License-Identifier: Unlicense</span>
 <span class="token keyword">pragma</span> <span class="token keyword">solidity</span> <span class="token operator">^</span><span class="token version number">0.8.8</span><span class="token punctuation">;</span>
 
 <span class="token keyword">contract</span> <span class="token class-name">Greeter</span> <span class="token punctuation">&#123;</span>
@@ -505,8 +525,10 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="2-使用以下命令编译合约："><a href="#2-使用以下命令编译合约：" class="headerlink" title="2:使用以下命令编译合约："></a>2:使用以下命令编译合约：</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> hardhat compile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="3：zkSync-CLI还提供了一个部署脚本-deploy-deploy-greeter-ts"><a href="#3：zkSync-CLI还提供了一个部署脚本-deploy-deploy-greeter-ts" class="headerlink" title="3：zkSync -CLI还提供了一个部署脚本/deploy/deploy-greeter.ts"></a>3：zkSync -CLI还提供了一个部署脚本/deploy/deploy-greeter.ts</h4><pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Wallet<span class="token punctuation">,</span> utils <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"zksync-web3"</span><span class="token punctuation">;</span>
+<h4 id="2-使用以下命令编译合约：">2:使用以下命令编译合约：</h4>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> hardhat compile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="3：zkSync-CLI还提供了一个部署脚本-deploy-deploy-greeter-ts">3：zkSync -CLI还提供了一个部署脚本/deploy/deploy-greeter.ts</h4>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Wallet<span class="token punctuation">,</span> utils <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"zksync-web3"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> ethers <span class="token keyword">from</span> <span class="token string">"ethers"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> HardhatRuntimeEnvironment <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"hardhat/types"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Deployer <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"@matterlabs/hardhat-zksync-deploy"</span><span class="token punctuation">;</span>
@@ -575,7 +597,8 @@ dotenv<span class="token punctuation">.</span><span class="token function">confi
     <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Contract not verified, deployed locally.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="4：使用以下命令运行部署脚本："><a href="#4：使用以下命令运行部署脚本：" class="headerlink" title="4：使用以下命令运行部署脚本："></a>4：使用以下命令运行部署脚本：</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> hardhat deploy-zksync <span class="token parameter variable">--script</span> deploy-greeter.ts <span class="token parameter variable">--network</span> zkSyncTestnet<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="4：使用以下命令运行部署脚本：">4：使用以下命令运行部署脚本：</h4>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> hardhat deploy-zksync <span class="token parameter variable">--script</span> deploy-greeter.ts <span class="token parameter variable">--network</span> zkSyncTestnet<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
         <hr>
