@@ -50,8 +50,8 @@
   --tag_cloud-color: #fff;
   --tag_cloud-color-hovor: white;
   /* img */
-  --img-shadow-color: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-  --img-about-shadow-color: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+/*  --img-shadow-color: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+  --img-about-shadow-color: 5px 5px 10px 5px rgba(0, 0, 0, .5);*/
   /* viewer */
   --viewer-background-color: rgba(0, 0, 0, .5);
   /* toggle-button */
@@ -120,8 +120,8 @@
   --tag_cloud-color: rgba(255, 255, 255, 0.8);
   --tag_cloud-color-hovor: white;
   /* img */
-  --img-shadow-color: 1px 1px 10px 5px rgba(255, 255, 255, .5);
-  --img-about-shadow-color: 1px 1px 10px 5px rgba(255, 255, 255, .5);
+/*  --img-shadow-color: 1px 1px 10px 5px rgba(255, 255, 255, .5);
+  --img-about-shadow-color: 1px 1px 10px 5px rgba(255, 255, 255, .5);*/
   /* viewer */
   --viewer-background-color: rgba(158, 158, 158, 0.3);
   /* toggle-button */
