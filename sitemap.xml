@@ -164,6 +164,15 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/en/Hardhat-zksync-deploy/</loc>
+    
+    <lastmod>2022-08-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/en/Uniswap-V1/</loc>
     
     <lastmod>2022-08-21</lastmod>
@@ -193,7 +202,7 @@
 
   <url>
     <loc>http://yoursite-url/</loc>
-    <lastmod>2023-09-05</lastmod>
+    <lastmod>2023-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -201,28 +210,35 @@
   
   <url>
     <loc>http://yoursite-url/tags/Document/</loc>
-    <lastmod>2023-09-05</lastmod>
+    <lastmod>2023-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/ZkSync-Era/</loc>
+    <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/Uniswap-V1/</loc>
-    <lastmod>2023-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/Web3-Develop/</loc>
-    <lastmod>2023-09-05</lastmod>
+    <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/Uniswap-V3/</loc>
-    <lastmod>2023-09-05</lastmod>
+    <lastmod>2023-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/Web3-Develop/</loc>
+    <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -231,14 +247,21 @@
   
   <url>
     <loc>http://yoursite-url/categories/Solidity/</loc>
-    <lastmod>2023-09-05</lastmod>
+    <lastmod>2023-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/categories/ZkSync-Era/</loc>
+    <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/categories/Web3-Develop/</loc>
-    <lastmod>2023-09-05</lastmod>
+    <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
