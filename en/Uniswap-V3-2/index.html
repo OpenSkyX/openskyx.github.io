@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxx-xx"></script>
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-xxxxxx-xx');
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an web3 blog..."/>
+  <meta name="keyword" content="web3,blockchain,smart contract,solidity"/>
+  <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+      <!-- gitalk start -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
+      <link rel="stylesheet" href="/css/gitalk.css"/>
+      <!-- gitalk end -->
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/en/Uniswap-V3-2/">
+  <title>
+    
+      Uniswap V3 详解（二）：创建交易对/提供流动性 - Live My Life
+    
+  </title>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Live My Life</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">HOME</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              ABOUT
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              CATEGORIES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              ARCHIVES
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              TAGS
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>SEARCH</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+      
+    }
+
+    
+      #signature {/*signature*/
+        background-image: url('/img/signature/vincent-white.png');
+      }
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#Uniswap V3" title="Uniswap V3">Uniswap V3</a>
+              
+            </div>
+            <h1>Uniswap V3 详解（二）：创建交易对/提供流动性</h1>
+            <h2 class="subheading">...</h2>
+            <span class="meta">
+              Posted by Mr. Alex on
+              2023-08-22
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">22</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">5.1k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <blockquote>
+<p>前文已经说过<a target="_blank" rel="noopener" href="https://openskyx.github.io/en/Uniswap-V3-1/">Uniswap V3代码结构</a>，一般来说，用户的操作都是从 <a target="_blank" rel="noopener" href="https://github.com/Uniswap/v3-periphery">uniswap-v3-periphery</a><br>中的合约开始</p>
+</blockquote>
+<h2 id="创建交易对"><a href="#创建交易对" class="headerlink" title="创建交易对"></a>创建交易对</h2><p>创建交易对的调佣流程如下：</p>
+<p><img src="source/_posts/en/Uniswap-V3-3/img_1.png" alt="img.png"></p>
+<p>用户首先调用<code>NonfungoblePositionManager</code> 合约的<code>createAndInitializePoolIfNecessary</code> 方法创建交易对，传入的参数为交易对的<code>token0 token1 fee</code> 和初始价格。</p>
+<p><code>NonfungoblePositionManager</code> 合约内部通过调用 <code>UniswapFactory</code>的<code>createPool</code> 方法完成交易对的创建，然后对交易对进行初始化，初始化的作用就是给交易对设置一个初始的价格。</p>
+<p><code>createAndInitializePoolNecessary</code>方法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function createAndInitializePoolIfNecessary(<br>    address tokenA,<br>    address tokenB,<br>    uint24 fee,<br>    uint160 sqrtPriceX96<br>) external payable returns (address pool) &#123;<br>    // UniswapV3Factory 查询当前交易对是否存在<br>    pool = IUniswapV3Factory(factory).getPool(tokenA, tokenB, fee);<br><br>    if (pool == address(0)) &#123;<br>        //交易对不存，则创建交易对，并初始化交易对价格<br>        pool = IUniswapV3Factory(factory).createPool(tokenA, tokenB, fee);<br>        IUniswapV3Pool(pool).initialize(sqrtPriceX96);<br>    &#125; else &#123;<br>        //交易对已存在但价格为0，则初始化价格<br>        (uint160 sqrtPriceX96Existing, , , , , , ) = IUniswapV3Pool(pool).slot0();<br>        if (sqrtPriceX96Existing == 0) &#123;<br>            IUniswapV3Pool(pool).initialize(sqrtPriceX96);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>首先调用<code>UniswapV3Factory.getPool</code>方法查看交易对是否已经创建， <code>getPool</code> 函数Solidity自动为 <code>UniswapV3Factory</code>合约中的状态变量 <code>getPool</code> 生成的外部函数，<code>getPool</code> 的数据数据格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs solidity">contract UniswapV3Factory is IUniswapV3Factory, UniswapV3PoolDeployer, NoDelegateCall &#123;<br>    mapping(address =&gt; mapping(address =&gt; mapping(uint24 =&gt; address))) public override getPool;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用了3个map说明了V3版本使用<code>(tokenA,tokenB,fee)</code> 来作为一个交易对的键，即相同代币，不同费率之间的流动性池不一样，另外对于给定的 <code>tokenA</code> 和 <code>tokenB</code><br>,会先将其地址排序，将地址值更小的放在前面，这样方便后续交易池的查询和计算。</p>
+<p>再来看看 <code>UniswapV3Factory</code> 创建交易对的过程，实际上它是调用 <code>deploy</code> 函数完成交易对的创建：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function deploy(<br>    address factory,<br>    address token0,<br>    address token1,<br>    uint24 fee,<br>    int24 tickSpacing<br>) internal returns (address pool) &#123;<br>    parameters = Parameters(&#123;factory: factory, token0: token0, token1: token1, fee: fee, tickSpacing: tickSpacing&#125;);<br>    pool = address(new UniswapV3Pool&#123;salt: keccak256(abi.encode(token0, token1, fee))&#125;());<br>    delete parameters;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里的<code>fee</code>和<code>tickSpacing</code>是和费率即价格最小间隔相关的设置，这里只关注创建过程，费率和tick的实现后面再来做介绍。</p>
+<h3 id="CREATE2"><a href="#CREATE2" class="headerlink" title="CREATE2"></a>CREATE2</h3><p>创建交易对，就是创建一个新的合约，作为流动性池来提供交易功能。创建合约的步骤是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">pool = address(new UniswapV3Pool&#123;salt: keccak256(abi.encode(token0, token1, fee))&#125;());<br></code></pre></td></tr></table></figure>
+<p>这里先通过<code>keccak256(abi.encode(token0, token1, fee)</code>将<code>token0, token1, fee</code>作为输入，得到一个哈希值，并将其作为 <code>salt</code> 来创建合约，因为指定了<br><code>salt</code>，Solidity会使用EVM的<code>CREATE2</code>指令来创建合约，使用<code>CREATE2</code>指令的好处是，只要合约的<code>bytecode</code>及<code>salt</code>不变，那么创建出来的地址也将不变。</p>
+<p>关于使用<code>salt</code>创建合约的解释：<a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/latest/control-structures.html#salted-contract-creations-create2">Salted contract creations / create2</a></p>
+<p>使用CREATE2的好处是：</p>
+<ul>
+<li>可以在链下计算出已经创建的交易池的地址</li>
+<li>其他合约不必通过UniswapV3Factory 中的接口来查询交易池的地址，可以节省gas</li>
+<li>合约地址不会因为reorg而改变</li>
+</ul>
+<p>不需要通过 <code>UniswapV3Factory</code> 的接口来计算交易池合约地址的方法，可以看<a target="_blank" rel="noopener" href="https://github.com/Uniswap/uniswap-v3-periphery/blob/3514c56ccf84a2d32b623004e7c119494ac729cc/contracts/libraries/PoolAddress.sol#L15-L38">这段代码</a></p>
+<p>新交易对合约的构造函数中会反向查询<code>UniswapV3Factory</code> 中的<code>parameters</code> 值来进行初始变量的复制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs solidity">constructor() &#123;<br>    int24 _tickSpacing;<br>    (factory, token0, token1, fee, _tickSpacing) = IUniswapV3PoolDeployer(msg.sender).parameters();<br>    tickSpacing = _tickSpacing;<br><br>    maxLiquidityPerTick = Tick.tickSpacingToMaxLiquidityPerTick(_tickSpacing);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>为什么不直接使用参数传递来对新合约的状态变量赋值呢，这是因为<code>CRAETE2</code>会将合约<code>initcode</code>和<code>salt</code>一起用来计算创建出的合约地址，而<code>initcode</code>是包含<code>constructor</code> code<br>和其参数的，如果合约的<code>constructor</code> 函数包含的参数，那么其<code>initcode</code> 将因为其传入参数不同而不同，在off-chain计算合约地址时，也需要通过这些参数来查询对应的<code>initcode</code><br>。为了让合约地址的计算更简单，这里的<code>constructor</code>不包含参数（这样合约的<code>initcode</code>将是唯一的），而使用动态call的方式来获取其创建参数。</p>
+<p>最后，对创建的交易对合约进行初始化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function initialize(uint160 sqrtPriceX96) external override &#123;<br>    require(slot0.sqrtPriceX96 == 0, &#x27;AI&#x27;);<br><br>    int24 tick = TickMath.getTickAtSqrtRatio(sqrtPriceX96);<br><br>    (uint16 cardinality, uint16 cardinalityNext) = observations.initialize(_blockTimestamp());<br><br>    slot0 = Slot0(&#123;<br>        sqrtPriceX96: sqrtPriceX96,<br>        tick: tick,<br>        observationIndex: 0,<br>        observationCardinality: cardinality,<br>        observationCardinalityNext: cardinalityNext,<br>        feeProtocol: 0,<br>        unlocked: true<br>    &#125;);<br><br>    emit Initialize(sqrtPriceX96, tick);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>初始化主要是设置了交易池的初始价格（注意，此时池子中还没有流动性），以及费率，tick等相关变量的初始化。完成之后一个交易池就创建好了。</p>
+<h2 id="提供流动性"><a href="#提供流动性" class="headerlink" title="提供流动性"></a>提供流动性</h2><p>在合约内，V3会保存所有用户的流动性，代码内称作<code>Position</code> ，提供流动性的调用流程如下：</p>
+<p><img src="source/_posts/en/Uniswap-V3-3/img_2.png" alt="img.png"></p>
+<p>用户还是首先和<code>NonfungiblePositionManager</code> 合约交互。V3这次将LP token改成了ERC721 token，并且将token功能放在<code>NonfungiblePositionManager</code>合约中<br>。这个合约替用户完成提供流动性的操作，然后根据流动性的数据元记录下来，并给合约铸造一个NFT token。</p>
+<p>省略部分非相关步骤，我们先来看看添加流动性的函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs solidity">struct AddLiquidityParams &#123;<br>    address token0;     // token0 的地址<br>    address token1;     // token1 的地址<br>    uint24 fee;         // 交易费率<br>    address recipient;  // 流动性的所属人地址<br>    int24 tickLower;    // 流动性的价格下限（以 token0 计价），这里传入的是 tick index<br>    int24 tickUpper;    // 流动性的价格上线（以 token0 计价），这里传入的是 tick index<br>    uint128 amount;     // 流动性 L 的值<br>    uint256 amount0Max; // 提供的 token0 上限数<br>    uint256 amount1Max; // 提供的 token1 上限数<br>&#125;<br><br>function addLiquidity(AddLiquidityParams memory params)<br>    internal<br>    returns (<br>        uint256 amount0,<br>        uint256 amount1,<br>        IUniswapV3Pool pool<br>    )<br>&#123;<br>    PoolAddress.PoolKey memory poolKey =<br>        PoolAddress.PoolKey(&#123;token0: params.token0, token1: params.token1, fee: params.fee&#125;);<br><br>    // 这里不需要访问 factory 合约，可以通过 token0, token1, fee 三个参数计算出 pool 的合约地址<br>    pool = IUniswapV3Pool(PoolAddress.computeAddress(factory, poolKey));<br><br>    (amount0, amount1) = pool.mint(<br>        params.recipient,<br>        params.tickLower,<br>        params.tickUpper,<br>        params.amount,<br>        // 这里是 pool 合约回调所使用的参数<br>        abi.encode(MintCallbackData(&#123;poolKey: poolKey, payer: msg.sender&#125;))<br>    );<br><br>    require(amount0 &lt;= params.amount0Max);<br>    require(amount1 &lt;= params.amount1Max);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里有几点值得注意：</p>
+<ul>
+<li>传入的lower/upper 价格是一tick index来表示的，因此需要在链下计算好价格所对应的tick index</li>
+<li>传入的是流动性 <strong><em>L</em></strong> 的大小，这个也需要在链下先计算好，计算过程见<a href="">下面</a></li>
+<li>我们不需要访问<code>factory</code>就可以计算出pool的地址，实现原理见<a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/latest/control-structures.html#salted-contract-creations-create2">CREATE2</a></li>
+<li>这里有个回调函数的参数，V3使用回调函数来完成进行流动性token的支付操作，原因见下面</li>
+</ul>
+<h3 id="从token数计算流动性-L"><a href="#从token数计算流动性-L" class="headerlink" title="从token数计算流动性 L"></a>从token数计算流动性 <strong><em>L</em></strong></h3><p>假设用户提供流动性的价格范围是： <em>[$ P_a,P_b $] ($ P_a&lt;P_b $)</em> 代币池中的当前价格为  <em>$ P_c $</em> ,可以分成三种情况来计算流动性 <strong><em>L</em></strong> 的值：</p>
+<ul>
+<li>当前池中的价格 $P_c &lt; P_a$,如下图：</li>
+</ul>
+<p><img src="img_3.png" alt="img.png"></p>
+<p>此时添加的流动性全部为 <em>x</em> token，计算 <strong><em>L</em></strong> ：</p>
+<p><img src="img_4.png" alt="img.png"></p>
+<ul>
+<li>当前流动池中的价格 <strong><em>$ P_c &gt; P_b $</em></strong></li>
+</ul>
+<p><img src="img_5.png" alt="img.png"></p>
+<p>此时添加的流动性全部为 <em>y</em> token ，计算<strong><em>L</em></strong> ：</p>
+<p><img src="img_6.png" alt="img.png"></p>
+<p>当前池子中的价格 <strong><em>$ Pc∈[Pa,Pb] $</em></strong> ，如下图</p>
+<p><img src="img_7.png" alt="img.png"></p>
+<p>此时添加的流动性包含两个币种，可以通过任意一个 token 数量计算出 <em><strong>L</strong></em> :</p>
+<p><img src="img_8.png" alt="img.png"></p>
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>使用回调函数原因是，将<code>Position</code>的流动性的owner和实际流动性token支付者解耦。这样可以让中间合约来管理用户的流动性，并将流动性token化。关于token化，Uniswap V3默认实现了ERC721 token<br>(因为即使是同一个池子，流动性之间的差异也会很大)。</p>
+<p>例如，当用户通过 <code>NonfungiblePositionManager</code> 来提供流动性时，对于 <code>UniswapPool</code> 合约来说，这个<code>Position</code> 的owner是 <code>NonfungiblePositionManager</code> ,而<code>NonfungiblePositionManager</code><br>再通过NFT token将<code>Position</code> 与用户关联起来，这样用户就可以将LP token进行转账或者抵押类操作。</p>
+<p>在 <code>NonfungiblePositionManager</code> 中回调函数的实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs solidity">struct MintCallbackData &#123;<br>    PoolAddress.PoolKey poolKey;<br>    address payer;         // 支付 token 的地址<br>&#125;<br><br>/// @inheritdoc IUniswapV3MintCallback<br>function uniswapV3MintCallback(<br>    uint256 amount0Owed,<br>    uint256 amount1Owed,<br>    bytes calldata data<br>) external override &#123;<br>    MintCallbackData memory decoded = abi.decode(data, (MintCallbackData));<br>    CallbackValidation.verifyCallback(factory, decoded.poolKey);<br><br>    // 根据传入的参数，使用 transferFrom 代用户向 Pool 中支付 token<br>    if (amount0Owed &gt; 0) pay(decoded.poolKey.token0, decoded.payer, msg.sender, amount0Owed);<br>    if (amount1Owed &gt; 0) pay(decoded.poolKey.token1, decoded.payer, msg.sender, amount1Owed);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="position-更新"><a href="#position-更新" class="headerlink" title="position 更新"></a>position 更新</h3><p>接着我们看 <code>UniswapV3Pool</code> 是如何添加流动性的，流动性添加主要在 <code>UniswapV3Pool._modifyPosition</code>中，这个函数会先调用 <code>_updatePosition</code>来创建或者修改一个用户的<code>Position</code><br>,省略其中的非关键步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function _updatePosition(<br>    address owner,<br>    int24 tickLower,<br>    int24 tickUpper,<br>    int128 liquidityDelta,<br>    int24 tick<br>) private returns (Position.Info storage position) &#123;<br>    // 获取用户的 Postion<br>    position = positions.get(owner, tickLower, tickUpper);<br>    ...<br><br>    // 根据传入的参数修改 Position 对应的 lower/upper tick 中<br>    // 的数据，这里可以是增加流动性，也可以是移出流动性<br>    bool flippedLower;<br>    bool flippedUpper;<br>    if (liquidityDelta != 0) &#123;<br>        uint32 blockTimestamp = _blockTimestamp();<br><br>        // 更新 lower tikc 和 upper tick<br>        // fippedX 变量表示是此 tick 的引用状态是否发生变化，即<br>        // 被引用 -&gt; 未被引用 或<br>        // 未被引用 -&gt; 被引用<br>        // 后续需要根据这个变量的值来更新 tick 位图<br>        flippedLower = ticks.update(<br>            tickLower,<br>            tick,<br>            liquidityDelta,<br>            _feeGrowthGlobal0X128,<br>            _feeGrowthGlobal1X128,<br>            false,<br>            maxLiquidityPerTick<br>        );<br>        flippedUpper = ticks.update(<br>            tickUpper,<br>            tick,<br>            liquidityDelta,<br>            _feeGrowthGlobal0X128,<br>            _feeGrowthGlobal1X128,<br>            true,<br>            maxLiquidityPerTick<br>        );<br><br>        // 如果一个 tick 第一次被引用，或者移除了所有引用<br>        // 那么更新 tick 位图<br>        if (flippedLower) &#123;<br>            tickBitmap.flipTick(tickLower, tickSpacing);<br>            secondsOutside.initialize(tickLower, tick, tickSpacing, blockTimestamp);<br>        &#125;<br>        if (flippedUpper) &#123;<br>            tickBitmap.flipTick(tickUpper, tickSpacing);<br>            secondsOutside.initialize(tickUpper, tick, tickSpacing, blockTimestamp);<br>        &#125;<br>    &#125;<br>    ...<br>    // 更新 position 中的数据<br>    position.update(liquidityDelta, feeGrowthInside0X128, feeGrowthInside1X128);<br><br>    // 如果移除了对 tick 的引用，那么清除之前记录的元数据<br>    // 这只会发生在移除流动性的操作中<br>    if (liquidityDelta &lt; 0) &#123;<br>        if (flippedLower) &#123;<br>            ticks.clear(tickLower);<br>            secondsOutside.clear(tickLower, tickSpacing);<br>        &#125;<br>        if (flippedUpper) &#123;<br>            ticks.clear(tickUpper);<br>            secondsOutside.clear(tickUpper, tickSpacing);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>先忽略费率相关的操作，这个函数所做的操作室：</p>
+<ul>
+<li>添加/移出流动性时，先更新这个Position对应的lower/upper tick中记录的元数据</li>
+<li>更新Position</li>
+<li>根据需要更新tick位图</li>
+</ul>
+<p>Position是以 <code>owner,lower tick,upper tick</code>作为键来存储的，注意这里的owner实际上是<code>NonfungiblePositionManager</code>合约的地址，这样多个用户在同一个区间提供流动性时<br>，在底层的<code>UniswapPool</code> 合约中会将他们合并存储，而在<code>NonfungiblePositionManager</code>合约中会按用户来区别每个用户拥有的<code>Position</code></p>
+<p>Position 中包含的字段中，除去费率相关的字段，只有一个，即流动性 <em><strong>L</strong></em> ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs solidity">library Position &#123;<br>    // info stored for each user&#x27;s position<br>    struct Info &#123;<br>        // 此 position 中包含的流动性大小，即 L 值<br>        uint128 liquidity;<br>        ...<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>更新Position只需要一行调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">position.update(liquidityDelta, feeGrowthInside0X128, feeGrowthInside1X128);<br></code></pre></td></tr></table></figure>
+<h3 id="tick-管理"><a href="#tick-管理" class="headerlink" title="tick 管理"></a>tick 管理</h3><p>我们再来看tick相关的管理，在<code>UniswapV3Pool</code>合约中有两个状态变量记录了tick相关信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs solidity">    // tick 元数据管理的库<br>    using Tick for mapping(int24 =&gt; Tick.Info);<br>    // tick 位图槽位的库<br>    using TickBitmap for mapping(int16 =&gt; uint256);<br><br>    // 记录了一个 tick 包含的元数据，这里只会包含所有 Position 的 lower/upper ticks<br>    mapping(int24 =&gt; Tick.Info) public override ticks;<br>    // tick 位图，因为这个位图比较长（一共有 887272x2 个位），大部分的位不需要初始化<br>    // 因此分成两级来管理，每 256 位为一个单位，一个单位称为一个 word<br>    // map 中的键是 word 的索引<br>    mapping(int16 =&gt; uint256) public override tickBitmap;<br><br>library Tick &#123;<br>    ...<br>    // tick 中记录的数据<br>    struct Info &#123;<br>        // 记录了所有引用这个 tick 的 position 流动性的和<br>        uint128 liquidityGross;<br>        // 当此 tick 被越过时（从左至右），池子中整体流动性需要变化的值<br>        int128 liquidityNet;<br>        ...<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>tick中和流动性相关的字段有两个 <code>liquidityGross,liquidityNet</code>.</p>
+<p><code>liquidityNet</code> 表示当前价格从左至右经过此tick时，整体流动性需要变化的净值，在单个流动性中，对于lower tick来说，它的值为正，对于upper tick来说，他的值为负。</p>
+<p>我们再来看看如何更新tick 元数据，以下是<code>tick.update</code>函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function update(<br>    mapping(int24 =&gt; Tick.Info) storage self,<br>    int24 tick,<br>    int24 tickCurrent,<br>    int128 liquidityDelta,<br>    uint256 feeGrowthGlobal0X128,<br>    uint256 feeGrowthGlobal1X128,<br>    bool upper,<br>    uint128 maxLiquidity<br>) internal returns (bool flipped) &#123;<br>    Tick.Info storage info = self[tick];<br><br>    uint128 liquidityGrossBefore = info.liquidityGross;<br>    uint128 liquidityGrossAfter = LiquidityMath.addDelta(liquidityGrossBefore, liquidityDelta);<br><br>    require(liquidityGrossAfter &lt;= maxLiquidity, &#x27;LO&#x27;);<br><br>    // 通过 liquidityGross 在进行 position 变化前后的值<br>    // 来判断 tick 是否仍被引用<br>    flipped = (liquidityGrossAfter == 0) != (liquidityGrossBefore == 0);<br><br>    ...<br><br>    info.liquidityGross = liquidityGrossAfter;<br><br>    // 更新 liquidityNet 的值，对于 upper tick，<br>    info.liquidityNet = upper<br>        ? int256(info.liquidityNet).sub(liquidityDelta).toInt128()<br>        : int256(info.liquidityNet).add(liquidityDelta).toInt128();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>此函数返回的flipped表示此tick的引用状态是否发生变化，之前的<code>_updatePosition</code>中的代码会根据这个返回值去更新tick位图。</p>
+<h3 id="tick-位图"><a href="#tick-位图" class="headerlink" title="tick 位图"></a>tick 位图</h3><p>tick位图用于记录所有被引用的 lower/upper tick index，我们可以用tick 位图，从当前价格找到下一个，被引用的tick index，关于tick位图的管理，在<code>_updatePositon</code>中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs solidity">if (flippedLower) &#123;<br>    tickBitmap.flipTick(tickLower, tickSpacing);<br>    secondsOutside.initialize(tickLower, tick, tickSpacing, blockTimestamp);<br>&#125;<br>if (flippedUpper) &#123;<br>    tickBitmap.flipTick(tickUpper, tickSpacing);<br>    secondsOutside.initialize(tickUpper, tick, tickSpacing, blockTimestamp);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里先不做进一步的说明，具体代码实现在<a target="_blank" rel="noopener" href="https://github.com/Uniswap/uniswap-v3-core/blob/2dc1eb9f251bad1c260d22dd392d8cedb2c6a4b5/contracts/libraries/TickBitmap.sol">TickBitmap 库</a> 。<br>tick位图有以下几个特性：</p>
+<ul>
+<li>对于不存在的tick，不需要初始值，因为访问map中 不存在的key默认值就是0</li>
+<li>通过对位图的每个word（unit256）建立索引来管理位图，即访问路径为 word index -&gt; word -&gt; tick bit</li>
+</ul>
+<h3 id="token-确认数"><a href="#token-确认数" class="headerlink" title="token 确认数"></a>token 确认数</h3><p><code>_modifyPostion</code> 函数在调用 <code>_updatePostion</code> 更新完Position后，会根据此次提供的流动性具体所需的 x token 和y token数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function _modifyPosition(ModifyPositionParams memory params)<br>    private<br>    noDelegateCall<br>    returns (<br>        Position.Info storage position,<br>        int256 amount0,<br>        int256 amount1<br>    )<br>&#123;<br>    ...<br>    Slot0 memory _slot0 = slot0; // SLOAD for gas optimization<br><br>    position = _updatePosition(<br>        ...<br>    );<br><br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里插入一个题外话，这一行代码：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs solidity">Slot0 memory _slot0 = slot0; // SLOAD for gas optimization<br></code></pre></td></tr></table></figure></p>
+<p>因为后续需要多次访问 slot0，这里将其读入内存中，后续的访问就可以使用 MLOAD 而不用使用 SLOAD，可以节省 gas（SLOAD 的成本比 MLOAD 高很多）。Uniswap v2 和 v3 大量使用了这个技巧。</p>
+<p>这个函数更新完Position之后，主要做的就是通过 <em><strong>L</strong></em> 和 <em><strong>$ \Delta\sqrt P$</strong></em> 计算出用户需要支付的token数量， 我们之前已经讲过 <a target="_blank" rel="noopener" href="https://openskyx.github.io/en/Uniswap-V3-1/">从token数计算流动性L</a> 的三种情况，这里其实就是之前计算的逆运算，<br>即通过 <em><strong>L</strong></em>  计算x token和 y token的数量，这里不再重复赘述其公式，具体代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function _modifyPosition(ModifyPositionParams memory params)<br>    private<br>    noDelegateCall<br>    returns (<br>        Position.Info storage position,<br>        int256 amount0,<br>        int256 amount1<br>    )<br>&#123;<br>    ...<br><br>    if (params.liquidityDelta != 0) &#123;<br>        // 计算三种情况下 amount0 和 amount1 的值，即 x token 和 y token 的数量<br>        if (_slot0.tick &lt; params.tickLower) &#123;<br>            amount0 = SqrtPriceMath.getAmount0Delta(<br>                // 计算 lower/upper tick 对应的价格<br>                TickMath.getSqrtRatioAtTick(params.tickLower),<br>                TickMath.getSqrtRatioAtTick(params.tickUpper),<br>                params.liquidityDelta<br>            );<br>        &#125; else if (_slot0.tick &lt; params.tickUpper) &#123;<br>            // current tick is inside the passed range<br>            uint128 liquidityBefore = liquidity; // SLOAD for gas optimization<br><br>            ...<br><br>            amount0 = SqrtPriceMath.getAmount0Delta(<br>                _slot0.sqrtPriceX96,<br>                TickMath.getSqrtRatioAtTick(params.tickUpper),<br>                params.liquidityDelta<br>            );<br>            amount1 = SqrtPriceMath.getAmount1Delta(<br>                TickMath.getSqrtRatioAtTick(params.tickLower),<br>                _slot0.sqrtPriceX96,<br>                params.liquidityDelta<br>            );<br><br>            liquidity = LiquidityMath.addDelta(liquidityBefore, params.liquidityDelta);<br>        &#125; else &#123;<br>            amount1 = SqrtPriceMath.getAmount1Delta(<br>                TickMath.getSqrtRatioAtTick(params.tickLower),<br>                TickMath.getSqrtRatioAtTick(params.tickUpper),<br>                params.liquidityDelta<br>            );<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>代码将计算的过程封装在了 <code>SqrtPriceMath</code> 库中 ，<code>getAmount0Delta</code> 和 <code>getAmount1Delta</code>分别对应公式 <strong><em>$ \Delta x = \Delta \frac {1}{\sqrt P} $</em></strong> 。</p>
+<p>在具体的计算过程中，又分成了RoundUp和RoundDown 两种情况，简单来说：</p>
+<ul>
+<li>当提供/增加流动性时，会使用RoundUp，这样可以保证增加数量为L的流动性时，用户提供足够的token到pool中</li>
+<li>当移除/减少流动性时，会使用RoundDown，这样可以保证减少数量为L的流动性时，不会从pool中给用户多余的token</li>
+</ul>
+<p>通过上述的两个条件可以保证pool在流动性增加/移出的操作中，不会出现坏账的情况，除了流动性操作之外，Swap操作也会使用类似机制，保证pool不会出现坏账。</p>
+<p>同时，Uniswap V3参考<a target="_blank" rel="noopener" href="https://xn--2-umb.com/21/muldiv/index.html">这里</a> 实现了一个精度较高的 <em><strong>$\frac {a·b}{c}$</strong></em> 的算法，封装在<code>FullMath</code>库中。</p>
+<h3 id="tick-index-gt-sqrt-P"><a href="#tick-index-gt-sqrt-P" class="headerlink" title="tick index -&gt; $\sqrt P$"></a>tick index -&gt; <strong><em>$\sqrt P$</em></strong></h3><p>上面的代码还使用了<code>TickMath</code> 库中的<code>getSqrtRatioAtTick</code> 来通过tick index计算其所对应的价格，实现为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function getSqrtRatioAtTick(int24 tick) internal pure returns (uint160 sqrtPriceX96) &#123;<br>    uint256 absTick = tick &lt; 0 ? uint256(-int256(tick)) : uint256(int256(tick));<br>    require(absTick &lt;= uint256(MAX_TICK), &#x27;T&#x27;);<br><br>    // 这些魔数分别表示 1/sqrt(1.0001)^1, 1/sqrt(1.0001)^2, 1/sqrt(1.0001)^4....<br>    uint256 ratio = absTick &amp; 0x1 != 0 ? 0xfffcb933bd6fad37aa2d162d1a594001 : 0x100000000000000000000000000000000;<br>    if (absTick &amp; 0x2 != 0) ratio = (ratio * 0xfff97272373d413259a46990580e213a) &gt;&gt; 128;<br>    if (absTick &amp; 0x4 != 0) ratio = (ratio * 0xfff2e50f5f656932ef12357cf3c7fdcc) &gt;&gt; 128;<br>    if (absTick &amp; 0x8 != 0) ratio = (ratio * 0xffe5caca7e10e4e61c3624eaa0941cd0) &gt;&gt; 128;<br>    if (absTick &amp; 0x10 != 0) ratio = (ratio * 0xffcb9843d60f6159c9db58835c926644) &gt;&gt; 128;<br>    if (absTick &amp; 0x20 != 0) ratio = (ratio * 0xff973b41fa98c081472e6896dfb254c0) &gt;&gt; 128;<br>    if (absTick &amp; 0x40 != 0) ratio = (ratio * 0xff2ea16466c96a3843ec78b326b52861) &gt;&gt; 128;<br>    if (absTick &amp; 0x80 != 0) ratio = (ratio * 0xfe5dee046a99a2a811c461f1969c3053) &gt;&gt; 128;<br>    if (absTick &amp; 0x100 != 0) ratio = (ratio * 0xfcbe86c7900a88aedcffc83b479aa3a4) &gt;&gt; 128;<br>    if (absTick &amp; 0x200 != 0) ratio = (ratio * 0xf987a7253ac413176f2b074cf7815e54) &gt;&gt; 128;<br>    if (absTick &amp; 0x400 != 0) ratio = (ratio * 0xf3392b0822b70005940c7a398e4b70f3) &gt;&gt; 128;<br>    if (absTick &amp; 0x800 != 0) ratio = (ratio * 0xe7159475a2c29b7443b29c7fa6e889d9) &gt;&gt; 128;<br>    if (absTick &amp; 0x1000 != 0) ratio = (ratio * 0xd097f3bdfd2022b8845ad8f792aa5825) &gt;&gt; 128;<br>    if (absTick &amp; 0x2000 != 0) ratio = (ratio * 0xa9f746462d870fdf8a65dc1f90e061e5) &gt;&gt; 128;<br>    if (absTick &amp; 0x4000 != 0) ratio = (ratio * 0x70d869a156d2a1b890bb3df62baf32f7) &gt;&gt; 128;<br>    if (absTick &amp; 0x8000 != 0) ratio = (ratio * 0x31be135f97d08fd981231505542fcfa6) &gt;&gt; 128;<br>    if (absTick &amp; 0x10000 != 0) ratio = (ratio * 0x9aa508b5b7a84e1c677de54f3e99bc9) &gt;&gt; 128;<br>    if (absTick &amp; 0x20000 != 0) ratio = (ratio * 0x5d6af8dedb81196699c329225ee604) &gt;&gt; 128;<br>    if (absTick &amp; 0x40000 != 0) ratio = (ratio * 0x2216e584f5fa1ea926041bedfe98) &gt;&gt; 128;<br>    if (absTick &amp; 0x80000 != 0) ratio = (ratio * 0x48a170391f7dc42444e8fa2) &gt;&gt; 128;<br><br>    if (tick &gt; 0) ratio = type(uint256).max / ratio;<br><br>    // this divides by 1&lt;&lt;32 rounding up to go from a Q128.128 to a Q128.96.<br>    // we then downcast because we know the result always fits within 160 bits due to our tick input constraint<br>    // we round up in the division so getTickAtSqrtRatio of the output price is always consistent<br>    sqrtPriceX96 = uint160((ratio &gt;&gt; 32) + (ratio % (1 &lt;&lt; 32) == 0 ? 0 : 1));<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这段代码的实现通过很多的 magic number，优化了计算过程，其实现思路如下：</p>
+<script type="math/tex; mode=display">
+\sqrt P_i = \sqrt {1.0001^i}</script><h3 id="sqrt-P-gt-tick-index"><a href="#sqrt-P-gt-tick-index" class="headerlink" title="$\sqrt P $ -&gt; tick index"></a>$\sqrt P $ -&gt; tick index</h3><p>这里顺带提一下，在交易计算中会需要进行上述计算的逆计算，给定 <strong><em>$\sqrt P $</em></strong>,需要计算出对应的tick index，即 <strong><em>$\log \sqrt {1.0001} ^ \sqrt P$</em></strong> 的计算，在代码中<br>为： <code>TickMath.getTickAtSqrtRatio</code>,关于这个函数的实现，可以参考这篇文章：<a href="">Solidity 中的对数计算</a>。</p>
+<h3 id="完成流动性添加"><a href="#完成流动性添加" class="headerlink" title="完成流动性添加"></a>完成流动性添加</h3><p><code>_modifyPosition</code> 调用完成后，会返回 x token，和y token，的数量。再来看看 <code>UniswapV3Pool.mint</code> 的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function mint(<br>    address recipient,<br>    int24 tickLower,<br>    int24 tickUpper,<br>    uint128 amount,<br>    bytes calldata data<br>) external override lock returns (uint256 amount0, uint256 amount1) &#123;<br>    require(amount &gt; 0);<br>    (, int256 amount0Int, int256 amount1Int) =<br>        _modifyPosition(<br>            ModifyPositionParams(&#123;<br>                owner: recipient,<br>                tickLower: tickLower,<br>                tickUpper: tickUpper,<br>                liquidityDelta: int256(amount).toInt128()<br>            &#125;)<br>        );<br><br>    amount0 = uint256(amount0Int);<br>    amount1 = uint256(amount1Int);<br><br>    uint256 balance0Before;<br>    uint256 balance1Before;<br>    // 获取当前池中的 x token, y token 余额<br>    if (amount0 &gt; 0) balance0Before = balance0();<br>    if (amount1 &gt; 0) balance1Before = balance1();<br>    // 将需要的 x token 和 y token 数量传给回调函数，这里预期回调函数会将指定数量的 token 发送到合约中<br>    IUniswapV3MintCallback(msg.sender).uniswapV3MintCallback(amount0, amount1, data);<br>    // 回调完成后，检查发送至合约的 token 是否复合预期，如果不满足检查则回滚交易<br>    if (amount0 &gt; 0) require(balance0Before.add(amount0) &lt;= balance0(), &#x27;M0&#x27;);<br>    if (amount1 &gt; 0) require(balance1Before.add(amount1) &lt;= balance1(), &#x27;M1&#x27;);<br><br>    emit Mint(msg.sender, recipient, tickLower, tickUpper, amount, amount0, amount1);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这个函数关键步骤就是通过回调函数，让调用方发送指定数量的 x token 和 y token，至合约中。</p>
+<p>我们再来看看 <code>NonfungiblePositionManager.mint</code> 的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function mint(MintParams calldata params)<br>    external<br>    payable<br>    override<br>    checkDeadline(params.deadline)<br>    returns (<br>        uint256 tokenId,<br>        uint256 amount0,<br>        uint256 amount1<br>    )<br>&#123;<br>    IUniswapV3Pool pool;<br>    // 这里是添加流动性，并完成 x token 和 y token 的发送<br>    (amount0, amount1, pool) = addLiquidity(<br>        AddLiquidityParams(&#123;<br>            token0: params.token0,<br>            token1: params.token1,<br>            fee: params.fee,<br>            recipient: address(this),<br>            tickLower: params.tickLower,<br>            tickUpper: params.tickUpper,<br>            amount: params.amount,<br>            amount0Max: params.amount0Max,<br>            amount1Max: params.amount1Max<br>        &#125;)<br>    );<br><br>    // 铸造 ERC721 token 给用户，用来代表用户所持有的流动性<br>    _mint(params.recipient, (tokenId = _nextId++));<br><br>    bytes32 positionKey = PositionKey.compute(address(this), params.tickLower, params.tickUpper);<br>    (, uint256 feeGrowthInside0LastX128, uint256 feeGrowthInside1LastX128, , ) = pool.positions(positionKey);<br><br>    // idempotent set<br>    uint80 poolId =<br>        cachePoolKey(<br>            address(pool),<br>            PoolAddress.PoolKey(&#123;token0: params.token0, token1: params.token1, fee: params.fee&#125;)<br>        );<br><br>    // 用 ERC721 的 token ID 作为键，将用户提供流动性的元信息保存起来<br>    _positions[tokenId] = Position(&#123;<br>        nonce: 0,<br>        operator: address(0),<br>        poolId: poolId,<br>        tickLower: params.tickLower,<br>        tickUpper: params.tickUpper,<br>        liquidity: params.amount,<br>        feeGrowthInside0LastX128: feeGrowthInside0LastX128,<br>        feeGrowthInside1LastX128: feeGrowthInside1LastX128,<br>        tokensOwed0: 0,<br>        tokensOwed1: 0<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可以看到这个函数主要是将用户的Position保存起来，并给用户铸造MFT token，代表其所持有的流动性。至此，提供流动性的步骤就完成了。</p>
+<h3 id="移出流动性"><a href="#移出流动性" class="headerlink" title="移出流动性"></a>移出流动性</h3><p>移出流动性就是上述操作的逆操作，在core合约中：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function burn(<br>    int24 tickLower,<br>    int24 tickUpper,<br>    uint128 amount<br>) external override lock returns (uint256 amount0, uint256 amount1) &#123;<br>    // 先计算出需要移除的 token 数<br>    (Position.Info storage position, int256 amount0Int, int256 amount1Int) =<br>        _modifyPosition(<br>            ModifyPositionParams(&#123;<br>                owner: msg.sender,<br>                tickLower: tickLower,<br>                tickUpper: tickUpper,<br>                liquidityDelta: -int256(amount).toInt128()<br>            &#125;)<br>        );<br><br>    amount0 = uint256(-amount0Int);<br>    amount1 = uint256(-amount1Int);<br><br>    // 注意这里，移除流动性后，将移出的 token 数记录到了 position.tokensOwed 上<br>    if (amount0 &gt; 0 || amount1 &gt; 0) &#123;<br>        (position.tokensOwed0, position.tokensOwed1) = (<br>            position.tokensOwed0 + uint128(amount0),<br>            position.tokensOwed1 + uint128(amount1)<br>        );<br>    &#125;<br><br>    emit Burn(msg.sender, tickLower, tickUpper, amount, amount0, amount1);<br>&#125;<br></code></pre></td></tr></table></figure><br>移出流动性时，还是会使用之前的公式计算出移出的token数，但是并不会直接将移除的token数发送给用户，而是记录再来Position的 <code>tokensOwed0</code>和 <code>tokensOwed1</code>上<br>这样做应该是为了遵循实践：<a href="">Favor pull over push for external calls</a>.</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>关于如何使用ERC721 token 来进行挖矿，可以参考这篇文章：<a target="_blank" rel="noopener" href="https://www.paradigm.xyz/2021/05/liquidity-mining-on-uniswap-v3">liquidity Mining on Uniswap v3</a></p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/en/Uniswap-V3-3/" data-toggle="tooltip" data-placement="top" title="Uniswap V3 详解（三）：交易过程">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/en/Uniswap-V3-1/" data-toggle="tooltip" data-placement="top" title="Uniswap V3 详解（一）：设计原理">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Uniswap V3 详解（二）：创建交易对/提供流动性&body=Hi,I found this website and thought you might like it http://yoursite-url/en/Uniswap-V3-2/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '8d34cec04e51a507b217',
+      clientSecret: 'dbd95dbedb6676efc06c083311491ed110f98fd5',
+      repo: 'openskyx.github.io',
+      owner: 'OpenSkyX',
+      admin: 'OpenSkyX',
+      id: 'Tue Aug 22 2023 12:33:17 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'en',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%A4%E6%98%93%E5%AF%B9"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">创建交易对</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CREATE2"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">CREATE2</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%8F%90%E4%BE%9B%E6%B5%81%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">提供流动性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%8Etoken%E6%95%B0%E8%AE%A1%E7%AE%97%E6%B5%81%E5%8A%A8%E6%80%A7-L"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">从token数计算流动性 L</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">回调函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#position-%E6%9B%B4%E6%96%B0"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">position 更新</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-%E7%AE%A1%E7%90%86"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">tick 管理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-%E4%BD%8D%E5%9B%BE"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">tick 位图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#token-%E7%A1%AE%E8%AE%A4%E6%95%B0"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">token 确认数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tick-index-gt-sqrt-P"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">tick index -&gt; $\sqrt P$</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sqrt-P-gt-tick-index"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">$\sqrt P $ -&gt; tick index</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%8C%E6%88%90%E6%B5%81%E5%8A%A8%E6%80%A7%E6%B7%BB%E5%8A%A0"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">完成流动性添加</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A7%BB%E5%87%BA%E6%B5%81%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">移出流动性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-nav-number">2.11.</span> <span class="toc-nav-text">最后</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">FEATURED TAGS</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#Uniswap V3" title="Uniswap V3">Uniswap V3</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/OpenSkyX">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+            <li>
+              <a target="_blank" href="https://twitter.com/XMaxio">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Mr. Alex
+          2024
+          <br>
+          <!-- Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe> -->
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+    <!-- Mouseclick -->
+    <script type="text/javascript" src="/js/mouseclick.js" content='The first step is as good as half over...,Laugh and grow fat...,Man proposes God disposes...,When all else is lost the future still remains...,Wasting time is robbing oneself...,Sharp tools make good work...,Cease to struggle and you cease to live...,A friend in need is a friend indeed...,Faith can move mountains...' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="SEARCH..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
